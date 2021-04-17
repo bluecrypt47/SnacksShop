@@ -25,6 +25,8 @@ public class HomeServiecImple implements IHomeService {
 	private MenusDAO menusDAO;
 	@Autowired
 	private ProductsDAO productsDAO;
+	@Autowired
+	private ProductsDAO newProductsDAO;
 
 	@Override
 	public List<Slides> GetDataSlide() {
@@ -41,6 +43,10 @@ public class HomeServiecImple implements IHomeService {
 
 	public List<Products> GetDataProducts() {
 		return productsDAO.GetDataProducts();
+	}
+
+	public List<Products> GetDataNewProducts() {
+		return newProductsDAO.GetDataNewProducts();
 	}
 
 }
