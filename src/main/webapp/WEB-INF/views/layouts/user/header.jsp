@@ -23,7 +23,7 @@
 		</div>
 		<div class="span4 alignR">
 			<p>
-				<br> <strong> Support (24/7) : 0800 1234 678 </strong><br>
+				<br> <strong> Hỗ trợ (24/7) : 0800 1234 678 </strong><br>
 				<br>
 			</p>
 			<span class="btn btn-mini">[ 2 ] <span
