@@ -31,4 +31,16 @@ public class ProductsDAO extends BaseDAO {
 		return listNewProducts;
 
 	}
+	
+	/*
+	 * public List<Products> GetDataProducts() { List<Products> listNewProducts =
+	 * new ArrayList<Products>();
+	 * 
+	 * String sql = "SELECT * FROM sanpham WHERE maLoai = 1 LIMIT 12 ";
+	 * listNewProducts = _jdbcTemplate.query(sql, new MapperNewProducts());
+	 * 
+	 * return listNewProducts;
+	 * 
+	 * }
+	 */
 }

@@ -15,7 +15,7 @@ Body Section
 				<ul class="nav nav-list">
 
 					<c:forEach var="item" items="${catogorys }">
-						<li><a href="/san-pham/${ item.maLoai }"><span
+						<li><a href='<c:url  value="/san-pham/${ item.tenLoai }"/>'><span
 								class="icon-circle-blank"></span> ${ item.tenLoai }</a></li>
 						<li>
 					</c:forEach>
@@ -122,7 +122,7 @@ Body Section
 					href="#myCarousel" data-slide="next">&rsaquo;</a>
 			</div>
 		</div>
-<!-- 
+		<!-- 
 		Sản Phẩm Mới
  -->
 		<div class="well well-small">
@@ -131,36 +131,38 @@ Body Section
 			<div class="row-fluid">
 				<div id="newProductCar" class="carousel slide">
 					<div class="carousel-inner">
-					<c:if test="${ newProducts.size() > 0 }">
-						<div class="item active">
-							<ul class="thumbnails">
-							<c:forEach var="item" items="${ newProducts }" varStatus="loop">
-								<li class="span3">
-									<div class="thumbnail">
-										<a class="zoomTool" href="product_details.html"
-											title="add to cart"><span class="icon-search"></span>
-											QUICK VIEW</a> <a href="product_details.html"><img
-											src="<c:url value="/assets/user/img/anh/${ item.image }"/>" alt=""></a>
-									</div>
-								</li>
-								<c:if test="${ (loop.index + 1) % 4 == 0 || (loop.index + 1)  == newProducts.size() }">
-										</ul>
-									</div>
-									<c:if test="${ (loop.index + 1) < newProducts.size() }">
-										<div class="item">
-											<ul class="thumbnails">
-									</c:if>
-								</c:if>
-							</c:forEach>
-					</c:if>
-						
+						<c:if test="${ newProducts.size() > 0 }">
+							<div class="item active">
+								<ul class="thumbnails">
+									<c:forEach var="item" items="${ newProducts }" varStatus="loop">
+										<li class="span3">
+											<div class="thumbnail">
+												<a class="zoomTool" href="product_details.html"
+													title="add to cart"><span class="icon-search"></span>
+													QUICK VIEW</a> <a href="product_details.html"><img
+													src="<c:url value="/assets/user/img/anh/${ item.image }"/>"
+													alt=""></a>
+											</div>
+										</li>
+										<c:if
+											test="${ (loop.index + 1) % 4 == 0 || (loop.index + 1)  == newProducts.size() }">
+								</ul>
+							</div>
+							<c:if test="${ (loop.index + 1) < newProducts.size() }">
+								<div class="item">
+									<ul class="thumbnails">
+							</c:if>
+						</c:if>
+						</c:forEach>
+						</c:if>
+
 					</div>
 					<a class="left carousel-control" href="#newProductCar"
 						data-slide="prev">&lsaquo;</a> <a class="right carousel-control"
 						href="#newProductCar" data-slide="next">&rsaquo;</a>
 				</div>
 			</div>
-			
+
 		</div>
 
 
