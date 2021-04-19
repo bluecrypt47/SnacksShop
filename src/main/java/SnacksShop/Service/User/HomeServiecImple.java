@@ -9,9 +9,9 @@ import SnacksShop.DAO.CatogorysDAO;
 import SnacksShop.DAO.MenusDAO;
 import SnacksShop.DAO.ProductsDAO;
 import SnacksShop.DAO.SlidesDAO;
+import SnacksShop.DTO.ProductsDTO;
 import SnacksShop.Entity.Catogorys;
 import SnacksShop.Entity.Menus;
-import SnacksShop.Entity.Products;
 import SnacksShop.Entity.Slides;
 
 @Service
@@ -25,8 +25,6 @@ public class HomeServiecImple implements IHomeService {
 	private MenusDAO menusDAO;
 	@Autowired
 	private ProductsDAO productsDAO;
-	@Autowired
-	private ProductsDAO newProductsDAO;
 
 	@Override
 	public List<Slides> GetDataSlide() {
@@ -41,12 +39,10 @@ public class HomeServiecImple implements IHomeService {
 		return menusDAO.GetDataMenus();
 	}
 
-	public List<Products> GetDataProducts() {
-		return productsDAO.GetDataProducts();
-	}
-
-	public List<Products> GetDataNewProducts() {
-		return newProductsDAO.GetDataNewProducts();
+	@Override
+	public List<ProductsDTO> GetDataProducts() {
+		List<ProductsDTO> listProducts = productsDAO.GetDataProducts();
+		return listProducts;
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import SnacksShop.DTO.ProductsDTO;
 import SnacksShop.Entity.Catogorys;
 import SnacksShop.Entity.Slides;
 
@@ -13,4 +14,5 @@ public interface IHomeService {
 	@Autowired
 	public List<Slides> GetDataSlide();
 	public List<Catogorys> GetDataCatogorys();
+	public List<ProductsDTO> GetDataProducts();
 }
