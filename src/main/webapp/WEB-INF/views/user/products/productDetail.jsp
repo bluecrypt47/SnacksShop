@@ -16,6 +16,8 @@
 	<!-- 
 Body Section 
 -->
+<h1>${ Cart.size() }</h1>
+
 	<div class="row">
 		<div id="sidebar" class="span3">
 			<div class="well well-small">
@@ -137,7 +139,7 @@ Body Section
 						<h3>${ productDetail.tenSP }</h3>
 						<hr class="soft" />
 
-						<form class="form-horizontal qtyFrm">
+						<form class="form-horizontal qtyFrm" method="get" action="/AddCart/${ productDetail.maSP }">
 							<div class="control-group">
 								<label class="control-label"><span><fmt:formatNumber
 											type="number" groupingUsed="true"
