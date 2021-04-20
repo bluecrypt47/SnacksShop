@@ -6,16 +6,20 @@ import SnacksShop.DTO.PaginatesDTO;
 
 @Service
 public class PaginatesServiceImple {
-	public PaginatesDTO GetInfoPaginates(int totalData, int limitProductsOfPage, int currentPage ) {
+	public PaginatesDTO GetInfoPaginates(int totalData, int limitProductsOfPage, int currentPage) {
 		PaginatesDTO paginates = new PaginatesDTO();
 
 		paginates.setLimitProductsOfPage(limitProductsOfPage);
-		paginates.setTotalPage(setTotalPages(totalData, limitProductsOfPage));
+		
+		paginates.setTotalPage(setInfoTotalPages(totalData, limitProductsOfPage));
+		
 		paginates.setCurrentPage(checkCurrentPage(currentPage, paginates.getTotalPage()));
 
-		paginates.setNumberStartPageOfProduct(findStartNumdber(paginates.getCurrentPage(), limitProductsOfPage));
-		paginates.setNumberEndPageOfProduct(
-				findEndNumdber(paginates.getNumberStartPageOfProduct(), limitProductsOfPage, totalData));
+		int start = findStartNumdber(paginates.getCurrentPage(), limitProductsOfPage);
+		paginates.setNumberStartPageOfProduct(start);
+		
+		int end = findEndNumdber(paginates.getNumberStartPageOfProduct(), limitProductsOfPage, totalData);
+		paginates.setNumberEndPageOfProduct(end);
 
 		return paginates;
 		
@@ -31,11 +35,11 @@ public class PaginatesServiceImple {
 		return ((currentPage - 1) * limitProductsOfPage) + 1;
 	}
 
-	private int setTotalPages(int totalData, int limitProductsOfPage) {
-		int total = 0;
-		total = totalData / limitProductsOfPage;
-		total = total * limitProductsOfPage < totalData ? total + 1 : total;
-		return total;
+	private int setInfoTotalPages(int totalData, int limitProductsOfPage) {
+		int totalPage = 0;
+		totalPage = totalData / limitProductsOfPage;
+		totalPage = totalPage * limitProductsOfPage < totalData ? totalPage + 1 : totalPage;
+		return totalPage;
 	}
 
 	private int checkCurrentPage(int currentPage, int totalPages) {

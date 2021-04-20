@@ -6,6 +6,5 @@ import SnacksShop.DTO.PaginatesDTO;
 
 @Service
 public interface IPaginatesService {
-	public PaginatesDTO GetInfoPaginates(int currentPage, int limitProductsOfPage, int totalData);
-
+	public PaginatesDTO GetInfoPaginates(int totalData, int limitProductsOfPage, int currentPage);
 }

@@ -6,10 +6,6 @@
 <head>
 <title>Sản phẩm</title>
 <style>
-.center {
-	text-align: center;
-}
-
 .pagination {
 	display: flex;
 	justify-content: center;
@@ -22,7 +18,6 @@
 	text-decoration: none;
 	transition: background-color .3s;
 	border: 1px solid #ddd;
-	margin: 0 4px;
 }
 
 .pagination a.active {
@@ -56,8 +51,8 @@
 							<div class="thumbnail">
 								<a href="product_details.html" class="overlay"></a> <a
 									class="zoomTool" href="product_details.html"
-									title="add to cart"><span class="icon-search"></span> QUICK
-									VIEW</a> <a href="chi-tiet-san-pham/${ item.tenSP }"><img
+									title="add to cart"><span class="icon-search"></span> Xem
+									chi tiết</a> <a href="chi-tiet-san-pham/${ item.maSP }"><img
 									src="<c:url value="/assets/user/img/anh/${ item.image }" />"></a>
 								<div class="caption cntr">
 									<p>${ item.tenSP }</p>
@@ -81,10 +76,10 @@
 						</li>
 
 						<c:if
-							test="${ (loop.index+1)  %3 ==0 || (loop.index+1) == productsPaginate.size()}">
+							test="${ (loop.index + 1)  %3 ==0 || (loop.index+1) == productsPaginate.size()}">
 				</ul>
 			</div>
-			<c:if test="${ (loop.index+1) < productsPaginate.size()}">
+			<c:if test="${ (loop.index + 1) < productsPaginate.size()}">
 				<div class="row-fluid">
 					<ul class="thumbnails">
 			</c:if>
@@ -98,15 +93,12 @@
 	<div class="pagination">
 		<c:forEach var="item" begin="1" end="${ paginateInfo.totalPage }"
 			varStatus="loop">
-			<c:if test="${ loop.index == paginateInfo.currentPage }">
-				<a
-					href="<c:url value="/san-pham/${ idCategorys }/${ (loop.index)}"/> "
+			<c:if test="${ (loop.index) == paginateInfo.currentPage }">
+				<a href="<c:url value="/san-pham/${ idCategory }/${ loop.index }"/>"
 					class="active">${ loop.index }</a>
 			</c:if>
-
 			<c:if test="${ (loop.index) != paginateInfo.currentPage }">
-				<a
-					href="<c:url value="/san-pham/${ idCategorys }/${ loop.index }"/>">${ loop.index }</a>
+				<a href="<c:url value="/san-pham/${ idCategory }/${ loop.index }"/>">${ loop.index }</a>
 			</c:if>
 		</c:forEach>
 	</div>

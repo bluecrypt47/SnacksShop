@@ -15,39 +15,40 @@ public class TypeProductsController extends BaseController {
 
 	@Autowired
 	private CategorysServiceImple categorysService;
-	
+
 	@Autowired
 	private PaginatesServiceImple paginatesService;
-	
+
 	private int TotalProductsOfPage = 12;
 
 	@RequestMapping(value = "/san-pham/{id}")
 	public ModelAndView Products(@PathVariable String id) {
-		
-		
+
 		_mvShare.setViewName("user/products/typeProducts");
-		
+
 		int totalData = categorysService.GetAllProductsByID(Integer.parseInt(id)).size();
-		
+
 		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage, 1);
 		_mvShare.addObject("idCategory", id);
 		_mvShare.addObject("paginateInfo", paginateInfo);
-		_mvShare.addObject("productsPaginate", categorysService.GetDataProductsPaginate(Integer.parseInt(id), paginateInfo.getNumberStartPageOfProduct(), TotalProductsOfPage));
+		_mvShare.addObject("productsPaginate", categorysService.GetDataProductsPaginate(Integer.parseInt(id),
+				paginateInfo.getNumberStartPageOfProduct(), TotalProductsOfPage));
 		return _mvShare;
 	}
-	
+
 	@RequestMapping(value = "/san-pham/{id}/{currentPage}")
 	public ModelAndView Products(@PathVariable String id, @PathVariable String currentPage) {
-		
-		
+
 		_mvShare.setViewName("user/products/typeProducts");
-		
+
 		int totalData = categorysService.GetAllProductsByID(Integer.parseInt(id)).size();
-		
-		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage, Integer.parseInt(currentPage) );
+
+		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage,
+				Integer.parseInt(currentPage));
 		_mvShare.addObject("idCategory", id);
 		_mvShare.addObject("paginateInfo", paginateInfo);
-		_mvShare.addObject("productsPaginate", categorysService.GetDataProductsPaginate(Integer.parseInt(id), paginateInfo.getNumberStartPageOfProduct(), TotalProductsOfPage));
+		_mvShare.addObject("productsPaginate", categorysService.GetDataProductsPaginate(Integer.parseInt(id),
+				paginateInfo.getNumberStartPageOfProduct(), TotalProductsOfPage));
 		return _mvShare;
 	}
 }

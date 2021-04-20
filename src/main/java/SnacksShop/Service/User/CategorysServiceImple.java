@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import SnacksShop.DAO.ProductsDAO;
-import SnacksShop.Entity.Products;
+import SnacksShop.DTO.ProductsDTO;
 
 @Service
 public class CategorysServiceImple implements ICategorysService {
@@ -15,12 +15,12 @@ public class CategorysServiceImple implements ICategorysService {
 	private ProductsDAO productsDAO;
 
 	@Override
-	public List<Products> GetAllProductsByID(int id) {
-		return productsDAO.GetDataProductsByID(id);
+	public List<ProductsDTO> GetAllProductsByID(int id) {
+		return productsDAO.GetAllProductsByID(id);
 	}
 
 	@Override
-	public List<Products> GetDataProductsPaginate(int id, int start, int totalPage) {
+	public List<ProductsDTO> GetDataProductsPaginate(int id, int start, int totalPage) {
 		return productsDAO.GetDataProductsPaginates(id, start, totalPage);
 	}
 }
