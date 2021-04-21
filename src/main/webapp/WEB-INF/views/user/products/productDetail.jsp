@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
+	prefix="decorator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -16,7 +18,6 @@
 	<!-- 
 Body Section 
 -->
-<h1>${ Cart.size() }</h1>
 
 	<div class="row">
 		<div id="sidebar" class="span3">
@@ -139,7 +140,7 @@ Body Section
 						<h3>${ productDetail.tenSP }</h3>
 						<hr class="soft" />
 
-						<form class="form-horizontal qtyFrm" method="get" action="/AddCart/${ productDetail.maSP }">
+						<form class="form-horizontal qtyFrm" method="get" action="<c:url value="/AddCart/${ productDetail.maSP }"/>">
 							<div class="control-group">
 								<label class="control-label"><span><fmt:formatNumber
 											type="number" groupingUsed="true"

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <!DOCTYPE html>
@@ -42,13 +43,16 @@
 							class="icon-youtube"></span></a> <a href="#"><span
 							class="icon-tumblr"></span></a>
 					</div>
-					<a class="active" href="index.html"> <span class="icon-home"></span>
+					<a class="active" href=""> <span class="icon-home"></span>
 						Trang chủ
 					</a> <a href="#"><span class="icon-user"></span> Tài khoản</a> <a
 						href="register.html"><span class="icon-edit"></span> Đăng ký </a>
 					<a href="contact.html"><span class="icon-envelope"></span> Liên
-						hệ</a> <a href="cart.html"><span class="icon-shopping-cart"></span>
-						Mặt hàng - <span class="badge badge-warning"> $448.42</span></a>
+						hệ</a><a href="<c:url value="/gio-hang"/>"><span class="icon-shopping-cart"></span>
+						${ TotalQuantityCart } Sản phẩm - <span
+						class="badge badge-warning"><fmt:formatNumber
+											type="number" groupingUsed="true"
+											value="${TotalPriceCart}" /> VNĐ</span></a>
 				</div>
 			</div>
 		</div>

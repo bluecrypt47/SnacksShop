@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
+	prefix="decorator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <title>Trang chủ</title>
@@ -22,8 +24,10 @@ Body Section
 
 
 					<li><a class="totalInCart" href="cart.html"><strong>Tổng
-								tiền đã mua <span class="badge badge-warning pull-right"
-								style="line-height: 18px;">$448.42</span>
+								tiền mua <span class="badge badge-warning pull-right"
+								style="line-height: 18px;"><fmt:formatNumber
+											type="number" groupingUsed="true"
+											value="${TotalPriceCart}" /> VNĐ</span>
 						</strong></a></li>
 				</ul>
 			</div>
@@ -186,7 +190,7 @@ Body Section
 							<c:forEach var="item" items="${ products }" varStatus="loop">
 								<li class="span4">
 									<div class="thumbnail">
-										<!-- chi-tiet-san-pham/${ item.tenSP } -->
+									
 										<a class="zoomTool" href="#" title="Thêm vào giỏ"><span
 											class="icon-search"></span> QUICK VIEW</a> <a
 											href="chi-tiet-san-pham/${ item.tenSP }"><img
@@ -197,7 +201,7 @@ Body Section
 											<h4>
 												<a class="defaultBtn" href="product_details.html"
 													title="Nhấn để xem"><span class="icon-zoom-in"></span></a>
-												<a class="shopBtn" href="#" title="Thêm vào giỏ"><span
+												<a class="shopBtn" href="<c:url value="/AddCart/${ item.maSP }"/>" title="Thêm vào giỏ"><span
 													class="icon-plus"></span></a> <span class="pull-right">
 													<fmt:formatNumber type="number" groupingUsed="true"
 														value="${item.giaBan}" /> VNĐ

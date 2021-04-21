@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
+	prefix="decorator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <header id="header">
 	<div class="row">
 		<div class="span4">
 			<h1>
-				<a class="logo" href="index.html"><span>Twitter Bootstrap
+				<a class="logo" href=""><span>Twitter Bootstrap
 						ecommerce template</span> <img
 					src="<c:url value="/assets/user/img/logo-tcl.png"/>"
 					alt="bootstrap sexy shop"> </a>
@@ -26,7 +29,7 @@
 				<br> <strong> Hỗ trợ (24/7) : 0800 1234 678 </strong><br>
 				<br>
 			</p>
-			<span class="btn btn-mini">[ 2 ] <span
+			<span class="btn btn-mini">[ ${ TotalQuantityCart } ] <span
 				class="icon-shopping-cart"></span></span> <span
 				class="btn btn-warning btn-mini">$</span> <span class="btn btn-mini">&pound;</span>
 			<span class="btn btn-mini">&euro;</span>
@@ -54,13 +57,13 @@ Navigation Bar Section
 						<c:if test="${not index.first }">
 							<li class="">
 						</c:if>
-						<a href="index.html">${item.tenDS } </a>
+						<a href="">${item.tenDS } </a>
 
 					</c:forEach>
 
 				</ul>
 				<form action="#" class="navbar-search pull-left">
-					<input type="text" placeholder="Search" class="search-query span2">
+					<input type="text" placeholder="Tiềm kiếm" class="search-query span2">
 				</form>
 				<ul class="nav pull-right">
 					<li class="dropdown"><a data-toggle="dropdown"

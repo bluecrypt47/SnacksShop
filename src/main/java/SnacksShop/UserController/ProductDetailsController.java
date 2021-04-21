@@ -10,17 +10,17 @@ import SnacksShop.Service.User.IProductDetailsService;
 
 @Controller
 public class ProductDetailsController extends BaseController {
-	
+
 	@Autowired
 	private IProductDetailsService _productDetailsService;
-	
-	@RequestMapping(value = { "san-pham/chi-tiet-san-pham/{id}", "chi-tiet-san-pham/{id}" })
+
+	@RequestMapping(value = {  "san-pham/chi-tiet-san-pham/{id}",  "chi-tiet-san-pham/{id}" })
 	public ModelAndView Index(@PathVariable String id) {
 
 		_mvShare.setViewName("user/products/productDetail");
-		
+
 		_mvShare.addObject("productDetail", _productDetailsService.GetProductByID(id));
-		
+
 		int idTypeProducts = _productDetailsService.GetProductByID(id).getMaLoai();
 		_mvShare.addObject("productDetailByIDType", _productDetailsService.GetProductByIDType(idTypeProducts));
 
