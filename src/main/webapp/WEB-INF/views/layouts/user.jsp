@@ -4,6 +4,7 @@
 	prefix="decorator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 
 
 <!DOCTYPE html>
@@ -46,7 +47,7 @@
 					<a class="active" href=""> <span class="icon-home"></span>
 						Trang chủ
 					</a> <a href="#"><span class="icon-user"></span> Tài khoản</a> <a
-						href="register.html"><span class="icon-edit"></span> Đăng ký </a>
+						href="<c:url value="/dang-ky"/>"><span class="icon-edit"></span> Đăng ký </a>
 					<a href="contact.html"><span class="icon-envelope"></span> Liên
 						hệ</a><a href="<c:url value="/gio-hang"/>"><span class="icon-shopping-cart"></span>
 						${ TotalQuantityCart } Sản phẩm - <span
@@ -95,5 +96,7 @@ Lower Header Section
 	<script
 		src="<c:url value="/assets/user/js/jquery.scrollTo-1.4.3.1-min.js"/>"></script>
 	<script src="<c:url value="/assets/user/js/shop.js"/>"></script>
+	<decorator:getProperty property="page.script"></decorator:getProperty>
+	
 </body>
 </html>

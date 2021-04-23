@@ -19,8 +19,8 @@ Body Section
 			</ul>
 			<div class="well well-small">
 				<h1>
-					Thanh Toán <small class="pull-right"> 2 sản phẩm có trong
-						giỏ hàng </small>
+					Thanh Toán <small class="pull-right"> ${ TotalQuantityCart }
+						Sản phẩm có trong giỏ hàng </small>
 				</h1>
 				<hr class="soften" />
 
@@ -49,17 +49,18 @@ Body Section
 										value="${ item.value.product.giaBan }" /> VNĐ</td>
 								<td><input type="number" min="0" max="100" class="span1"
 									style="max-width: 34px" placeholder="1"
-									id="appendedInputButtons" size="16" type="text"
+									id="quantity-cart-${ item.key }" size="16" type="text"
 									value="${ item.value.quantity }"></td>
-								<td><a href="<c:url  value="/EditCart/1"/>"
-									class="btn btn-mini btn-danger" type="button"> <span
-										class="icon-edit"></span>
-								</a></td>
+								<td><button data-id="${ item.key }"
+										class="btn btn-mini btn-danger edit-cart" type="button">
+										<span class="icon-edit"></span>
+									</button></td>
 								<td><a href="<c:url  value="/DeleteCart/${ item.key }"/>"
 									class="btn btn-mini btn-danger" type="button"> <span
 										class="icon-remove"></span>
 								</a></td>
-								<td><fmt:formatNumber type="number" groupingUsed="true" value="${ item.value.totalPrice }"/> VNĐ</td>
+								<td><fmt:formatNumber type="number" groupingUsed="true"
+										value="${ item.value.totalPrice }" /> VNĐ</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -73,4 +74,15 @@ Body Section
 			</div>
 		</div>
 	</div>
+
+	<content tag="script"> <script>
+		$(".edit-cart").on("click", function() {
+			var id = $(this).data("id");
+			var quanty = $("#quantity-cart-" + id).val();
+
+			window.location = "EditCart/" + id + "/" + quanty;
+		});
+	</script> </content>
+
+
 </body>
