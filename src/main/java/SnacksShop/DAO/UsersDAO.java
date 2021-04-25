@@ -1,29 +1,14 @@
 package SnacksShop.DAO;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Repository;
 
+import SnacksShop.DTO.ProductsDTO;
 import SnacksShop.Entity.MapperUsers;
 import SnacksShop.Entity.Users;
 
 @Repository
 public class UsersDAO extends BaseDAO{
-	
-//	private StringBuffer SqlString(String user, String password, String name, String address, String phoneNumber) {
-//		StringBuffer sql = new StringBuffer();
-//		sql.append("INSERT ");
-//		sql.append("INTO users ");
-//		sql.append("( ");
-//		sql.append(" user, password, name, address, phoneNumber ");
-//		sql.append(" )  ");
-//		sql.append(" VALUESr ");
-//		sql.append("( ");
-//		sql.append("["+user+"],["+password+"],["+name+"],["+address+"],["+phoneNumber+"] ");
-//		sql.append(" )  ");
-//		return sql;
-//	}
+
 	
 
 	
@@ -43,5 +28,14 @@ public class UsersDAO extends BaseDAO{
 		int insert = _jdbcTemplate.update(sql.toString());
 		
 		return insert;
+	}
+	
+public Users getAccount(Users user){
+		
+		String sql = "SELECT * FROM users WHERE user = '"+user.getUser()+"'";
+		
+		Users result = _jdbcTemplate.queryForObject(sql, new MapperUsers());
+		
+		return result;
 	}
 }

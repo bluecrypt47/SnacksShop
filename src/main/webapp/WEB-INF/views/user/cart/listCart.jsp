@@ -65,9 +65,9 @@ Body Section
 						</c:forEach>
 					</tbody>
 				</table>
-				<br /> <a href="products.html" class="shopBtn btn-large"><span
+				<br /> <a href="<c:url value="/trang-chu"/>" class="shopBtn btn-large"><span
 					class="icon-arrow-left"></span> Tiếp Tục Mua Sắm </a> <a
-					href="login.html" class="shopBtn btn-large pull-right">Thanh
+					href="<c:url value="/checkout"/>" class="shopBtn btn-large pull-right">Thanh
 					Toán <span class="icon-arrow-right"></span>
 				</a>
 

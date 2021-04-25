@@ -7,11 +7,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import SnacksShop.DTO.CartDTO;
+import SnacksShop.Entity.Bill;
 import SnacksShop.Service.User.CartServiceImple;
 
 @Controller
@@ -19,6 +22,9 @@ public class CartController extends BaseController {
 
 	@Autowired
 	private CartServiceImple cartServiceImple = new CartServiceImple();
+
+	@Autowired
+//	private BillServiceImple billServiceImple = new BillServiceImple();
 
 	@RequestMapping(value = "gio-hang")
 	public ModelAndView listCart() {
@@ -48,7 +54,8 @@ public class CartController extends BaseController {
 	}
 
 	@RequestMapping(value = "EditCart/{id}/{quantity}")
-	public String editCart(HttpServletRequest request, HttpSession session, @PathVariable String id, @PathVariable int quantity) {
+	public String editCart(HttpServletRequest request, HttpSession session, @PathVariable String id,
+			@PathVariable int quantity) {
 		HashMap<String, CartDTO> cart = (HashMap<String, CartDTO>) session.getAttribute("Cart");
 
 		if (cart == null) {
@@ -76,4 +83,19 @@ public class CartController extends BaseController {
 
 		return "redirect:" + request.getHeader("Referer");
 	}
+
+	@RequestMapping(value = "checkout", method = RequestMethod.GET)
+	public ModelAndView checkout(HttpServletRequest request, HttpSession session) {
+		_mvShare.setViewName("user/bill/checkout");
+		_mvShare.addObject("bill", new Bill());
+		return _mvShare;
+	}
+
+	@RequestMapping(value = "checkout", method = RequestMethod.POST)
+	public ModelAndView checkoutBill(HttpServletRequest request, HttpSession session,
+			@ModelAttribute("bill") Bill bill) {
+		_mvShare.setViewName("user/bill/checkout");
+		return _mvShare;
+	}
+
 }

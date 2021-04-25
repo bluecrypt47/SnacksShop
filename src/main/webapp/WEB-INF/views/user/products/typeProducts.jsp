@@ -34,11 +34,11 @@
 <body>
 	<div class="well well-small">
 		<div class="row">
-			<span style="margin-left: 25px;">Danh sách sản phẩm</span> <select
+			<span style="margin-left: 25px;">Danh sách sản phẩm</span> <!-- <select
 				class="pull-right">
 				<option>A - Z</option>
 				<option>Cao - Thấp</option>
-			</select>
+			</select> -->
 		</div>
 
 		<c:if test="${ productsPaginate.size() > 0 }">
@@ -50,7 +50,7 @@
 						<li class="span4">
 							<div class="thumbnail">
 								<a href="product_details.html" class="overlay"></a> <a
-									class="zoomTool" href="product_details.html"
+									class="zoomTool" href="chi-tiet-san-pham/${item.maSP}"
 									title="add to cart"><span class="icon-search"></span> Xem
 									chi tiết</a> <a href="chi-tiet-san-pham/${ item.maSP }"><img
 									src="<c:url value="/assets/user/img/anh/${ item.image }" />"></a>
@@ -63,13 +63,13 @@
 
 									</p>
 									<h4>
-										<a class="shopBtn" href="#" title="add to cart"> Thêm vào
+										<a class="shopBtn" href="<c:url value="/AddCart/${ item.maSP }"/>" title="add to cart"> Thêm vào
 											giỏ </a>
 									</h4>
-									<div class="actionList">
+									<!-- <div class="actionList">
 										<a class="pull-left" href="#">Thêm vào danh sách yêu thích
 										</a> <a class="pull-left" href="#"> Add to Compare </a>
-									</div>
+									</div> -->
 									<br class="clr">
 								</div>
 							</div>

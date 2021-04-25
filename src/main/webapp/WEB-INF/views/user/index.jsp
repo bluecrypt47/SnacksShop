@@ -32,7 +32,7 @@ Body Section
 				</ul>
 			</div>
 
-			<div class="well well-small alert alert-warning cntr">
+			<!-- <div class="well well-small alert alert-warning cntr">
 				<h2>Giảm 50%</h2>
 				<p>
 					cho các đơn đặt hàng online. <br> <br> <a
@@ -91,7 +91,7 @@ Body Section
 						</div>
 					</div>
 				</li>
-			</ul>
+			</ul> -->
 
 		</div>
 		<div class="span9">
@@ -141,9 +141,9 @@ Body Section
 									<c:forEach var="item" items="${ products }" varStatus="loop">
 										<li class="span3">
 											<div class="thumbnail">
-												<a class="zoomTool" href="product_details.html"
-													title="add to cart"><span class="icon-search"></span>
-													QUICK VIEW</a> <a href="product_details.html"><img
+												<a class="zoomTool" href="san-pham/chi-tiet-san-pham/${item.maSP}"
+													title="Thêm vào giỏ"><span class="icon-search"></span>
+													Xem thêm</a> <a href="san-pham/chi-tiet-san-pham/${item.maSP}"><img
 													src="<c:url value="/assets/user/img/anh/${ item.image }"/>"
 													alt=""></a>
 											</div>
@@ -191,9 +191,9 @@ Body Section
 								<li class="span4">
 									<div class="thumbnail">
 									
-										<a class="zoomTool" href="#" title="Thêm vào giỏ"><span
-											class="icon-search"></span> QUICK VIEW</a> <a
-											href="chi-tiet-san-pham/${ item.tenSP }"><img
+										<a class="zoomTool" href="san-pham/chi-tiet-san-pham/${item.maSP}" title="Xem thêm"><span
+											class="icon-search"></span> Xem thêm</a> <a
+											href="san-pham/chi-tiet-san-pham/${item.maSP}"><img
 											src="<c:url value="/assets/user/img/anh/${ item.image }" />"
 											alt=""></a>
 										<div class="caption">

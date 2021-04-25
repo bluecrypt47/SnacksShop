@@ -4,16 +4,13 @@
 	prefix="decorator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
 <head>
-<title>Đăng ký</title>
+<title>Thanh toán</title>
 </head>
 <body>
-	<!-- 
-Body Section 
--->
 	<div class="row">
 		<div id="sidebar" class="span3">
 			<div class="well well-small">
@@ -49,9 +46,8 @@ Body Section
 			<div class="well well-small alert alert-warning cntr">
 				<h2>50% Discount</h2>
 				<p>
-					only valid for online order. <br>
-					<br>
-					<a class="defaultBtn" href="#">Click here </a>
+					only valid for online order. <br> <br> <a
+						class="defaultBtn" href="#">Click here </a>
 				</p>
 			</div>
 			<div class="well well-small">
@@ -60,7 +56,7 @@ Body Section
 			</div>
 
 			<a class="shopBtn btn-block" href="#">Upcoming products <br>
-			<small>Click to view</small></a> <br> <br>
+				<small>Click to view</small></a> <br> <br>
 			<ul class="nav nav-list promowrapper">
 				<li>
 					<div class="thumbnail">
@@ -112,80 +108,58 @@ Body Section
 		<div class="span9">
 			<ul class="breadcrumb">
 				<li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
-				<li class="active">Người dùng</li>
+				<li class="active">Thanh toán</li>
 			</ul>
-			<h3>Đăng nhập</h3>
-			<hr class="soft" />
+			
 
-			<div class="row">
-				<div class="span4">
-					<div class="well">
-						<h5>ĐĂNG KÝ TÀI KHOẢN</h5>
-						<form:form action="dang-ky" method="POST" modelAttribute="usersRegister">  
-							<div class="control-group">
-								<label class="control-label" for="inputEmail">Địa chỉ E-mail</label>
-								<div class="controls">
-									<form:input type="email" class="span3" placeholder="Email" path="user"/>  
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="inputEmail">Mật khẩu</label>
-								<div class="controls">
-									<form:input type="password" class="span3" placeholder="********" path="password"/>  
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="inputEmail">Họ và tên</label>
-								<div class="controls">
-									<form:input type="text" class="span3" placeholder="VD: Trần Văn A" path="name"/>  
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="inputEmail">Địa chỉ </label>
-								<div class="controls">
-									<form:input type="text" class="span3" placeholder="" path="address"/>  
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="inputEmail">Số điện thoại liên lạc </label>
-								<div class="controls">
-									<form:input type="text" class="span3" placeholder="" path="phoneNumber"/>  
-								</div>
-							</div>
-							<div class="controls">
-								<button type="submit" class="btn block">Tạo tài khoản</button>
-							</div>
-						</form:form>
+			<div class="well">
+				<form:form action="checkout" method="POST" modelAttribute="bill"
+					class="form-horizontal">
+					<h3>Thanh toán đơn hàng</h3>
+					<div class="control-group">
+						<label class="control-label">Họ và tên <sup>*</sup></label>
+						<div class="controls">
+							<form:input type="text" placeholder="VD: Trần Văn A" path="name" />
+						</div>
 					</div>
-				</div>
-				<div class="span1">&nbsp;</div>
-				<div class="span4">
-					<div class="well">
-						<h5>ĐĂNG NHẬP HỆ THỐNG</h5>
-						<h1>${ statusLogin }</h1>
-						<form:form action="dang-nhap" method="POST" modelAttribute="usersRegister">  
-							<div class="control-group">
-								<label class="control-label" for="inputEmail">Email</label>
-								<div class="controls">
-									<form:input class="span3" type="text" placeholder="Email" path="user"/>  
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="inputPassword">Mật khẩu</label>
-								<div class="controls">
-									<form:input type="password" class="span3" placeholder="********" path="password"/>  
-								</div>
-							</div>
-							<div class="control-group">
-								<div class="controls">
-									<button type="submit" class="defaultBtn">Đăng nhập</button>
-									<a href="#">Quên mật khẩu?</a>
-								</div>
-							</div>
-						</form:form>
+					<div class="control-group">
+						<label class="control-label">Email <sup>*</sup></label>
+						<div class="controls">
+							<form:input type="text" class="span3" placeholder="abc@gmail.com"
+								path="email" />
+						</div>
 					</div>
-				</div>
+					<div class="control-group">
+						<label class="control-label">Số điện thoại <sup>*</sup></label>
+						<div class="controls">
+							<form:input type="text" class="span3" placeholder=""
+								path="phoneNumber" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Địa chỉ <sup>*</sup></label>
+						<div class="controls">
+							<form:textarea path="address" rows="6" cols="30" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Ghi chú <sup>*</sup></label>
+						<div class="controls">
+							<form:textarea path="note" rows="6" cols="30" />
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<input type="submit" name="submitAccount" value="Thanh toán"
+								class="shopBtn exclusive">
+						</div>
+					</div>
+				</form:form>
 			</div>
+
+
+
+
 
 		</div>
 	</div>
