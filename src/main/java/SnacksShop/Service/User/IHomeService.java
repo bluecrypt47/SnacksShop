@@ -15,4 +15,6 @@ public interface IHomeService {
 	public List<Slides> GetDataSlide();
 	public List<Catogorys> GetDataCatogorys();
 	public List<ProductsDTO> GetDataProducts();
+	public List<ProductsDTO> GetAllProducts();
+	public List<ProductsDTO> GetSearchProducts(String name);
 }

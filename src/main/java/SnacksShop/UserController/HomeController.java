@@ -10,19 +10,24 @@ public class HomeController extends BaseController {
 	@RequestMapping(value = { "/", "/trang-chu" })
 	public ModelAndView Index() {
 		
+		String name ="";
+		
 		_mvShare.addObject("slides", _homeService.GetDataSlide());
 		_mvShare.addObject("catogorys", _homeService.GetDataCatogorys());
 		_mvShare.addObject("products", _homeService.GetDataProducts());
+		_mvShare.addObject("searchProducts", _homeService.GetSearchProducts(name));
 		/* _mvShare.addObject("newProducts", _homeService.GetDataNewProducts()); */
 		
 		_mvShare.setViewName("user/index");
 		return _mvShare;
 	}
 
-	@RequestMapping(value = "/product")
+	@RequestMapping(value = "/tat-ca-san-pham")
 	public ModelAndView Product() {
-		ModelAndView mv = new ModelAndView("user/product");
-		return mv;
+		_mvShare.addObject("allProducts", _homeService.GetAllProducts());
+		
+		_mvShare.setViewName("user/products/allProducts");
+		return _mvShare;
 	}
 
 }

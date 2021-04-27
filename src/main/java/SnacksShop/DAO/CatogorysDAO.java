@@ -14,6 +14,7 @@ import SnacksShop.Entity.MapperCatogorys;
 public class CatogorysDAO extends BaseDAO{
 	
 
+	// lay ra danh sach cac loai san pham trong DB
 	public List<Catogorys> GetDataCatogorys() {
 		List<Catogorys> listCatogorys = new ArrayList<Catogorys>();
 		String sql = "SELECT * FROM loaisanpham";

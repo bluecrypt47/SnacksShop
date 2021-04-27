@@ -44,5 +44,16 @@ public class HomeServiecImple implements IHomeService {
 		List<ProductsDTO> listProducts = productsDAO.GetDataProducts();
 		return listProducts;
 	}
+	
+	@Override
+	public List<ProductsDTO> GetAllProducts() {
+		List<ProductsDTO> listAllProducts = productsDAO.GetAllProduct();
+		return listAllProducts;
+	}
+	
+	public List<ProductsDTO> GetSearchProducts(String name) {
+		List<ProductsDTO> listAllProducts = productsDAO.GetAllProduct();
+		return listAllProducts;
+	}
 
 }

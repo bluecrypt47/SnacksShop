@@ -14,6 +14,7 @@ public class AccountServiecImple {
 
 	public int addAccount(Users user) {
 
+		// dung ham BCrypt de ma hoa password
 		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));
 
 		return userDAO.addAccount(user);

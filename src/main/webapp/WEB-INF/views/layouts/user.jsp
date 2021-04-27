@@ -87,7 +87,7 @@ Lower Header Section
 
 	<div class="copyright">
 		<div class="container">
-			<p class="pull-right">
+			<!-- <p class="pull-right">
 				<a href="#"><img src="assets/img/maestro.png" alt="payment"></a>
 				<a href="#"><img src="assets/img/mc.png" alt="payment"></a> <a
 					href="#"><img src="assets/img/pp.png" alt="payment"></a> <a
@@ -96,7 +96,7 @@ Lower Header Section
 			</p>
 			<span>Copyright &copy; 2013<br> bootstrap ecommerce
 				shopping template
-			</span>
+			</span> -->
 		</div>
 	</div>
 	<a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>

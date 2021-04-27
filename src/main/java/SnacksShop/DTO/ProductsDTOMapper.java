@@ -5,6 +5,8 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
+// Nhung Mapper nay dung de ket noi voi cac ham DAO hoac DTO de co the lien ket DB vs Website cua chung ta
+
 public class ProductsDTOMapper implements RowMapper<ProductsDTO> {
 
 	public ProductsDTO mapRow(ResultSet rs, int rowNum) throws SQLException {

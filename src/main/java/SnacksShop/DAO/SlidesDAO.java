@@ -14,6 +14,7 @@ import SnacksShop.Entity.Slides;
 @Repository
 public class SlidesDAO extends BaseDAO{
 	
+	// hien danh sach san pham de co the chay tren slides trang
 	public List<Slides> GetDataSlide(){
 		List<Slides> listSlides = new ArrayList<Slides>();
 		String sql ="SELECT * FROM slide";

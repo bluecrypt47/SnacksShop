@@ -14,6 +14,7 @@ public class ProductsDAO extends BaseDAO {
 	private final boolean YES = true;
 	private final boolean NO = false;
 
+	// Dùng Stringbuffer de co the truy van kep
 	private StringBuffer SqlString() {
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
@@ -23,6 +24,7 @@ public class ProductsDAO extends BaseDAO {
 		return sql;
 	}
 
+	// truy van lay ra cac san pham noi bat hoac san pham moi
 	private String SqlProducts(boolean sanPhamMoi, boolean noiBat) {
 		StringBuffer sql = SqlString();
 		if (noiBat) {
@@ -36,12 +38,14 @@ public class ProductsDAO extends BaseDAO {
 		return sql.toString();
 	}
 
+	// Lay ra danh sach san pham noi bat hoac san pham moi
 	public List<ProductsDTO> GetDataProducts() {
 		String sql = SqlProducts(YES, NO);
 		List<ProductsDTO> listProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
 		return listProducts;
 	}
 
+	// tim san pham theo id loai cua no
 	private StringBuffer SqlProductsByID(int id) {
 		StringBuffer sql = SqlString();
 
@@ -50,12 +54,14 @@ public class ProductsDAO extends BaseDAO {
 		return sql;
 	}
 
+	// lay ra tat ca san pham co cung id loai
 	public List<ProductsDTO> GetAllProductsByID(int id) {
 		String sql = SqlProductsByID(id).toString();
 		List<ProductsDTO> listProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
 		return listProducts;
 	}
 
+	// truy van gioi han san pham co trong 1 trang de co the de dang phan trang
 	private String SqlProductsPaginates(int id, int start, int totalPage) {
 		StringBuffer sql = SqlProductsByID(id);
 
@@ -64,6 +70,7 @@ public class ProductsDAO extends BaseDAO {
 		return sql.toString();
 	}
 
+	// lay ra so san pham tu cau truy van LIMIT
 	public List<ProductsDTO> GetDataProductsPaginates(int id, int start, int totalPage) {
 		StringBuffer sqlDataByID = SqlProductsByID(id);
 
@@ -78,6 +85,7 @@ public class ProductsDAO extends BaseDAO {
 		return listProducts;
 	}
 
+	// lay ra tat ca san pham co cung id san pham
 	private String SqlProductDetailsByID(String id) {
 		StringBuffer sql = SqlString();
 
@@ -86,15 +94,31 @@ public class ProductsDAO extends BaseDAO {
 		return sql.toString();
 	}
 
+	// lay ra danh sach tat ca san pham co cung id san pham
 	public List<ProductsDTO> GetProductByID(String id) {
 		String sql = SqlProductDetailsByID(id);
 		List<ProductsDTO> productDetails = _jdbcTemplate.query(sql, new ProductsDTOMapper());
 		return productDetails;
 	}
 	
+	// tim va xem chi tiet san pham bang id 
 	public ProductsDTO FindProductByID(String id) {
 		String sql = SqlProductDetailsByID(id);
 		ProductsDTO product = _jdbcTemplate.queryForObject(sql, new ProductsDTOMapper());
 		return product;
+	}
+	
+	// lay ra tat ca san pham
+	public List<ProductsDTO> GetAllProduct() {
+		String sql = "SELECT * FROM sanpham";
+		List<ProductsDTO> listAllProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
+		return listAllProducts;
+	}
+	
+	// tim kiem
+	public List<ProductsDTO> GetSearchProduct(String name) {
+		String sql = "SELECT * FROM `sanpham` WHERE tenSP LIKE '%"+name+"%'";
+		List<ProductsDTO> listAllProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
+		return listAllProducts;
 	}
 }

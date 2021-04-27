@@ -43,7 +43,7 @@
 				</ul>
 			</div>
 
-			<div class="well well-small alert alert-warning cntr">
+			<!-- <div class="well well-small alert alert-warning cntr">
 				<h2>50% Discount</h2>
 				<p>
 					only valid for online order. <br> <br> <a
@@ -102,7 +102,7 @@
 						</div>
 					</div>
 				</li>
-			</ul>
+			</ul> -->
 
 		</div>
 		<div class="span9">

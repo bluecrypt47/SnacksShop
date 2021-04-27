@@ -7,13 +7,11 @@ import SnacksShop.Entity.MapperUsers;
 import SnacksShop.Entity.Users;
 
 @Repository
-public class UsersDAO extends BaseDAO{
+public class UsersDAO extends BaseDAO {
 
-	
+	// them user vao DB
+	public int addAccount(Users user) {
 
-	
-	public int addAccount(Users user){
-		
 		StringBuffer sql = new StringBuffer();
 		sql.append("INSERT ");
 		sql.append("INTO users ");
@@ -22,20 +20,22 @@ public class UsersDAO extends BaseDAO{
 		sql.append(" )  ");
 		sql.append(" VALUES ");
 		sql.append("( ");
-		sql.append("'"+user.getUser()+"','"+user.getPassword()+"','"+user.getName()+"','"+user.getAddress()+"','"+user.getPhoneNumber()+"' ");
+		sql.append("'" + user.getUser() + "','" + user.getPassword() + "','" + user.getName() + "','"
+				+ user.getAddress() + "','" + user.getPhoneNumber() + "' ");
 		sql.append(" )  ");
-		
+
 		int insert = _jdbcTemplate.update(sql.toString());
-		
+
 		return insert;
 	}
-	
-public Users getAccount(Users user){
-		
-		String sql = "SELECT * FROM users WHERE user = '"+user.getUser()+"'";
-		
+
+	// Lay user co trong DB ra de kiem tra dang nhap
+	public Users getAccount(Users user) {
+
+		String sql = "SELECT * FROM users WHERE user = '" + user.getUser() + "'";
+
 		Users result = _jdbcTemplate.queryForObject(sql, new MapperUsers());
-		
+
 		return result;
 	}
 }

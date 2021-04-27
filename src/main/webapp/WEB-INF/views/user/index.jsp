@@ -10,7 +10,7 @@
 	<!-- 
 Body Section 
 -->
-	<%-- <h1>${ products.size() }</h1> --%>
+	<%-- <h1>${ allProducts.size() }</h1> --%>
 	<div class="row">
 		<div id="sidebar" class="span3">
 			<div class="well well-small">
@@ -26,8 +26,8 @@ Body Section
 					<li><a class="totalInCart" href="cart.html"><strong>Tổng
 								tiền mua <span class="badge badge-warning pull-right"
 								style="line-height: 18px;"><fmt:formatNumber
-											type="number" groupingUsed="true"
-											value="${TotalPriceCart}" /> VNĐ</span>
+										type="number" groupingUsed="true" value="${TotalPriceCart}" />
+									VNĐ</span>
 						</strong></a></li>
 				</ul>
 			</div>
@@ -141,7 +141,8 @@ Body Section
 									<c:forEach var="item" items="${ products }" varStatus="loop">
 										<li class="span3">
 											<div class="thumbnail">
-												<a class="zoomTool" href="san-pham/chi-tiet-san-pham/${item.maSP}"
+												<a class="zoomTool"
+													href="san-pham/chi-tiet-san-pham/${item.maSP}"
 													title="Thêm vào giỏ"><span class="icon-search"></span>
 													Xem thêm</a> <a href="san-pham/chi-tiet-san-pham/${item.maSP}"><img
 													src="<c:url value="/assets/user/img/anh/${ item.image }"/>"
@@ -174,11 +175,7 @@ Body Section
 	Featured Products
 	-->
 		<div class="well well-small">
-			<h3>
-				<a class="btn btn-mini pull-right" href="products.html"
-					title="View more">Xem thêm<span class="icon-plus"></span></a> Sản
-				Phẩm Nổi Bật
-			</h3>
+			<h3>Sản Phẩm Nổi Bật</h3>
 			<hr class="soften" />
 			<div class="row-fluid">
 
@@ -190,21 +187,23 @@ Body Section
 							<c:forEach var="item" items="${ products }" varStatus="loop">
 								<li class="span4">
 									<div class="thumbnail">
-									
-										<a class="zoomTool" href="san-pham/chi-tiet-san-pham/${item.maSP}" title="Xem thêm"><span
-											class="icon-search"></span> Xem thêm</a> <a
-											href="san-pham/chi-tiet-san-pham/${item.maSP}"><img
+
+										<a class="zoomTool"
+											href="san-pham/chi-tiet-san-pham/${item.maSP}"
+											title="Xem thêm"><span class="icon-search"></span> Xem
+											thêm</a> <a href="san-pham/chi-tiet-san-pham/${item.maSP}"><img
 											src="<c:url value="/assets/user/img/anh/${ item.image }" />"
 											alt=""></a>
 										<div class="caption">
 											<h5>${ item.tenSP }</h5>
 											<h4>
-												<a class="defaultBtn" href="product_details.html"
+												<a class="defaultBtn" href="san-pham/chi-tiet-san-pham/${item.maSP}"
 													title="Nhấn để xem"><span class="icon-zoom-in"></span></a>
-												<a class="shopBtn" href="<c:url value="/AddCart/${ item.maSP }"/>" title="Thêm vào giỏ"><span
-													class="icon-plus"></span></a> <span class="pull-right">
-													<fmt:formatNumber type="number" groupingUsed="true"
-														value="${item.giaBan}" /> VNĐ
+												<a class="shopBtn"
+													href="<c:url value="/AddCart/${ item.maSP }"/>"
+													title="Thêm vào giỏ"><span class="icon-plus"></span></a> <span
+													class="pull-right"> <fmt:formatNumber type="number"
+														groupingUsed="true" value="${item.giaBan}" /> VNĐ
 												</span>
 											</h4>
 										</div>
@@ -224,11 +223,56 @@ Body Section
 			</div>
 		</div>
 
-		<hr>
+		<%-- <hr>
 		<div class="well well-small">
-			<a class="btn btn-mini pull-right" href="#">Xem thêm <span
-				class="icon-plus"></span></a> Tất Cả Sản phẩm
-		</div>
+			Tất Cả Sản phẩm
+
+			<hr class="soften" />
+			<div class="row-fluid">
+
+				<ul class="thumbnails">
+
+					<c:if test="${ allProducts.size() >0 }">
+						<ul class="thumbnails">
+
+							<c:forEach var="item" items="${ allProducts }" varStatus="loop">
+								<li class="span4">
+									<div class="thumbnail">
+
+										<a class="zoomTool"
+											href="san-pham/chi-tiet-san-pham/${item.maSP}"
+											title="Xem thêm"><span class="icon-search"></span> Xem
+											thêm</a> <a href="san-pham/chi-tiet-san-pham/${item.maSP}"><img
+											src="<c:url value="/assets/user/img/anh/${ item.image }" />"
+											alt=""></a>
+										<div class="caption">
+											<h5>${ item.tenSP }</h5>
+											<h4>
+												<a class="defaultBtn" href="product_details.html"
+													title="Nhấn để xem"><span class="icon-zoom-in"></span></a>
+												<a class="shopBtn"
+													href="<c:url value="/AddCart/${ item.maSP }"/>"
+													title="Thêm vào giỏ"><span class="icon-plus"></span></a> <span
+													class="pull-right"> <fmt:formatNumber type="number"
+														groupingUsed="true" value="${item.giaBan}" /> VNĐ
+												</span>
+											</h4>
+										</div>
+									</div>
+								</li>
+
+								<c:if
+									test="${ (loop.index+1)  %3 ==0 || (loop.index+1) == allProducts.size()}">
+						</ul>
+						<c:if test="${ (loop.index+1) < allProducts.size()}">
+							<ul class="thumbnails">
+						</c:if>
+					</c:if>
+					</c:forEach>
+
+					</c:if>
+			</div>
+		</div> --%>
 	</div>
 	</div>
 

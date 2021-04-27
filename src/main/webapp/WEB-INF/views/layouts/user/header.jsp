@@ -10,8 +10,9 @@
 	<div class="row">
 		<div class="span4">
 			<h1>
-				<a class="logo" href="<c:url value="/trang-chu"/>"><span>Twitter Bootstrap ecommerce
-						template</span> <img src="<c:url value="/assets/user/img/logo-tcl.png"/>"
+				<a class="logo" href="<c:url value="/trang-chu"/>"><span>Twitter
+						Bootstrap ecommerce template</span> <img
+					src="<c:url value="/assets/user/img/logo-tcl.png"/>"
 					alt="bootstrap sexy shop"> </a>
 			</h1>
 		</div>
@@ -49,7 +50,13 @@ Navigation Bar Section
 			<div class="nav-collapse">
 				<ul class="nav">
 
-					<c:forEach var="item" items="${menus }" varStatus="index">
+					<li class="active"><a href="<c:url value="/trang-chu"/>"> Trang chủ </a></li>
+					<li class=""><a href="<c:url value="/tat-ca-san-pham"/>">Sản phẩm</a></li>
+					<li class=""><a href="<c:url value="/gio-hang"/>">Giỏ hàng</a></li>
+					<li class=""><a href="#">Bài viết </a></li>
+					<li class=""><a href="#">Liên hệ</a></li>
+
+					<%-- <c:forEach var="item" items="${menus }" varStatus="index">
 						<c:if test="${index.first }">
 							<li class="active">
 						</c:if>
@@ -58,7 +65,7 @@ Navigation Bar Section
 						</c:if>
 						<a href="<c:url value="/trang-chu"/>">${item.tenDS } </a>
 
-					</c:forEach>
+					</c:forEach> --%>
 
 				</ul>
 				<form action="#" class="navbar-search pull-left">
@@ -91,11 +98,8 @@ Navigation Bar Section
 							</div></li>
 					</c:if>
 					<c:if test="${ not empty loginInfo }">
-						<li>
-							<a href="#">${ loginInfo.name }
-							<b class="caret"></b>
-							</a>
-						</li>
+						<li><a href="#">${ loginInfo.name } <b class="caret"></b>
+						</a></li>
 					</c:if>
 
 				</ul>

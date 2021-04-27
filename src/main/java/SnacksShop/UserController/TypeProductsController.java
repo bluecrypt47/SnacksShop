@@ -51,4 +51,7 @@ public class TypeProductsController extends BaseController {
 				paginateInfo.getNumberStartPageOfProduct(), TotalProductsOfPage));
 		return _mvShare;
 	}
+	
+	
+	
 }

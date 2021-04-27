@@ -15,10 +15,14 @@ public class CartDAO extends BaseDAO {
 	@Autowired
 	ProductsDAO productsDAO = new ProductsDAO();
 
+	// Ham nay dung de them cac san pham co trong gio hang
 	public HashMap<String, CartDTO> addCart(String id, HashMap<String, CartDTO> cart) {
 		CartDTO itemCart = new CartDTO();
+		
+		// Su dung FindProductByID(id); cua ham ProductsDAO de co the tim kiem san pham theo id cua no 
 		ProductsDTO product = productsDAO.FindProductByID(id);
 
+		// Neu san pham ton tai va ton tai 1 id nao do thi cho phep dat lai so luong san pham co trong gio va nguoc lai
 		if (product != null && cart.containsKey(id)) {
 			itemCart = cart.get(id);
 			itemCart.setQuantity(itemCart.getQuantity() + 1);
@@ -29,11 +33,13 @@ public class CartDAO extends BaseDAO {
 			itemCart.setTotalPrice(product.getGiaBan());
 		}
 
+		// Dua san pham ra 
 		cart.put(id, itemCart);
 
 		return cart;
 	}
 
+	// Sua lai so luong
 	public HashMap<String, CartDTO> editCart(String id, int quantity, HashMap<String, CartDTO> cart) {
 		CartDTO itemCart = new CartDTO();
 
@@ -53,6 +59,7 @@ public class CartDAO extends BaseDAO {
 		return cart;
 	}
 
+	// Xoa san pham 
 	public HashMap<String, CartDTO> deleteCart(String id, HashMap<String, CartDTO> cart) {
 		CartDTO itemCart = new CartDTO();
 
@@ -66,6 +73,7 @@ public class CartDAO extends BaseDAO {
 		return cart;
 	}
 
+	// Tinh tong so luong
 	public int totalQuantity(HashMap<String, CartDTO> cart) {
 
 		int totalQua = 0;
@@ -77,6 +85,7 @@ public class CartDAO extends BaseDAO {
 		return totalQua;
 	}
 
+	// Tong gia
 	public double totalPrice(HashMap<String, CartDTO> cart) {
 
 		double totalPri = 0;

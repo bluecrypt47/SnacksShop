@@ -9,9 +9,9 @@ Clients
 <section class="our_client">
 	<hr class="soften" />
 	<h4 class="title cntr">
-		<span class="text">Sản Xuất</span>
+		<!-- <span class="text">Thực Hiện</span> -->
 	</h4>
-	<hr class="soften" />
+	<!-- <hr class="soften" />
 	<div class="row">
 		<div class="span2">
 			<a href="#"><img alt="" src="assets/img/1.png"></a>
@@ -31,7 +31,7 @@ Clients
 		<div class="span2">
 			<a href="#"><img alt="" src="assets/img/6.png"></a>
 		</div>
-	</div>
+	</div> -->
 </section>
 
 <!--
@@ -58,12 +58,11 @@ Footer
 			<a href="#">NHÀ CUNG CẤP</a> <br />
 		</div>
 		<div class="span6">
-			<h5>The standard chunk of Lorem</h5>
-			The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-			below for those interested. Sections 1.10.32 and 1.10.33 from "de
-			Finibus Bonorum et Malorum" by Cicero are also reproduced in their
-			exact original form, accompanied by English versions from the 1914
-			translation by H. Rackham.
+			<h5>Mô tả Website</h5>
+			Website được là ra bởi nhu cầu thị trường với mục đích số hóa mua- bán
+			hàng một cách dễ dàng và thuận tiện trong thời điểm dịch bệnh hiện nay.
+			“Website bán thức ăn vặt” để khách hàng có thể chọn mua trực tiếp trên 
+			bất kỳ thiết bị nào có thể truy cập vào mạng. Và được phát triển bởi nhóm TCL...
 		</div>
 	</div>
 </footer>
