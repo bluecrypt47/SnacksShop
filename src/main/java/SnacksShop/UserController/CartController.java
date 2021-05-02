@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import SnacksShop.DTO.CartDTO;
 import SnacksShop.Entity.Bill;
+import SnacksShop.Entity.Users;
+import SnacksShop.Service.User.BillServiceImple;
 import SnacksShop.Service.User.CartServiceImple;
 
 @Controller
@@ -24,7 +26,7 @@ public class CartController extends BaseController {
 	private CartServiceImple cartServiceImple = new CartServiceImple();
 
 	@Autowired
-//	private BillServiceImple billServiceImple = new BillServiceImple();
+	private BillServiceImple billServiceImple = new BillServiceImple();
 
 	@RequestMapping(value = "gio-hang")
 	public ModelAndView listCart() {
@@ -87,15 +89,47 @@ public class CartController extends BaseController {
 	@RequestMapping(value = "checkout", method = RequestMethod.GET)
 	public ModelAndView checkout(HttpServletRequest request, HttpSession session) {
 		_mvShare.setViewName("user/bill/checkout");
-		_mvShare.addObject("bill", new Bill());
+		//
+		
+		Bill bill = new Bill();
+		Users loginInfo = (Users)session.getAttribute("loginInfo");
+		if(loginInfo != null) {
+			bill.setAddress(loginInfo.getAddress());
+			bill.setName(loginInfo.getName());
+			bill.setPhoneNumber(loginInfo.getPhoneNumber());
+			bill.setEmail(loginInfo.getUser());
+		}
+		
+		_mvShare.addObject("bill", bill);
+		//
+//		_mvShare.addObject("bill", new Bill());
+		
 		return _mvShare;
 	}
 
+	/*
+	 * @RequestMapping(value = "checkout", method = RequestMethod.POST) public
+	 * ModelAndView checkoutBill(HttpServletRequest request, HttpSession session,
+	 * 
+	 * @ModelAttribute("bill") Bill bill) {
+	 * _mvShare.setViewName("user/bill/checkout"); return _mvShare; }
+	 */
+	
+	//
 	@RequestMapping(value = "checkout", method = RequestMethod.POST)
-	public ModelAndView checkoutBill(HttpServletRequest request, HttpSession session,
+	public String checkoutBill(HttpServletRequest request, HttpSession session,
 			@ModelAttribute("bill") Bill bill) {
-		_mvShare.setViewName("user/bill/checkout");
-		return _mvShare;
+		
+		bill.setQuantity((int)session.getAttribute("TotalQuantityCart"));
+		bill.setTotal((double)session.getAttribute("TotalPriceCart"));
+		
+		if(billServiceImple.addBill(bill) > 0) {
+			HashMap<String, CartDTO> carts = (HashMap<String, CartDTO>)session.getAttribute("Cart");
+			billServiceImple.addBillDetails(carts);
+		}
+		
+		session.removeAttribute("Cart");
+		return "redirect:gio-hang";
 	}
-
+	//
 }

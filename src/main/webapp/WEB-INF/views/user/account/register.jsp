@@ -4,7 +4,7 @@
 	prefix="decorator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
 
 
 <head>
@@ -121,6 +121,7 @@ Body Section
 				<div class="span4">
 					<div class="well">
 						<h5>ĐĂNG KÝ TÀI KHOẢN</h5>
+						<h5>${ status }</h5>
 						<form:form action="dang-ky" method="POST" modelAttribute="usersRegister">  
 							<div class="control-group">
 								<label class="control-label" for="inputEmail">Địa chỉ E-mail</label>
@@ -162,7 +163,7 @@ Body Section
 				<div class="span4">
 					<div class="well">
 						<h5>ĐĂNG NHẬP HỆ THỐNG</h5>
-						<h1>${ statusLogin }</h1>
+						<h5>${ statusLogin }</h5>
 						<form:form action="dang-nhap" method="POST" modelAttribute="usersRegister">  
 							<div class="control-group">
 								<label class="control-label" for="inputEmail">Email</label>
