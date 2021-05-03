@@ -26,8 +26,7 @@ Body Section
 					<li><a class="totalInCart" href="cart.html"><strong>Tổng
 								tiền mua <span class="badge badge-warning pull-right"
 								style="line-height: 18px;"><fmt:formatNumber
-										type="number" groupingUsed="true" value="${TotalPriceCart}" />
-									VNĐ</span>
+										type="number" groupingUsed="true" value="${TotalPriceCart}" />₫</span>
 						</strong></a></li>
 				</ul>
 			</div>
@@ -203,7 +202,7 @@ Body Section
 													href="<c:url value="/AddCart/${ item.maSP }"/>"
 													title="Thêm vào giỏ"><span class="icon-plus"></span></a> <span
 													class="pull-right"> <fmt:formatNumber type="number"
-														groupingUsed="true" value="${item.giaBan}" /> VNĐ
+														groupingUsed="true" value="${item.giaBan}" /> ₫
 												</span>
 											</h4>
 										</div>

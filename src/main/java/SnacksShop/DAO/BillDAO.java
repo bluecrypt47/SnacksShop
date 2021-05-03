@@ -1,10 +1,16 @@
 
 package SnacksShop.DAO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import SnacksShop.Entity.Bill;
 import SnacksShop.Entity.BillDetails;
+import SnacksShop.Entity.MapperBill;
+import SnacksShop.Entity.MapperMenus;
+import SnacksShop.Entity.Menus;
 
 @Repository
 public class BillDAO extends BaseDAO {
@@ -56,4 +62,14 @@ public class BillDAO extends BaseDAO {
 		return insert;
 	}
 
+	public List<Bill> GetDataBill() {
+		List<Bill> listBills = new ArrayList<Bill>();
+
+		String sql = "SELECT * FROM `bill`";
+		listBills = _jdbcTemplate.query(sql, new MapperBill());
+
+		return listBills;
+
+	}
+	
 }

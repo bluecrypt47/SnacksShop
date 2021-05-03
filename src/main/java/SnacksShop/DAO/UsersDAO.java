@@ -1,8 +1,13 @@
 package SnacksShop.DAO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import SnacksShop.DTO.ProductsDTO;
+import SnacksShop.Entity.Bill;
+import SnacksShop.Entity.MapperBill;
 import SnacksShop.Entity.MapperUsers;
 import SnacksShop.Entity.Users;
 
@@ -37,5 +42,15 @@ public class UsersDAO extends BaseDAO {
 		Users result = _jdbcTemplate.queryForObject(sql, new MapperUsers());
 
 		return result;
+	}
+	
+	public List<Users> GetDataUsers() {
+		List<Users> listUsers = new ArrayList<Users>();
+
+		String sql = "SELECT * FROM `users`";
+		listUsers = _jdbcTemplate.query(sql, new MapperUsers());
+
+		return listUsers;
+
 	}
 }

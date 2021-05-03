@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 
 <!DOCTYPE html>
@@ -46,12 +47,17 @@
 					</div>
 					<a class="active" href="<c:url value="/trang-chu"/>"> <span class="icon-home"></span>
 						Trang chủ
-					</a> <a href="#"><span class="icon-user"></span> Tài khoản</a>
+					</a> 
+					<%-- <sec:authorize access="hasRole('ltvcblue@gmail.com')">
+						<a href="<c:url value="/quan-tri"/>"><span class="icon-user"></span> Quản trị</a>
+					</sec:authorize> --%>
+					
 
 					<c:if test="${ not empty loginInfo }">
 						<a href="#"><span class="icon-user"></span>${ loginInfo.name }
 							<a href="<c:url value="/dang-xuat"/>"><span class="icon-edit"></span>Đăng
 								xuất </a>
+						<a href="<c:url value="/quan-tri"/>"><span class="icon-user"></span> Quản trị</a>
 					</c:if>
 
 					<c:if test="${ empty loginInfo }">
@@ -63,8 +69,7 @@
 						hệ</a><a href="<c:url value="/gio-hang"/>"><span
 						class="icon-shopping-cart"></span> ${ TotalQuantityCart } Sản phẩm
 						- <span class="badge badge-warning"><fmt:formatNumber
-								type="number" groupingUsed="true" value="${TotalPriceCart}" />
-							VNĐ</span></a>
+								type="number" groupingUsed="true" value="${TotalPriceCart}" />₫</span></a>
 				</div>
 			</div>
 		</div>

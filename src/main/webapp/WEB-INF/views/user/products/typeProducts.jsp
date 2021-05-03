@@ -58,7 +58,7 @@
 									<p>${ item.tenSP }</p>
 									<p>
 										<strong> <fmt:formatNumber type="number"
-												groupingUsed="true" value="${item.giaBan}" /> VNĐ
+												groupingUsed="true" value="${item.giaBan}" /> ₫
 										</strong>
 
 									</p>

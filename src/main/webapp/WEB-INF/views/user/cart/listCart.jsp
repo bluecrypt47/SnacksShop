@@ -37,8 +37,6 @@ Body Section
 						</tr>
 					</thead>
 					<tbody>
-
-
 						<c:forEach var="item" items="${ Cart }">
 							<tr>
 								<td><img width="100"
@@ -46,7 +44,7 @@ Body Section
 									alt=""></td>
 								<td>${ item.value.product.gioiThieu }</td>
 								<td><fmt:formatNumber type="number" groupingUsed="true"
-										value="${ item.value.product.giaBan }" /> VNĐ</td>
+										value="${ item.value.product.giaBan }" /> ₫</td>
 								<td><input type="number" min="0" max="100" class="span1"
 									style="max-width: 34px" placeholder="1"
 									id="quantity-cart-${ item.key }" size="16" type="text"
@@ -60,7 +58,7 @@ Body Section
 										class="icon-remove"></span>
 								</a></td>
 								<td><fmt:formatNumber type="number" groupingUsed="true"
-										value="${ item.value.totalPrice }" /> VNĐ</td>
+										value="${ item.value.totalPrice }" /> ₫</td>
 							</tr>
 						</c:forEach>
 					</tbody>

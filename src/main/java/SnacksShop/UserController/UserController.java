@@ -55,6 +55,8 @@ public class UserController extends BaseController {
 		}
 		return _mvShare;
 	}
+	
+	
 
 	@RequestMapping(value = "/dang-xuat", method = RequestMethod.GET)
 	public String logout(HttpSession session, HttpServletRequest request) {

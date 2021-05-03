@@ -2,6 +2,7 @@
 package SnacksShop.Service.User;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import SnacksShop.DAO.BillDAO;
 import SnacksShop.DTO.CartDTO;
+import SnacksShop.DTO.ProductsDTO;
 import SnacksShop.Entity.Bill;
 import SnacksShop.Entity.BillDetails;
+import SnacksShop.Entity.Menus;
 
 @Service
 public class BillServiceImple implements IBillService {
@@ -37,5 +40,11 @@ public class BillServiceImple implements IBillService {
 			billDAO.addBillDetails(billDetails);
 		}
 	}
+
+	@Override
+	public List<Bill> GetAllBills() {
+		return billDAO.GetDataBill();
+	}
+	
 
 }

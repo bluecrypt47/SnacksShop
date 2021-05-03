@@ -39,7 +39,7 @@ New Products
 												href="<c:url value="/AddCart/${ item.maSP }"/>"
 												title="Thêm vào giỏ"><span class="icon-plus"></span></a> <span
 												class="pull-right"> <fmt:formatNumber type="number"
-													groupingUsed="true" value="${item.giaBan}" /> VNĐ
+													groupingUsed="true" value="${item.giaBan}" /> ₫
 											</span>
 										</h4>
 									</div>

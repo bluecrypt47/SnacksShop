@@ -21,6 +21,37 @@ public class HomeController extends BaseController {
 		_mvShare.setViewName("user/index");
 		return _mvShare;
 	}
+	
+	@RequestMapping(value = {  "/quan-tri" })
+	public ModelAndView IndexAdmin() {
+		
+		_mvShare.setViewName("admin/admin");
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = {  "/quan-ly-tai-khoan" })
+	public ModelAndView accountsManager() {
+		
+		_mvShare.addObject("accManagger", _accountService.GetDataUsers());
+		_mvShare.setViewName("admin/accountManager/accounts");
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = {  "/quan-ly-san-pham" })
+	public ModelAndView productsManager() {
+		
+		_mvShare.addObject("productsManager", _homeService.GetAllProducts());
+		_mvShare.setViewName("admin/productsManager/products");
+		return _mvShare;
+	}
+
+	@RequestMapping(value = {  "/quan-ly-hoa-don" })
+	public ModelAndView billsManager() {
+		_mvShare.addObject("billManager", _billService.GetAllBills());
+		
+		_mvShare.setViewName("admin/billManager/billManager");
+		return _mvShare;
+	}
 
 	@RequestMapping(value = "/tat-ca-san-pham")
 	public ModelAndView Product() {

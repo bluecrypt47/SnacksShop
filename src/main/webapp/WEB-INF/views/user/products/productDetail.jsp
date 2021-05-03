@@ -144,7 +144,7 @@ Body Section
 							<div class="control-group">
 								<label class="control-label"><span><fmt:formatNumber
 											type="number" groupingUsed="true"
-											value="${productDetail.giaBan}" /> VNĐ</span></label>
+											value="${productDetail.giaBan}" /> ₫</span></label>
 								<div class="controls">
 									<input type="number" min="0" value="0" class="span6">
 								</div>
@@ -196,7 +196,7 @@ Body Section
 									<form class="form-horizontal qtyFrm">
 										<h3>
 											<fmt:formatNumber type="number" groupingUsed="true"
-												value="${item.giaBan}" />VNĐ
+												value="${item.giaBan}" />₫
 										</h3>
 										<div class="btn-group">
 											<a href="product_details.html" class="defaultBtn"><span
