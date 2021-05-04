@@ -17,11 +17,13 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-12">
+				<ul class="breadcrumb">
+							<li><a href="<c:url value="/quan-tri"/>">Trang quản trị</a> <span class="divider">/</span></li>
+							<li class="active">Quản lý tài khoản</li>
+						</ul>
 					<h1 class="page-header">Quản Lý Tài Khoản</h1>
 				</div>
-				<!-- /.col-lg-12 -->
 			</div>
-			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
@@ -31,6 +33,7 @@
 								<table class="table table-bordered table-striped">
 									<thead>
 										<tr>
+											<th>Loại Tài Khoản</th>
 											<th>Email</th>
 											<th>Password</th>
 											<th>Tên</th>
@@ -41,40 +44,34 @@
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach var="item" items="${ accManagger }">
-												<tr>
-													<td>${ item.user }</td>
-													<td>${ item.password }</td>
-													<td>${ item.name }</td>
-													<td>${ item.address }</td>
-													<td>${ item.phoneNumber }</td>
-													<td><a href="#"
-														class="btn btn-mini btn-danger" type="button"> <span
-															class="icon-edit"></span>
-													</a></td>
-													<td><a href="#"
-														class="btn btn-mini btn-danger" type="button"> <span
-															class="icon-remove"></span>
-													</a></td>
-												</tr>
-											</c:forEach>
-										
+										<c:forEach var="item" items="${ accManagger }">
+											<tr>
+												<c:if test="${ item.idRoles == true }">
+													<td>Quản Trị</td>
+												</c:if>
+												<c:if test="${ item.idRoles == false }">
+													<td>Người Dùng</td>
+												</c:if>
+												<td>${ item.user }</td>
+												<td>${ item.password }</td>
+												<td>${ item.name }</td>
+												<td>${ item.address }</td>
+												<td>${ item.phoneNumber }</td>
+												<td><a href="#" class="btn btn-mini btn-danger"
+													type="button"> <span class="icon-edit"></span>
+												</a></td>
+												<td><a href="#" class="btn btn-mini btn-danger"
+													type="button"> <span class="icon-remove"></span>
+												</a></td>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
-
 							</div>
 						</div>
-						<!-- /.col-lg-12 -->
+						<br /> <a href="<c:url value="/quan-tri"/>" class="shopBtn btn-large"><span
+					class="icon-arrow-left"></span> Quay Lại Trang Quản Trị </a>
 					</div>
-					<!-- /.row -->
-
-
-					<!-- /.row -->
-
-
-					<!-- /.row -->
 				</div>
-				<!-- /.container-fluid -->
 			</div>
-			<!-- /#page-wrapper -->
 </body>

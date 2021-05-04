@@ -21,7 +21,16 @@ public class HomeController extends BaseController {
 		_mvShare.setViewName("user/index");
 		return _mvShare;
 	}
+
+	@RequestMapping(value = "/tat-ca-san-pham")
+	public ModelAndView Product() {
+		_mvShare.addObject("allProducts", _homeService.GetAllProducts());
+		
+		_mvShare.setViewName("user/products/allProducts");
+		return _mvShare;
+	}
 	
+	// ADMIN
 	@RequestMapping(value = {  "/quan-tri" })
 	public ModelAndView IndexAdmin() {
 		
@@ -45,6 +54,7 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
+	// Bill
 	@RequestMapping(value = {  "/quan-ly-hoa-don" })
 	public ModelAndView billsManager() {
 		_mvShare.addObject("billManager", _billService.GetAllBills());
@@ -52,13 +62,11 @@ public class HomeController extends BaseController {
 		_mvShare.setViewName("admin/billManager/billManager");
 		return _mvShare;
 	}
-
-	@RequestMapping(value = "/tat-ca-san-pham")
-	public ModelAndView Product() {
-		_mvShare.addObject("allProducts", _homeService.GetAllProducts());
+	
+	@RequestMapping(value = {  "/quan-ly-chi-tiet-hoa-don" })
+	public ModelAndView billsManagerDetails() {
 		
-		_mvShare.setViewName("user/products/allProducts");
+		_mvShare.setViewName("admin/billManager/billManagerDetaills");
 		return _mvShare;
 	}
-
 }

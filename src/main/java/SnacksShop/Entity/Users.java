@@ -2,6 +2,7 @@ package SnacksShop.Entity;
 
 public class Users {
 	private long id;
+	private boolean idRoles;
 	private String user;
 	private String password;
 	private String name;
@@ -16,8 +17,16 @@ public class Users {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
+	}
+
+	public boolean isIdRoles() {
+		return idRoles;
+	}
+
+	public void setIdRoles(boolean idRoles) {
+		this.idRoles = idRoles;
 	}
 
 	public String getUser() {
@@ -59,4 +68,5 @@ public class Users {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
 }

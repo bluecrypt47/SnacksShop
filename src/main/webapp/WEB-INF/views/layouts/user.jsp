@@ -57,12 +57,14 @@
 						<a href="#"><span class="icon-user"></span>${ loginInfo.name }
 							<a href="<c:url value="/dang-xuat"/>"><span class="icon-edit"></span>Đăng
 								xuất </a>
-						<a href="<c:url value="/quan-tri"/>"><span class="icon-user"></span> Quản trị</a>
+						<c:if test="${ loginInfo.idRoles == true }">
+							<a href="<c:url value="/quan-tri"/>"><span class="icon-user"></span> Quản trị</a>
+						</c:if>
 					</c:if>
 
 					<c:if test="${ empty loginInfo }">
 						<a href="<c:url value="/dang-ky"/>"><span class="icon-edit"></span>
-							Đăng ký </a>
+							Đăng nhập- Đăng ký </a>
 					</c:if>
 
 					<a href="contact.html"><span class="icon-envelope"></span> Liên

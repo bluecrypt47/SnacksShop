@@ -38,6 +38,7 @@ public class UsersDAO extends BaseDAO {
 	public Users getAccount(Users user) {
 
 		String sql = "SELECT * FROM users WHERE user = '" + user.getUser() + "'";
+//		String sql = "SELECT u.id, r.name, user, password, u.name, address, phoneNumber FROM users u, roles r WHERE u.user = '" + user.getUser() + "'";
 
 		Users result = _jdbcTemplate.queryForObject(sql, new MapperUsers());
 
@@ -47,7 +48,8 @@ public class UsersDAO extends BaseDAO {
 	public List<Users> GetDataUsers() {
 		List<Users> listUsers = new ArrayList<Users>();
 
-		String sql = "SELECT * FROM `users`";
+		 String sql = "SELECT * FROM `users` ORDER BY idRoles DESC"; 
+		
 		listUsers = _jdbcTemplate.query(sql, new MapperUsers());
 
 		return listUsers;

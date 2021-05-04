@@ -2,10 +2,12 @@
 package SnacksShop.DAO;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import SnacksShop.DTO.CartDTO;
 import SnacksShop.Entity.Bill;
 import SnacksShop.Entity.BillDetails;
 import SnacksShop.Entity.MapperBill;
@@ -51,9 +53,9 @@ public class BillDAO extends BaseDAO {
 		sql.append(") ");
 		sql.append("VALUES ");
 		sql.append("( ");
-		sql.append(" '" + billDetails.getIdProduct() + "', " );
+		sql.append(" '" + billDetails.getIdProduct() + "', ");
 		sql.append(" '" + billDetails.getIdBill() + "', ");
-		sql.append(" '"+ billDetails.getQuantity() + "', " );
+		sql.append(" '" + billDetails.getQuantity() + "', ");
 		sql.append(" '" + billDetails.getTotal() + "' ");
 		sql.append(") ");
 //INSERT INTO `billdetails`(`id`, `idProduct`, `idBill`, `quantity`, `total`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
@@ -71,5 +73,24 @@ public class BillDAO extends BaseDAO {
 		return listBills;
 
 	}
-	
+
+	public List<Bill> GetDataBillByID(int idBill) {
+		List<Bill> listBillsByID = new ArrayList<Bill>();
+
+		String sql = "SELECT * FROM `bill` WHERE id=" + idBill + "";
+		listBillsByID = _jdbcTemplate.query(sql, new MapperBill());
+
+		return listBillsByID;
+
+	}
+
+	/*
+	 * public HashMap<Integer, BillDAO> deleteBill(int id, HashMap<Integer, BillDAO>
+	 * bill) { BillDAO itemBill = new BillDAO();
+	 * 
+	 * if (bill == null) { return bill; }
+	 * 
+	 * if (bill.containsKey(id)) { bill.remove(id); } return bill; }
+	 */
+
 }

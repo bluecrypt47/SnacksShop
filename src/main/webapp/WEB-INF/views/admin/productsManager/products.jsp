@@ -14,15 +14,17 @@
 		<div id="page-wrapper">
 			<div class="container-fluid">
 				<div class="row">
+				<ul class="breadcrumb">
+							<li><a href="<c:url value="/quan-tri"/>">Trang quản trị</a> <span class="divider">/</span></li>
+							<li class="active">Quản lý sản phẩm</li>
+						</ul>
 					<div class="col-lg-12">
 						<h1 class="page-header">Quản Lý Sản Phẩm</h1>
 						<button name="button" type="button">Thêm sản phẩm</button>
 						<button name="button" type="button">Sửa sản phẩm</button>
 						<button name="button" type="button">Xóa sản phẩm</button>
 					</div>
-					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="panel panel-default">
@@ -82,6 +84,8 @@
 						</div>
 					</div>
 				</div>
+				<br /> <a href="<c:url value="/quan-tri"/>" class="shopBtn btn-large"><span
+					class="icon-arrow-left"></span> Quay Lại Trang Quản Trị </a>
 			</div>
 		</div>
 	</div>
