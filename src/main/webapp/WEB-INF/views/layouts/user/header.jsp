@@ -101,7 +101,6 @@ Navigation Bar Section
 						<li><a href="#">${ loginInfo.name } <b class="caret"></b>
 						</a></li>
 					</c:if>
-
 				</ul>
 			</div>
 		</div>

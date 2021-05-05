@@ -9,7 +9,6 @@ Clients
 <section class="our_client">
 	<hr class="soften" />
 	<h4 class="title cntr">
-		<!-- <span class="text">Thực Hiện</span> -->
 	</h4>
 	<!-- <hr class="soften" />
 	<div class="row">

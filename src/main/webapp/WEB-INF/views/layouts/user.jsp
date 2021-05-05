@@ -48,11 +48,6 @@
 					<a class="active" href="<c:url value="/trang-chu"/>"> <span class="icon-home"></span>
 						Trang chủ
 					</a> 
-					<%-- <sec:authorize access="hasRole('ltvcblue@gmail.com')">
-						<a href="<c:url value="/quan-tri"/>"><span class="icon-user"></span> Quản trị</a>
-					</sec:authorize> --%>
-					
-
 					<c:if test="${ not empty loginInfo }">
 						<a href="#"><span class="icon-user"></span>${ loginInfo.name }
 							<a href="<c:url value="/dang-xuat"/>"><span class="icon-edit"></span>Đăng
@@ -66,7 +61,6 @@
 						<a href="<c:url value="/dang-ky"/>"><span class="icon-edit"></span>
 							Đăng nhập- Đăng ký </a>
 					</c:if>
-
 					<a href="contact.html"><span class="icon-envelope"></span> Liên
 						hệ</a><a href="<c:url value="/gio-hang"/>"><span
 						class="icon-shopping-cart"></span> ${ TotalQuantityCart } Sản phẩm

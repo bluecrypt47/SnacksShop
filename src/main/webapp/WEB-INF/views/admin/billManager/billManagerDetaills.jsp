@@ -32,8 +32,6 @@ Body Section
 							<th>Mô tả</th>
 							<th>Giá bán</th>
 							<th>Số lượng</th>
-							<!-- <th>Chỉnh sửa</th>
-							<th>Xóa</th> -->
 							<th>Tổng tiền</th>
 						</tr>
 					</thead>
@@ -50,14 +48,6 @@ Body Section
 									style="max-width: 34px" placeholder="1"
 									id="quantity-cart-${ item.key }" size="16" type="text"
 									value="${ item.value.quantity }"></td>
-								<%-- <td><button data-id="${ item.key }"
-										class="btn btn-mini btn-danger edit-cart" type="button">
-										<span class="icon-edit"></span>
-									</button></td>
-								<td><a href="<c:url  value="/DeleteCart/${ item.key }"/>"
-									class="btn btn-mini btn-danger" type="button"> <span
-										class="icon-remove"></span>
-								</a></td> --%>
 								<td><fmt:formatNumber type="number" groupingUsed="true"
 										value="${ item.value.totalPrice }" /> ₫</td>
 							</tr>
@@ -65,12 +55,7 @@ Body Section
 					</tbody>
 				</table>
 				<br /> <a href="<c:url value="/quan-ly-hoa-don"/>" class="shopBtn btn-large"><span
-					class="icon-arrow-left"></span> Quay Lại Trang Quản Trị </a><%--  
-					<a
-					href="<c:url value="/checkout"/>" class="shopBtn btn-large pull-right">Thanh
-					Toán <span class="icon-arrow-right"></span>
-				</a> --%>
-
+					class="icon-arrow-left"></span> Quay Lại Trang Quản Trị </a>
 			</div>
 		</div>
 	</div>

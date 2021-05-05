@@ -1,6 +1,7 @@
 package SnacksShop.UserController;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -65,6 +66,17 @@ public class HomeController extends BaseController {
 	
 	@RequestMapping(value = {  "/quan-ly-chi-tiet-hoa-don" })
 	public ModelAndView billsManagerDetails() {
+		/* public ModelAndView billsManagerDetails(@PathVariable int idBill) { */
+		
+		
+		/*
+		 * _mvShare.addObject("productDetailBill",
+		 * _billService.GetAllProdutsByIDBill(idBill));
+		 * 
+		 * int id = _billService.GetAllProdutsByIDBill(idBill).getId();
+		 * _mvShare.addObject("billManagerDetailsBill",
+		 * _billService.GetAllProdutsByIDBill(id));
+		 */
 		
 		_mvShare.setViewName("admin/billManager/billManagerDetaills");
 		return _mvShare;

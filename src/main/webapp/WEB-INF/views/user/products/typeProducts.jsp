@@ -44,7 +44,6 @@
 		<c:if test="${ productsPaginate.size() > 0 }">
 			<div class="row-fluid">
 				<ul class="thumbnails">
-
 					<c:forEach var="item" items="${ productsPaginate }"
 						varStatus="loop">
 						<li class="span4">

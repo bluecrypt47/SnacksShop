@@ -10,4 +10,7 @@ import SnacksShop.DTO.ProductsDTO;
 public interface IProductDetailsService {
 	public ProductsDTO GetProductByID(String id);
 	public List<ProductsDTO> GetProductByIDType(int id);
+	//
+	public ProductsDTO GetProductName(String name);
+	public List<ProductsDTO> GetProductByName(String name);
 }

@@ -47,9 +47,22 @@ public class BillServiceImple implements IBillService {
 	}
 
 	/*
+	 * @Override public Bill GetAllProdutsByIDBill(int idBill) {
+	 * 
+	 * List<Bill> listProductsByIDBill = billDAO.GetDataBillByID(idBill);
+	 * 
+	 * return listProductsByIDBill.get(0); }
+	 * 
+	 * @Override public List<Bill> GetProductByIDType(int id) { return
+	 * billDAO.GetAllProdutsByIDBill(id); }
+	 */
+	
+
+	
+
+	/*
 	 * @Override public HashMap<Integer, BillDAO> deleteBill(int idBill,
 	 * HashMap<Integer, BillDAO> bill) { return billDAO.deleteBill(idBill, bill); }
 	 */
-	
 
 }

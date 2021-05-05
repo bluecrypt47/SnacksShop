@@ -28,4 +28,16 @@ public class ProductDetailsServiceImple implements IProductDetailsService{
 		return productsDAO.GetAllProductsByID(id);
 	}
 
+	//
+	@Override
+	public List<ProductsDTO> GetProductByName(String name) {
+		return productsDAO.GetSearchProduct(name);
+	}
+
+	@Override
+	public ProductsDTO GetProductName(String name) {
+		List<ProductsDTO> listProductDetails = productsDAO.GetSearchProduct(name);
+		return listProductDetails.get(2);
+	}
+
 }

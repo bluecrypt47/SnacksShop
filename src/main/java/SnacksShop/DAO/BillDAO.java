@@ -11,6 +11,7 @@ import SnacksShop.DTO.CartDTO;
 import SnacksShop.Entity.Bill;
 import SnacksShop.Entity.BillDetails;
 import SnacksShop.Entity.MapperBill;
+import SnacksShop.Entity.MapperBillDetails;
 import SnacksShop.Entity.MapperMenus;
 import SnacksShop.Entity.Menus;
 
@@ -58,7 +59,6 @@ public class BillDAO extends BaseDAO {
 		sql.append(" '" + billDetails.getQuantity() + "', ");
 		sql.append(" '" + billDetails.getTotal() + "' ");
 		sql.append(") ");
-//INSERT INTO `billdetails`(`id`, `idProduct`, `idBill`, `quantity`, `total`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
 		int insert = _jdbcTemplate.update(sql.toString());
 
 		return insert;
@@ -83,6 +83,19 @@ public class BillDAO extends BaseDAO {
 		return listBillsByID;
 
 	}
+	
+	/*
+	 * public List<Bill> GetAllProdutsByIDBill(int idBill) { List<Bill>
+	 * listBillsByIDBill = new ArrayList<Bill>();
+	 * 
+	 * String sql = "SELECT * FROM `billdetails`, bill WHERE bill.id = "+idBill+"";
+	 * listBillsByIDBill = _jdbcTemplate.query(sql, new MapperBill());
+	 * 
+	 * return listBillsByIDBill;
+	 * 
+	 * }
+	 */
+	
 
 	/*
 	 * public HashMap<Integer, BillDAO> deleteBill(int id, HashMap<Integer, BillDAO>
