@@ -29,7 +29,7 @@
 				<br> <strong> Hỗ trợ (24/7) : 0800 1234 678 </strong><br>
 				<br>
 			</p>
-			<span class="btn btn-mini">[ ${ TotalQuantityCart } ] <span
+			<span onclick="" class="btn btn-mini">[ ${ TotalQuantityCart } ] <span
 				class="icon-shopping-cart"></span></span> <span
 				class="btn btn-warning btn-mini">$</span> <span class="btn btn-mini">&pound;</span>
 			<span class="btn btn-mini">&euro;</span>
@@ -69,10 +69,10 @@ Navigation Bar Section
 
 				</ul>
 				<form action="#" class="navbar-search pull-left">
-					<input type="text" placeholder="Tiềm kiếm"
+					<input type="text"  placeholder="Tiềm kiếm"
 						class="search-query span2">
 				</form>
-				<ul class="nav pull-right">
+				<%-- <ul class="nav pull-right">
 					<c:if test="${ empty loginInfo }">
 						<li class="dropdown"><a data-toggle="dropdown"
 							class="dropdown-toggle" href="#"><span class="icon-lock"></span>
@@ -101,7 +101,7 @@ Navigation Bar Section
 						<li><a href="#">${ loginInfo.name } <b class="caret"></b>
 						</a></li>
 					</c:if>
-				</ul>
+				</ul> --%>
 			</div>
 		</div>
 	</div>

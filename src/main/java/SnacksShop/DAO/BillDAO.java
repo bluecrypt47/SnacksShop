@@ -2,21 +2,20 @@
 package SnacksShop.DAO;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import SnacksShop.DTO.CartDTO;
 import SnacksShop.Entity.Bill;
 import SnacksShop.Entity.BillDetails;
 import SnacksShop.Entity.MapperBill;
-import SnacksShop.Entity.MapperBillDetails;
-import SnacksShop.Entity.MapperMenus;
-import SnacksShop.Entity.Menus;
 
 @Repository
 public class BillDAO extends BaseDAO {
+
+	@Autowired
+	ProductsDAO productsDAO = new ProductsDAO();
 
 	public int addBill(Bill bill) {
 		StringBuffer sql = new StringBuffer();
@@ -36,6 +35,7 @@ public class BillDAO extends BaseDAO {
 		return insert;
 	};
 
+	// lấy bill cuối cùng ra
 	public int getLastBill() {
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT MAX(id) FROM bill");
@@ -43,6 +43,7 @@ public class BillDAO extends BaseDAO {
 		return id;
 	};
 
+	// thêm bill mới thanh toán vào billDetails
 	public int addBillDetails(BillDetails billDetails) {
 		StringBuffer sql = new StringBuffer();
 		sql.append("INSERT INTO billdetails ");
@@ -64,6 +65,7 @@ public class BillDAO extends BaseDAO {
 		return insert;
 	}
 
+	// lấy dữ liệu Bill ra
 	public List<Bill> GetDataBill() {
 		List<Bill> listBills = new ArrayList<Bill>();
 
@@ -74,6 +76,7 @@ public class BillDAO extends BaseDAO {
 
 	}
 
+	// lấy dữ liệu của bill theo id của bill
 	public List<Bill> GetDataBillByID(int idBill) {
 		List<Bill> listBillsByID = new ArrayList<Bill>();
 
@@ -83,19 +86,47 @@ public class BillDAO extends BaseDAO {
 		return listBillsByID;
 
 	}
-	
+
+	// truy vấn lấy billdetails từ id của bill
+	private String SqlBillByID(int idBill) {
+
+		StringBuffer sql = new StringBuffer();
+		sql.append(
+				"SELECT sanpham.image, sanpham.gioiThieu, sanpham.giaBan, billdetails.quantity, billdetails.total FROM `bill`, billdetails, sanpham WHERE bill.id = billdetails.idBill AND billdetails.idProduct = sanpham.maSP and bill.id = "
+						+ idBill + " ");
+
+		return sql.toString();
+	}
+
+	// tìm kiếm id của bill trong DB
+	public Bill FindBillByID(int id) {
+		String sql = SqlBillByID(id);
+		Bill bill = _jdbcTemplate.queryForObject(sql, new MapperBill());
+		return bill;
+	}
+
 	/*
-	 * public List<Bill> GetAllProdutsByIDBill(int idBill) { List<Bill>
-	 * listBillsByIDBill = new ArrayList<Bill>();
+	 * public List<BillDTO> GetAllProdutsByIDBill(int idBill) { List<BillDTO>
+	 * listBillsByIDBill = new ArrayList<BillDTO>();
 	 * 
-	 * String sql = "SELECT * FROM `billdetails`, bill WHERE bill.id = "+idBill+"";
-	 * listBillsByIDBill = _jdbcTemplate.query(sql, new MapperBill());
+	 * String sql =
+	 * "SELECT sanpham.image, sanpham.gioiThieu, sanpham.giaBan, billdetails.quantity, billdetails.total FROM `bill`, billdetails, sanpham WHERE bill.id = billdetails.idBill AND billdetails.idProduct = sanpham.maSP and bill.id =  "
+	 * + idBill + ""; listBillsByIDBill = _jdbcTemplate.query(sql, new
+	 * MapperBillDTO());
 	 * 
 	 * return listBillsByIDBill;
 	 * 
 	 * }
 	 */
-	
+
+	/*
+	 * public HashMap<Integer, BillDTO> deleteBill(int id, HashMap<Integer, BillDTO>
+	 * bill) { BillDTO itemBill = new BillDTO();
+	 * 
+	 * if (bill == null) { return bill; }
+	 * 
+	 * if (bill.containsKey(id)) { bill.remove(id); } return bill; }
+	 */
 
 	/*
 	 * public HashMap<Integer, BillDAO> deleteBill(int id, HashMap<Integer, BillDAO>

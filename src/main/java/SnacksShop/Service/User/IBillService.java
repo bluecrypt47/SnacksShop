@@ -6,23 +6,32 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import SnacksShop.DAO.BillDAO;
 import SnacksShop.DTO.CartDTO;
-import SnacksShop.DTO.ProductsDTO;
 import SnacksShop.Entity.Bill;
-import SnacksShop.Entity.BillDetails;
 
 @Service
 public interface IBillService {
+	
+	// thêm bill
 	public int addBill(Bill bill);
+
+	// thêm billDetails
 	public void addBillDetails(HashMap<String, CartDTO> carts);
+
+	// thêm bill và danh sách bill
 	public List<Bill> GetAllBills();
-	/*
-	 * public Bill GetAllProdutsByIDBill(int idBill); public List<Bill>
-	 * GetProductByIDType(int id);
-	 */
-	/*
-	 * public HashMap<Integer, BillDAO> deleteBill(int idBill, HashMap<Integer,
-	 * BillDAO> bill);
-	 */
+
+	// lấy tất cả sản phẩm của bill theo id bill
+	public Bill GetAllProdutsByIDBill(int idBill);
+
+	// lấy ds tất cả sản phẩm của bill theo id bill
+	public List<Bill> GetProductByIDBill(int id);
+
+	//
+	// public HashMap<Integer, BillDTO> deleteBill(int id, HashMap<Integer, BillDTO>
+	// bill);
+
+	// public HashMap<Integer, BillDAO> deleteBill(int idBill, HashMap<Integer,
+	// BillDAO> bill);
+
 }

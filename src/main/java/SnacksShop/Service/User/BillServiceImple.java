@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 
 import SnacksShop.DAO.BillDAO;
 import SnacksShop.DTO.CartDTO;
-import SnacksShop.DTO.ProductsDTO;
 import SnacksShop.Entity.Bill;
 import SnacksShop.Entity.BillDetails;
-import SnacksShop.Entity.Menus;
 
 @Service
 public class BillServiceImple implements IBillService {
@@ -46,19 +44,28 @@ public class BillServiceImple implements IBillService {
 		return billDAO.GetDataBill();
 	}
 
-	/*
-	 * @Override public Bill GetAllProdutsByIDBill(int idBill) {
-	 * 
-	 * List<Bill> listProductsByIDBill = billDAO.GetDataBillByID(idBill);
-	 * 
-	 * return listProductsByIDBill.get(0); }
-	 * 
-	 * @Override public List<Bill> GetProductByIDType(int id) { return
-	 * billDAO.GetAllProdutsByIDBill(id); }
-	 */
-	
+	@Override
+	public Bill GetAllProdutsByIDBill(int idBill) {
+		List<Bill> listBill = billDAO.GetDataBillByID(idBill);
+		return listBill.get(0);
+	}
 
-	
+	@Override
+	public List<Bill> GetProductByIDBill(int id) {
+		return billDAO.GetDataBillByID(id);
+	}
+
+	/*
+	 * @Override public ProductsDTO GetProductByID(String id) {
+	 * 
+	 * List<ProductsDTO> listProductDetails = productsDAO.GetProductByID(id);
+	 * 
+	 * return listProductDetails.get(0); }
+	 * 
+	 * @Override public List<ProductsDTO> GetProductByIDType(int id) {
+	 * 
+	 * return productsDAO.GetAllProductsByID(id); }
+	 */
 
 	/*
 	 * @Override public HashMap<Integer, BillDAO> deleteBill(int idBill,

@@ -9,7 +9,14 @@
 <title>Tất cả sản phẩm</title>
 </head>
 <body>
-
+	<%-- <%
+		if(request.getParameter('name') != null){
+			list = new ProductsDAO().GetSearchProduct;
+		}
+		else{
+			list = new ProductsDAO().GetAllProduct;
+		}
+	%> --%>
 	<!-- 
 New Products
 -->

@@ -22,9 +22,7 @@
 						</ul>
 						<h1 class="page-header">Quản Lý Hóa Đơn</h1>
 					</div>
-					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="panel panel-default">
@@ -61,7 +59,7 @@
 															groupingUsed="true" value="${ item.total }" /> ₫</td>
 													<%-- <c:url  value="/DeleteCart/${ item.key }"/> --%>
 													<td><a
-														href="<c:url value="/quan-ly-chi-tiet-hoa-don"/>"
+														href="<c:url value="/quan-ly-chi-tiet-hoa-don?id=${ item.id }"/>"
 														class="btn btn-mini btn-danger" type="button"> <span
 															class="icon-search"></span>
 													</a></td>
