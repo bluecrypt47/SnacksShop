@@ -15,6 +15,7 @@
 			<div class="container-fluid">
 				<div class="row">
 				<ul class="breadcrumb">
+							<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span class="divider">/</span></li>
 							<li><a href="<c:url value="/quan-tri"/>">Trang quản trị</a> <span class="divider">/</span></li>
 							<li class="active">Quản lý sản phẩm</li>
 						</ul>

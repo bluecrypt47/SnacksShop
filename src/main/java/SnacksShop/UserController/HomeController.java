@@ -1,12 +1,23 @@
 package SnacksShop.UserController;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import SnacksShop.DAO.ProductsDAO;
+import SnacksShop.DTO.ProductsDTO;
+import SnacksShop.Service.User.AccountServiecImple;
 
 @Controller
 public class HomeController extends BaseController {
+	@Autowired
+	ProductsDAO _ProductsDAO;
 
 	@RequestMapping(value = { "/", "/trang-chu" })
 	public ModelAndView Index() {
@@ -80,5 +91,12 @@ public class HomeController extends BaseController {
 		
 		_mvShare.setViewName("admin/billManager/billManagerDetaills");
 		return _mvShare;
+	}
+	
+	//
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public List<ProductsDTO> searchProduct(@RequestParam(value = "searchName") String searchName) {
+		return _ProductsDAO.GetSearchProduct(searchName) ;
 	}
 }

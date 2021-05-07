@@ -14,6 +14,7 @@ Body Section
 	<div class="row">
 		<div class="span12">
 			<ul class="breadcrumb">
+				<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span class="divider">/</span></li>
 				<li><a href="<c:url value="/quan-tri"/>">Trang quản trị</a> <span class="divider">/</span></li>
 				<li><a href="<c:url value="/quan-ly-hoa-don"/>">Quản lý hóa đơn</a> <span class="divider">/</span></li>
 				<li class="active">Chi tiết đơn hàng</li>

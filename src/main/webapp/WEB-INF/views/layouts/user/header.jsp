@@ -68,7 +68,7 @@ Navigation Bar Section
 					</c:forEach> --%>
 
 				</ul>
-				<form action="#" class="navbar-search pull-left">
+				<form action="#" name="searchName" class="navbar-search pull-left">
 					<input type="text"  placeholder="Tiềm kiếm"
 						class="search-query span2">
 				</form>

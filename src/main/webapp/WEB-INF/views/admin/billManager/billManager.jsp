@@ -17,6 +17,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<ul class="breadcrumb">
+							<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span class="divider">/</span></li>
 							<li><a href="<c:url value="/quan-tri"/>">Trang quản trị</a> <span class="divider">/</span></li>
 							<li class="active">Quản lý hóa đơn</li>
 						</ul>
@@ -59,7 +60,7 @@
 															groupingUsed="true" value="${ item.total }" /> ₫</td>
 													<%-- <c:url  value="/DeleteCart/${ item.key }"/> --%>
 													<td><a
-														href="<c:url value="/quan-ly-chi-tiet-hoa-don?id=${ item.id }"/>"
+														href="<c:url value="/quan-ly-chi-tiet-hoa-don/${ item.id }"/>"
 														class="btn btn-mini btn-danger" type="button"> <span
 															class="icon-search"></span>
 													</a></td>
