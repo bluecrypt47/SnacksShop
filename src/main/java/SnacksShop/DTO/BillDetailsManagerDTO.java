@@ -1,9 +1,5 @@
 package SnacksShop.DTO;
 
-import SnacksShop.Entity.Bill;
-import SnacksShop.Entity.BillDetails;
-import jdk.javadoc.internal.doclets.toolkit.resources.doclets;
-
 public class BillDetailsManagerDTO {
 	private int id;
 	private String idProduct;

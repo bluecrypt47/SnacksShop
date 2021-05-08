@@ -49,7 +49,6 @@
 										<tbody>
 											<c:forEach var="item" items="${ billManager }">
 												<tr>
-
 													<td>${ item.name }</td>
 													<td>${ item.email }</td>
 													<td>${ item.phoneNumber }</td>

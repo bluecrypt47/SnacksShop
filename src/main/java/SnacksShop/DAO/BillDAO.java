@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import SnacksShop.DTO.BillDetailsManagerDTO;
+import SnacksShop.DTO.BillDetailsManagerDTOMapper;
 import SnacksShop.Entity.Bill;
 import SnacksShop.Entity.BillDetails;
 import SnacksShop.Entity.MapperBill;
@@ -104,37 +106,12 @@ public class BillDAO extends BaseDAO {
 		Bill bill = _jdbcTemplate.queryForObject(sql, new MapperBill());
 		return bill;
 	}
-
-	/*
-	 * public List<BillDTO> GetAllProdutsByIDBill(int idBill) { List<BillDTO>
-	 * listBillsByIDBill = new ArrayList<BillDTO>();
-	 * 
-	 * String sql =
-	 * "SELECT sanpham.image, sanpham.gioiThieu, sanpham.giaBan, billdetails.quantity, billdetails.total FROM `bill`, billdetails, sanpham WHERE bill.id = billdetails.idBill AND billdetails.idProduct = sanpham.maSP and bill.id =  "
-	 * + idBill + ""; listBillsByIDBill = _jdbcTemplate.query(sql, new
-	 * MapperBillDTO());
-	 * 
-	 * return listBillsByIDBill;
-	 * 
-	 * }
-	 */
-
-	/*
-	 * public HashMap<Integer, BillDTO> deleteBill(int id, HashMap<Integer, BillDTO>
-	 * bill) { BillDTO itemBill = new BillDTO();
-	 * 
-	 * if (bill == null) { return bill; }
-	 * 
-	 * if (bill.containsKey(id)) { bill.remove(id); } return bill; }
-	 */
-
-	/*
-	 * public HashMap<Integer, BillDAO> deleteBill(int id, HashMap<Integer, BillDAO>
-	 * bill) { BillDAO itemBill = new BillDAO();
-	 * 
-	 * if (bill == null) { return bill; }
-	 * 
-	 * if (bill.containsKey(id)) { bill.remove(id); } return bill; }
-	 */
-
+	
+	//------------------------------------------------
+	public List<Bill> deleteBillByIDl(int idBill) {
+		String sql = "DELETE FROM `bill` WHERE id= " + idBill + " ";
+		List<Bill> listProducts = _jdbcTemplate.query(sql, new MapperBill());
+		return listProducts;
+	}
+	//------------------------------------------------
 }

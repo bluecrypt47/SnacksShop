@@ -6,7 +6,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import SnacksShop.DTO.BillDetailsManagerDTO;
 import SnacksShop.DTO.CartDTO;
+import SnacksShop.DTO.ProductsDTO;
 import SnacksShop.Entity.Bill;
 
 @Service
@@ -18,7 +20,7 @@ public interface IBillService {
 	// thêm billDetails
 	public void addBillDetails(HashMap<String, CartDTO> carts);
 
-	// thêm bill và danh sách bill
+	// lấy bill và danh sách bill
 	public List<Bill> GetAllBills();
 
 	// lấy tất cả sản phẩm của bill theo id bill
@@ -26,12 +28,13 @@ public interface IBillService {
 
 	// lấy ds tất cả sản phẩm của bill theo id bill
 	public List<Bill> GetProductByIDBill(int id);
-
+	
 	//
-	// public HashMap<Integer, BillDTO> deleteBill(int id, HashMap<Integer, BillDTO>
-	// bill);
-
-	// public HashMap<Integer, BillDAO> deleteBill(int idBill, HashMap<Integer,
-	// BillDAO> bill);
+	//public BillDetailsManagerDTO GetBillDetailsByIDBill(int idBill);
+	public List<BillDetailsManagerDTO> GetBillDetailsByIDBill(int idBill);
+	
+	//-----------------------------------------------------
+	public List<Bill> deleteBillByID(int idBill);
+	//-----------------------------------------------------
 
 }

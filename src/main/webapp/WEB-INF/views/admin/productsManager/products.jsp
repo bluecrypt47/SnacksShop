@@ -14,11 +14,13 @@
 		<div id="page-wrapper">
 			<div class="container-fluid">
 				<div class="row">
-				<ul class="breadcrumb">
-							<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span class="divider">/</span></li>
-							<li><a href="<c:url value="/quan-tri"/>">Trang quản trị</a> <span class="divider">/</span></li>
-							<li class="active">Quản lý sản phẩm</li>
-						</ul>
+					<ul class="breadcrumb">
+						<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span
+							class="divider">/</span></li>
+						<li><a href="<c:url value="/quan-tri"/>">Trang quản trị</a> <span
+							class="divider">/</span></li>
+						<li class="active">Quản lý sản phẩm</li>
+					</ul>
 					<div class="col-lg-12">
 						<h1 class="page-header">Quản Lý Sản Phẩm</h1>
 						<button name="button" type="button">Thêm sản phẩm</button>
@@ -53,7 +55,7 @@
 										<tbody>
 											<c:forEach var="item" items="${ productsManager }">
 												<tr>
-												    <td><input type="checkbox" /></td>
+													<td><input type="checkbox" /></td>
 													<td>${ item.maLoai }</td>
 													<td>${ item.tenSP }</td>
 													<td><img width="100"
@@ -66,8 +68,18 @@
 													<td><fmt:formatNumber type="number"
 															groupingUsed="true" value="${ item.giamGia }" /> ₫</td>
 													<td>${ item.gioiThieu }</td>
-													<td>${ item.noiBat }</td>
-													<td>${ item.sanPhamMoi }</td>
+													<c:if test="${ item.noiBat == true }">
+														<td>V</td>
+													</c:if>
+													<c:if test="${ item.noiBat == false }">
+														<td></td>
+													</c:if>
+													<c:if test="${ item.sanPhamMoi == true }">
+														<td>V</td>
+													</c:if>
+													<c:if test="${ item.sanPhamMoi == false }">
+														<td></td>
+													</c:if>
 													<!-- <td><a href="#"
 														class="btn btn-mini btn-danger" type="button"> <span
 															class="icon-edit"></span>
@@ -85,8 +97,9 @@
 						</div>
 					</div>
 				</div>
-				<br /> <a href="<c:url value="/quan-tri"/>" class="shopBtn btn-large"><span
-					class="icon-arrow-left"></span> Quay Lại Trang Quản Trị </a>
+				<br /> <a href="<c:url value="/quan-tri"/>"
+					class="shopBtn btn-large"><span class="icon-arrow-left"></span>
+					Quay Lại Trang Quản Trị </a>
 			</div>
 		</div>
 	</div>

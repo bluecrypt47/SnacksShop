@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import SnacksShop.DAO.BillDAO;
+import SnacksShop.DAO.BillDetailsManagerDAO;
+import SnacksShop.DTO.BillDetailsManagerDTO;
 import SnacksShop.DTO.CartDTO;
+import SnacksShop.DTO.ProductsDTO;
 import SnacksShop.Entity.Bill;
 import SnacksShop.Entity.BillDetails;
 
@@ -18,6 +21,9 @@ public class BillServiceImple implements IBillService {
 
 	@Autowired
 	public BillDAO billDAO;
+
+	@Autowired
+	BillDetailsManagerDAO billDetailsManagerDAO = new BillDetailsManagerDAO();
 
 	@Override
 	public int addBill(Bill bill) {
@@ -55,21 +61,27 @@ public class BillServiceImple implements IBillService {
 		return billDAO.GetDataBillByID(id);
 	}
 
-	/*
-	 * @Override public ProductsDTO GetProductByID(String id) {
-	 * 
-	 * List<ProductsDTO> listProductDetails = productsDAO.GetProductByID(id);
-	 * 
-	 * return listProductDetails.get(0); }
-	 * 
-	 * @Override public List<ProductsDTO> GetProductByIDType(int id) {
-	 * 
-	 * return productsDAO.GetAllProductsByID(id); }
-	 */
 
+	//
 	/*
-	 * @Override public HashMap<Integer, BillDAO> deleteBill(int idBill,
-	 * HashMap<Integer, BillDAO> bill) { return billDAO.deleteBill(idBill, bill); }
+	 * @Override public BillDetailsManagerDTO GetBillDetailsByIDBill(int idBill) {
+	 * List<BillDetailsManagerDTO> listProductDetailsByIDBill =
+	 * billDetailsManagerDAO.GetBillDetailsByIDBill(idBill); return
+	 * listProductDetailsByIDBill.get(0); }
 	 */
+	
+	@Override
+	public List<BillDetailsManagerDTO> GetBillDetailsByIDBill(int idBill) {
+		//List<BillDetailsManagerDTO> listProductDetailsByIDBill = billDetailsManagerDAO.GetBillDetailsByIDBill(idBill);
+		return billDetailsManagerDAO.GetBillDetailsByIDBill(idBill);
+	}
+
+	//----------------------------------------------------
+	@Override
+	public List<Bill> deleteBillByID(int idBill) {
+		
+		return billDAO.deleteBillByIDl(idBill);
+	}
+	//----------------------------------------------------
 
 }

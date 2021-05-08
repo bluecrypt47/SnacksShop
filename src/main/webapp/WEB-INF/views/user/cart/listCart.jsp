@@ -28,6 +28,7 @@ Body Section
 					<thead>
 						<tr>
 							<th>Hình ảnh</th>
+							<th>Tên sản phẩm</th>
 							<th>Mô tả</th>
 							<th>Giá bán</th>
 							<th>Số lượng</th>
@@ -42,6 +43,7 @@ Body Section
 								<td><img width="100"
 									src="<c:url value="/assets/user/img/anh/${ item.value.product.image }"/>"
 									alt=""></td>
+								<td>${ item.value.product.tenSP }</td>
 								<td>${ item.value.product.gioiThieu }</td>
 								<td><fmt:formatNumber type="number" groupingUsed="true"
 										value="${ item.value.product.giaBan }" /> ₫</td>
