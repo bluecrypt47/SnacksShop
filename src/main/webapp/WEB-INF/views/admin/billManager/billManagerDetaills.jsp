@@ -23,10 +23,11 @@ Body Section
 				<li class="active">Chi tiết đơn hàng</li>
 			</ul>
 			<div class="well well-small">
-				<h1>
-					Chi Tiết Đơn Hàng <%-- <small class="pull-right"> ${ TotalQuantityCart }
-						Sản phẩm có trong giỏ hàng </small> --%>
-				</h1>
+				<%-- <h1>
+					Chi Tiết Đơn Hàng
+					<small class="pull-right"> ${ billManager.quantity }
+						Sản phẩm có trong đơn hàng </small>
+				</h1> --%>
 				<hr class="soften" />
 
 				<table class="table table-bordered table-condensed">
@@ -43,19 +44,19 @@ Body Section
 					<tbody>
 						<c:forEach var="item" items="${ billDetails }">
 							<tr>
-								<td><%-- <img width="100"
-									src="<c:url value="/assets/admin/img/anh/${ item.value.idProduct.image }"/>"
-									alt=""></td> --%>
-								<td>
-									<%-- ${ item.value.product.gioiThieu } --%>
-								</td>
-								<td>
-									<%-- ${ item.value.product.gioiThieu } --%>
-								</td>
-								<td>
-									<%-- <fmt:formatNumber type="number" groupingUsed="true"
-										value="${ item.value.product.giaBan }" /> ₫ --%>
-								</td>
+								<td><img width="100"
+									src="<c:url value="/assets/admin/img/anh/${ item.getProducts().getImage() }"/>"
+									alt=""></td>
+								<td>${ item.getProducts().getTenSP() }</td>
+								<td>${ item.getProducts().getGioiThieu() }</td>
+								<td><fmt:formatNumber type="number" groupingUsed="true"
+										value="${ item.getProducts().getGiaBan() }" /> ₫</td>
+								<%-- <c:forEach var="itemmm" items="${ productBillDetails }">
+									<td>${ itemmm.getProducts().getTenSP() }</td>
+									<td>${ itemmm.getProducts().getGioiThieu() }</td>
+									<td><fmt:formatNumber type="number" groupingUsed="true"
+											value="${ itemmm.getProducts().getGiaBan() }" /> ₫</td>
+								</c:forEach> --%>
 								<td>${ item.quantity }</td>
 								<td><fmt:formatNumber type="number" groupingUsed="true"
 										value="${ item.total }" /> ₫</td>

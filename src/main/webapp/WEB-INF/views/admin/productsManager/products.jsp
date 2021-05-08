@@ -38,7 +38,7 @@
 										<thead>
 											<tr>
 												<th></th>
-												<th>Loại Sản Phẩm</th>
+												<!-- <th>Loại Sản Phẩm</th> -->
 												<th>Tên Sản Phẩm</th>
 												<th>Hình ảnh</th>
 												<th>Ngày Đăng</th>
@@ -56,7 +56,7 @@
 											<c:forEach var="item" items="${ productsManager }">
 												<tr>
 													<td><input type="checkbox" /></td>
-													<td>${ item.maLoai }</td>
+													<%-- <td>${ item.maLoai }</td> --%>
 													<td>${ item.tenSP }</td>
 													<td><img width="100"
 														src="<c:url value="/assets/admin/img/anh/${ item.image }" />"
@@ -69,13 +69,13 @@
 															groupingUsed="true" value="${ item.giamGia }" /> ₫</td>
 													<td>${ item.gioiThieu }</td>
 													<c:if test="${ item.noiBat == true }">
-														<td>V</td>
+														<td>Nổi bật</td>
 													</c:if>
 													<c:if test="${ item.noiBat == false }">
 														<td></td>
 													</c:if>
 													<c:if test="${ item.sanPhamMoi == true }">
-														<td>V</td>
+														<td>Mới</td>
 													</c:if>
 													<c:if test="${ item.sanPhamMoi == false }">
 														<td></td>

@@ -1,10 +1,6 @@
 package SnacksShop.UserController;
 
-import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import SnacksShop.DAO.ProductsDAO;
-import SnacksShop.DTO.CartDTO;
 import SnacksShop.DTO.ProductsDTO;
-import SnacksShop.Entity.Bill;
 import SnacksShop.Service.User.IBillService;
 
 @Controller

@@ -33,8 +33,6 @@ public interface IBillService {
 	//public BillDetailsManagerDTO GetBillDetailsByIDBill(int idBill);
 	public List<BillDetailsManagerDTO> GetBillDetailsByIDBill(int idBill);
 	
-	//-----------------------------------------------------
 	public List<Bill> deleteBillByID(int idBill);
-	//-----------------------------------------------------
 
 }

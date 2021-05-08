@@ -35,6 +35,7 @@
 										id="dataTables-example">
 										<thead>
 											<tr>
+												<th>Ngày</th>
 												<th>Tên Người Mua</th>
 												<th>Email</th>
 												<th>Số Điện Thoại</th>
@@ -49,6 +50,7 @@
 										<tbody>
 											<c:forEach var="item" items="${ billManager }">
 												<tr>
+													<td>${ item.buyDate }</td>
 													<td>${ item.name }</td>
 													<td>${ item.email }</td>
 													<td>${ item.phoneNumber }</td>

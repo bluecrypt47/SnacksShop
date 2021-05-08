@@ -12,7 +12,6 @@ import SnacksShop.DAO.BillDAO;
 import SnacksShop.DAO.BillDetailsManagerDAO;
 import SnacksShop.DTO.BillDetailsManagerDTO;
 import SnacksShop.DTO.CartDTO;
-import SnacksShop.DTO.ProductsDTO;
 import SnacksShop.Entity.Bill;
 import SnacksShop.Entity.BillDetails;
 
@@ -75,13 +74,13 @@ public class BillServiceImple implements IBillService {
 		//List<BillDetailsManagerDTO> listProductDetailsByIDBill = billDetailsManagerDAO.GetBillDetailsByIDBill(idBill);
 		return billDetailsManagerDAO.GetBillDetailsByIDBill(idBill);
 	}
-
-	//----------------------------------------------------
+	
 	@Override
 	public List<Bill> deleteBillByID(int idBill) {
 		
 		return billDAO.deleteBillByIDl(idBill);
 	}
-	//----------------------------------------------------
+
+	
 
 }

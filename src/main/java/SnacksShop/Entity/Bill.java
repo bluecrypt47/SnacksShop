@@ -1,5 +1,7 @@
 package SnacksShop.Entity;
 
+import java.sql.Date;
+
 public class Bill {
 	private int id;
 	private String name;
@@ -7,11 +9,20 @@ public class Bill {
 	private String phoneNumber;
 	private String address;
 	private String note;
+	private Date buyDate;
 	private int quantity;
 	private double total;
 
 	public Bill() {
 		super();
+	}
+
+	public Date getBuyDate() {
+		return buyDate;
+	}
+
+	public void setBuyDate(Date buyDate) {
+		this.buyDate = buyDate;
 	}
 
 	public int getId() {
