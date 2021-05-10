@@ -27,6 +27,7 @@ Body Section
 				<table class="table table-bordered table-condensed">
 					<thead>
 						<tr>
+							<th></th>
 							<th>Hình ảnh</th>
 							<th>Tên sản phẩm</th>
 							<th>Mô tả</th>
@@ -38,8 +39,9 @@ Body Section
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="item" items="${ Cart }">
+						<c:forEach var="item" items="${ Cart }" varStatus="i">
 							<tr>
+								<td>${ i.index + 1 }</td>
 								<td><img width="100"
 									src="<c:url value="/assets/user/img/anh/${ item.value.product.image }"/>"
 									alt=""></td>

@@ -34,19 +34,20 @@
 								<table class="table table-bordered table-striped">
 									<thead>
 										<tr>
+											<th></th>
 											<th>Loại Tài Khoản</th>
 											<th>Email</th>
 											<th>Password</th>
 											<th>Tên</th>
 											<th>Địa Chỉ</th>
 											<th>Số Điện Thoại</th>
-											<th>Sửa Tài Khoản</th>
 											<th>Xóa Tài Khoản</th>
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach var="item" items="${ accManagger }">
+										<c:forEach var="item" items="${ accManagger }" varStatus="i">
 											<tr>
+												<td>${ i.index +1 }</td>
 												<c:if test="${ item.idRoles == true }">
 													<td>Quản Trị</td>
 												</c:if>
@@ -58,9 +59,6 @@
 												<td>${ item.name }</td>
 												<td>${ item.address }</td>
 												<td>${ item.phoneNumber }</td>
-												<td><a href="#" class="btn btn-mini btn-danger"
-													type="button"> <span class="icon-edit"></span>
-												</a></td>
 												<td><a href="#" class="btn btn-mini btn-danger"
 													type="button"> <span class="icon-remove"></span>
 												</a></td>

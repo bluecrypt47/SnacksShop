@@ -4,6 +4,7 @@
 	prefix="decorator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <head>
 <title>Quản lý sản phẩm</title>
@@ -22,10 +23,18 @@
 						<li class="active">Quản lý sản phẩm</li>
 					</ul>
 					<div class="col-lg-12">
-						<h1 class="page-header">Quản Lý Sản Phẩm</h1>
-						<button name="button" type="button">Thêm sản phẩm</button>
+						<h1 class="page-header">
+							Quản Lý Sản Phẩm
+							<form:form method="get" action="https://www.facebook.com/chuong.le.bluec/">
+								<div style="text-align: right; ">
+									<input type="submit" value="Thêm sản phẩm">
+									<input type="submit" value="Sửa sản phẩm">
+								</div>
+							</form:form>
+						</h1>
+						<!-- <button name="button" type="button">Thêm sản phẩm</button>
 						<button name="button" type="button">Sửa sản phẩm</button>
-						<button name="button" type="button">Xóa sản phẩm</button>
+						<button name="button" type="button">Xóa sản phẩm</button> -->
 					</div>
 				</div>
 				<div class="row">
@@ -38,7 +47,6 @@
 										<thead>
 											<tr>
 												<th></th>
-												<!-- <th>Loại Sản Phẩm</th> -->
 												<th>Tên Sản Phẩm</th>
 												<th>Hình ảnh</th>
 												<th>Ngày Đăng</th>
@@ -48,15 +56,14 @@
 												<th>Giới Thiệu</th>
 												<th>Sản Phẩm Nổi Bật</th>
 												<th>Sản Phẩm Mới</th>
-												<!-- <th>Sửa Sản Phẩm</th>
-												<th>Xóa Sản Phẩm</th> -->
+												<th>Xóa</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="item" items="${ productsManager }">
+											<c:forEach var="item" items="${ productsManager }"
+												varStatus="i">
 												<tr>
-													<td><input type="checkbox" /></td>
-													<%-- <td>${ item.maLoai }</td> --%>
+													<td>${ i.index + 1 }</td>
 													<td>${ item.tenSP }</td>
 													<td><img width="100"
 														src="<c:url value="/assets/admin/img/anh/${ item.image }" />"
@@ -80,14 +87,10 @@
 													<c:if test="${ item.sanPhamMoi == false }">
 														<td></td>
 													</c:if>
-													<!-- <td><a href="#"
-														class="btn btn-mini btn-danger" type="button"> <span
-															class="icon-edit"></span>
-													</a></td>
 													<td><a href="#"
 														class="btn btn-mini btn-danger" type="button"> <span
 															class="icon-remove"></span>
-													</a></td> -->
+													</a></td>
 												</tr>
 											</c:forEach>
 										</tbody>

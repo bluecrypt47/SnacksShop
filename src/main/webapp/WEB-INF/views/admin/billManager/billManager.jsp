@@ -35,6 +35,7 @@
 										id="dataTables-example">
 										<thead>
 											<tr>
+												<th></th>
 												<th>Ngày</th>
 												<th>Tên Người Mua</th>
 												<th>Email</th>
@@ -48,8 +49,9 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="item" items="${ billManager }">
+											<c:forEach var="item" items="${ billManager }" varStatus="i">
 												<tr>
+													<td>${ i.index + 1 }</td>
 													<td>${ item.buyDate }</td>
 													<td>${ item.name }</td>
 													<td>${ item.email }</td>

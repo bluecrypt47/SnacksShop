@@ -1,8 +1,12 @@
 package SnacksShop.Entity;
 
+import javax.validation.constraints.NotBlank;
+
 public class Users {
 	private long id;
 	private boolean idRoles;
+	
+	//@NotBlank(message = "Không được để trống!")
 	private String user;
 	private String password;
 	private String name;

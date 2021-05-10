@@ -9,6 +9,55 @@
 
 <head>
 <title>Đăng ký</title>
+<style>
+.err {
+	color: red;
+	font-size: italic;
+}
+
+.status {
+	color: red;
+	font-size: italic;
+}
+
+.statusLogin {
+	color: red;
+	font-size: italic;
+}
+</style>
+<!-- <script>
+	function getValue(id) {
+		return document.getElementById(id).value.trim();
+	}
+	
+	function showErr(key, mess) {
+		
+		document.getElementById(key+'_err').innerHTML = mess;
+	}
+
+	function validateLogin() {
+		
+		var flag = true;
+
+		// email
+		var email = getValue('email');
+		var emailFomat = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		if (!emailFomat.test(email)) {
+			flag = false;
+			//showErr('email_err', "Vui lòng nhập đúng và không để trống Email!");
+			console.log("Vui lòng nhập đúng và không để trống Email!");
+		}
+		
+		// pass
+		var password = getValue('password');
+		if (password == '' ) {
+			flag = false;
+			//showErr('password_err', "Vui lòng không để trống Passowrd!");
+			console.log("Vui lòng không để trống Passowrd!");
+		}
+		return flag;
+	}
+</script> -->
 </head>
 <body>
 	<!-- 
@@ -19,7 +68,7 @@ Body Section
 			<div class="well well-small">
 				<ul class="nav nav-list">
 					<c:forEach var="item" items="${catogorys }">
-						<li><a href='<c:url value="/san-pham/${ item.maLoai }"/>'><span
+						<li><a href="<c:url value="/san-pham/${ item.maLoai }"/>"><span
 								class="icon-circle-blank"></span> ${ item.tenLoai }</a></li>
 						<li>
 					</c:forEach>
@@ -33,7 +82,7 @@ Body Section
 		</div>
 		<div class="span9">
 			<ul class="breadcrumb">
-				<li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
+				<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span class="divider">/</span></li>
 				<li class="active">Người dùng</li>
 			</ul>
 			<h3>Đăng nhập</h3>
@@ -42,7 +91,7 @@ Body Section
 				<div class="span4">
 					<div class="well">
 						<h5>ĐĂNG KÝ TÀI KHOẢN</h5>
-						<h5>${ status }</h5>
+						<h6 class="status">${ status }</h6>
 						<form:form action="dang-ky" method="POST"
 							modelAttribute="usersRegister">
 							<div class="control-group">
@@ -50,7 +99,7 @@ Body Section
 									E-mail</label>
 								<div class="controls">
 									<form:input type="email" class="span3" placeholder="Email"
-										path="user" />
+										id="email" path="user" />
 								</div>
 							</div>
 							<div class="control-group">
@@ -92,7 +141,7 @@ Body Section
 				<div class="span4">
 					<div class="well">
 						<h5>ĐĂNG NHẬP HỆ THỐNG</h5>
-						<h5>${ statusLogin }</h5>
+						<h6 class="status">${ statusLogin }</h6>
 						<form:form action="dang-nhap" method="POST"
 							modelAttribute="usersRegister">
 							<div class="control-group">
@@ -100,6 +149,9 @@ Body Section
 								<div class="controls">
 									<form:input class="span3" type="text" placeholder="Email"
 										path="user" />
+
+									<%-- <form:errors path="user" /> --%>
+
 								</div>
 							</div>
 							<div class="control-group">
@@ -108,11 +160,14 @@ Body Section
 								<div class="controls">
 									<form:input type="password" class="span3"
 										placeholder="********" path="password" />
+									<!-- <span id="password_err"></span> -->
 								</div>
 							</div>
 							<div class="control-group">
-								<div class="controls">
-									<button type="submit" class="defaultBtn">Đăng nhập</button>
+								<div class="controls" style="text-align: center;">
+									<form:button type="submit" class="defaultBtn">Đăng nhập</form:button>
+									<!-- <button type="submit" class="defaultBtn">Đăng nhập</button> -->
+									<!-- <button type="submit" onclick="return validateLogin();" class="defaultBtn">Đăng nhập</button> -->
 									<a href="#">Quên mật khẩu?</a>
 								</div>
 							</div>

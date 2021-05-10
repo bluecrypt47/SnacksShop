@@ -61,7 +61,7 @@
 						<a href="<c:url value="/dang-ky"/>"><span class="icon-edit"></span>
 							Đăng nhập- Đăng ký </a>
 					</c:if>
-					<a href="contact.html"><span class="icon-envelope"></span> Liên
+					<a href="<c:url value="/lien-he"/>"><span class="icon-envelope"></span> Liên
 						hệ</a><a href="<c:url value="/gio-hang"/>"><span
 						class="icon-shopping-cart"></span> ${ TotalQuantityCart } Sản phẩm
 						- <span class="badge badge-warning"><fmt:formatNumber

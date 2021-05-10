@@ -2,9 +2,11 @@ package SnacksShop.UserController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,8 +57,6 @@ public class UserController extends BaseController {
 		}
 		return _mvShare;
 	}
-	
-	
 
 	@RequestMapping(value = "/dang-xuat", method = RequestMethod.GET)
 	public String logout(HttpSession session, HttpServletRequest request) {
@@ -64,4 +64,37 @@ public class UserController extends BaseController {
 		session.removeAttribute("loginInfo");
 		return "redirect:" + request.getHeader("Referer");
 	}
+	
+
+
+	// ------------------------------2
+
+	/*
+	 * @RequestMapping(value = "/dang-nhap", method = RequestMethod.POST) public
+	 * ModelAndView login(@Valid HttpSession session, @ModelAttribute("users") Users
+	 * users, Errors err) {
+	 * 
+	 * //users = accountServiecImple.checkAccount(users);
+	 * 
+	 * //registerValidate.validate(users, br);
+	 * 
+	 * if (err.hasErrors()) { return _mvShare; }
+	 * 
+	 * 
+	 * if (users != null) { _mvShare.setViewName("redirect:trang-chu");
+	 * session.setAttribute("loginInfo", users); } else {
+	 * _mvShare.addObject("statusLogin", "Đăng nhập tài khoản thất bại!!!"); }
+	 * 
+	 * return _mvShare; }
+	 */
+
+	// ------------------------------
+	
+
+
+	// ------------------------------3
+
+	
+
+	// ------------------------------
 }

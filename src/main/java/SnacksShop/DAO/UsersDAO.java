@@ -53,6 +53,5 @@ public class UsersDAO extends BaseDAO {
 		listUsers = _jdbcTemplate.query(sql, new MapperUsers());
 
 		return listUsers;
-
 	}
 }

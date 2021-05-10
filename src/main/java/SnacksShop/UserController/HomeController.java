@@ -43,6 +43,20 @@ public class HomeController extends BaseController {
 		_mvShare.setViewName("user/products/allProducts");
 		return _mvShare;
 	}
+	
+	@RequestMapping(value = "/gioi-thieu")
+	public ModelAndView aboutUs() {
+
+		_mvShare.setViewName("user/aboutUS");
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = "/lien-he")
+	public ModelAndView contact() {
+
+		_mvShare.setViewName("user/contact");
+		return _mvShare;
+	}
 
 	// ADMIN
 	@RequestMapping(value = { "/quan-tri" })

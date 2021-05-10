@@ -41,14 +41,14 @@ Footer
 		<div class="span2">
 			<h5>Tài Khoản Của Bạn</h5>
 			<a href="#">TÀI KHOẢN CỦA BẠN</a><br> <a href="#">CÁ NHÂN
-				THÔNG TIN</a><br> <a href="#">ĐỊA CHỈ</a><br> <a href="#">GIẢM
+				THÔNG TIN</a><br> <a href="<c:url value="/lien-he"/>">ĐỊA CHỈ</a><br> <a href="#">GIẢM
 				GIÁ</a><br> <a href="#">LỊCH SỬ ĐẶT HÀNG</a><br>
 		</div>
 		<div class="span2">
 			<h5>Thông Tin</h5>
-			<a href="contact.html">LIÊN LẠC</a><br> <a href="#">BẢN ĐỒ</a><br>
+			<a href="<c:url value="/lien-he"/>">LIÊN LẠC</a><br> <a href="<c:url value="/lien-he"/>">BẢN ĐỒ</a><br>
 			<a href="#">THÔNG TIN PHÁP LÝ</a><br> <a href="#">ĐIỀU KHOẢN</a><br>
-			<a href="#">GIỚI THIỆU</a><br>
+			<a href="<c:url value="/gioi-thieu"/>">GIỚI THIỆU</a><br>
 		</div>
 		<div class="span2">
 			<h5>Ưu Đãi</h5>

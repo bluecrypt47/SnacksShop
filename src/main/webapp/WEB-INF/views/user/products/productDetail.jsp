@@ -67,9 +67,9 @@ Body Section
 								<label class="control-label"><span><fmt:formatNumber
 											type="number" groupingUsed="true"
 											value="${productDetail.giaBan}" /> ₫</span></label>
-								<div class="controls">
+								<!-- <div class="controls">
 									<input type="number" min="0" value="0" class="span6">
-								</div>
+								</div> -->
 							</div>
 
 							<h4></h4>
