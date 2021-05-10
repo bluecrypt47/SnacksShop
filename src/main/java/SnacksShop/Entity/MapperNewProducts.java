@@ -11,7 +11,7 @@ public class MapperNewProducts implements RowMapper<Products> {
 	public Products mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Products products = new Products();
 
-		products.setMaSP(rs.getString("maSP"));
+		products.setMaSP(rs.getLong("maSP"));
 		products.setMaLoai(rs.getInt("maLoai"));
 		products.setTenSP(rs.getString("tenSP"));
 		products.setImage(rs.getString("image"));

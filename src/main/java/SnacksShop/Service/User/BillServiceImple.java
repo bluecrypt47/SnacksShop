@@ -30,11 +30,11 @@ public class BillServiceImple implements IBillService {
 	}
 
 	@Override
-	public void addBillDetails(HashMap<String, CartDTO> carts) {
+	public void addBillDetails(HashMap<Long, CartDTO> carts) {
 
 		int idBill = billDAO.getLastBill();
 
-		for (Map.Entry<String, CartDTO> itemCart : carts.entrySet()) {
+		for (Map.Entry<Long, CartDTO> itemCart : carts.entrySet()) {
 			BillDetails billDetails = new BillDetails();
 			billDetails.setIdBill(idBill);
 			billDetails.setIdProduct(itemCart.getValue().getProduct().getMaSP());
@@ -74,12 +74,13 @@ public class BillServiceImple implements IBillService {
 		//List<BillDetailsManagerDTO> listProductDetailsByIDBill = billDetailsManagerDAO.GetBillDetailsByIDBill(idBill);
 		return billDetailsManagerDAO.GetBillDetailsByIDBill(idBill);
 	}
-	
-	@Override
-	public List<Bill> deleteBillByID(int idBill) {
+
+	//-------------
+	public void delete(int id) {
+		billDAO.deleteBill(id);
 		
-		return billDAO.deleteBillByIDl(idBill);
 	}
+	//-------------
 
 	
 

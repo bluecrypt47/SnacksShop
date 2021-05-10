@@ -12,7 +12,7 @@ public class ProductsDTOMapper implements RowMapper<ProductsDTO> {
 	public ProductsDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 		ProductsDTO products = new ProductsDTO();
 		
-		products.setMaSP(rs.getString("maSP"));
+		products.setMaSP(rs.getLong("maSP"));
 		products.setMaLoai(rs.getInt("maLoai"));
 		products.setTenSP(rs.getString("tenSP"));
 		products.setImage(rs.getString("image"));

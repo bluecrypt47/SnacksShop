@@ -59,7 +59,7 @@
 												<td>${ item.name }</td>
 												<td>${ item.address }</td>
 												<td>${ item.phoneNumber }</td>
-												<td><a href="#" class="btn btn-mini btn-danger"
+												<td><a href="<c:url value="/deleteUser/${item.id}"/>" class="btn btn-mini btn-danger"
 													type="button"> <span class="icon-remove"></span>
 												</a></td>
 											</tr>

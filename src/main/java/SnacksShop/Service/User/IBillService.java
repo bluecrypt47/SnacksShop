@@ -18,7 +18,7 @@ public interface IBillService {
 	public int addBill(Bill bill);
 
 	// thêm billDetails
-	public void addBillDetails(HashMap<String, CartDTO> carts);
+	public void addBillDetails(HashMap<Long, CartDTO> carts);
 
 	// lấy bill và danh sách bill
 	public List<Bill> GetAllBills();
@@ -32,7 +32,5 @@ public interface IBillService {
 	//
 	//public BillDetailsManagerDTO GetBillDetailsByIDBill(int idBill);
 	public List<BillDetailsManagerDTO> GetBillDetailsByIDBill(int idBill);
-	
-	public List<Bill> deleteBillByID(int idBill);
 
 }

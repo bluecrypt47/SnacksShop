@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import SnacksShop.DTO.BillDetailsManagerDTO;
@@ -18,6 +19,9 @@ public class BillDAO extends BaseDAO {
 
 	@Autowired
 	ProductsDAO productsDAO = new ProductsDAO();
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
 	public int addBill(Bill bill) {
 		StringBuffer sql = new StringBuffer();
@@ -114,4 +118,10 @@ public class BillDAO extends BaseDAO {
 		return listProducts;
 	}
 	//------------------------------------------------
+
+	public void deleteBill(int id) {
+		String sql ="DELETE FROM `bill` WHERE id = "+id+"";
+		jdbcTemplate.update(sql);
+		
+	}
 }

@@ -14,7 +14,7 @@ public class ProductsDAO extends BaseDAO {
 	private final boolean YES = true;
 	private final boolean NO = false;
 
-	// Dùng Stringbuffer de co the truy van kep
+	// Dï¿½ng Stringbuffer de co the truy van kep
 	private StringBuffer SqlString() {
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
@@ -86,7 +86,7 @@ public class ProductsDAO extends BaseDAO {
 	}
 
 	// lay ra tat ca san pham co cung id san pham
-	private String SqlProductDetailsByID(String id) {
+	private String SqlProductDetailsByID(long id) {
 		StringBuffer sql = SqlString();
 
 		sql.append("WHERE maSP = N'" + id + "' ");
@@ -95,30 +95,36 @@ public class ProductsDAO extends BaseDAO {
 	}
 
 	// lay ra danh sach tat ca san pham co cung id san pham
-	public List<ProductsDTO> GetProductByID(String id) {
+	public List<ProductsDTO> GetProductByID(long id) {
 		String sql = SqlProductDetailsByID(id);
 		List<ProductsDTO> productDetails = _jdbcTemplate.query(sql, new ProductsDTOMapper());
 		return productDetails;
 	}
-	
-	// tim va xem chi tiet san pham bang id 
-	public ProductsDTO FindProductByID(String id) {
+
+	// tim va xem chi tiet san pham bang id
+	public ProductsDTO FindProductByID(long id) {
 		String sql = SqlProductDetailsByID(id);
 		ProductsDTO product = _jdbcTemplate.queryForObject(sql, new ProductsDTOMapper());
 		return product;
 	}
-	
+
 	// lay ra tat ca san pham
 	public List<ProductsDTO> GetAllProduct() {
 		String sql = "SELECT * FROM sanpham";
 		List<ProductsDTO> listAllProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
 		return listAllProducts;
 	}
-	
+
 	// tim kiem
 	public List<ProductsDTO> GetSearchProduct(String name) {
-		String sql = "SELECT * FROM `sanpham` WHERE tenSP LIKE '%"+name+"%'";
+		String sql = "SELECT * FROM `sanpham` WHERE tenSP LIKE '%" + name + "%'";
 		List<ProductsDTO> listAllProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
 		return listAllProducts;
+	}
+
+	public void addProduct(ProductsDTO productsDTO) {
+		String sql = "INSERT INTO `sanpham`(`maSP`,`maLoai`,`tenSP`,`image`, `giaBan`,`giamGia`,`gioiThieu`) VALUES ('?', '?', '?', '?', '?', '?', '?')";
+		_jdbcTemplate.update(sql, productsDTO.getMaSP(), productsDTO.getMaLoai(), productsDTO.getTenSP(),
+				productsDTO.getImage(), productsDTO.getGiaBan(), productsDTO.getGiamGia(), productsDTO.getGioiThieu());
 	}
 }

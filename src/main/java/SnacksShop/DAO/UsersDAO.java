@@ -3,6 +3,8 @@ package SnacksShop.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import SnacksShop.DTO.ProductsDTO;
@@ -13,6 +15,9 @@ import SnacksShop.Entity.Users;
 
 @Repository
 public class UsersDAO extends BaseDAO {
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
 	// them user vao DB
 	public int addAccount(Users user) {
@@ -44,14 +49,19 @@ public class UsersDAO extends BaseDAO {
 
 		return result;
 	}
-	
+
 	public List<Users> GetDataUsers() {
 		List<Users> listUsers = new ArrayList<Users>();
 
-		 String sql = "SELECT * FROM `users` ORDER BY idRoles DESC"; 
-		
+		String sql = "SELECT * FROM `users` ORDER BY idRoles DESC";
+
 		listUsers = _jdbcTemplate.query(sql, new MapperUsers());
 
 		return listUsers;
+	}
+
+	public void delete(int id) {
+		String sql = "DELETE FROM `users` WHERE id = "+id+"";
+		jdbcTemplate.update(sql);
 	}
 }

@@ -45,4 +45,8 @@ public class AccountServiecImple implements IAccountService{
 		return userDAO.GetDataUsers();
 	}
 
+	public void delete(int id) {
+		userDAO.delete(id);
+	}
+
 }

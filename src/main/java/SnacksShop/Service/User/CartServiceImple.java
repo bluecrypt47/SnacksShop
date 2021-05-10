@@ -14,27 +14,27 @@ public class CartServiceImple implements ICartService {
 	public CartDAO cartDAO = new CartDAO();
 
 	@Override
-	public HashMap<String, CartDTO> addCart(String id, HashMap<String, CartDTO> cart) {
+	public HashMap<Long, CartDTO> addCart(long id, HashMap<Long, CartDTO> cart) {
 		return cartDAO.addCart(id, cart);
 	}
 
 	@Override
-	public HashMap<String, CartDTO> editCart(String id, int quantity, HashMap<String, CartDTO> cart) {
+	public HashMap<Long, CartDTO> editCart(long id, int quantity, HashMap<Long, CartDTO> cart) {
 		return cartDAO.editCart(id, quantity, cart);
 	}
 
 	@Override
-	public HashMap<String, CartDTO> deleteCart(String id, HashMap<String, CartDTO> cart) {
+	public HashMap<Long, CartDTO> deleteCart(long id, HashMap<Long, CartDTO> cart) {
 		return cartDAO.deleteCart(id, cart);
 	}
 
 	@Override
-	public int totalQuantity(HashMap<String, CartDTO> cart) {
+	public int totalQuantity(HashMap<Long, CartDTO> cart) {
 		return cartDAO.totalQuantity(cart);
 	}
 
 	@Override
-	public double totalPrice(HashMap<String, CartDTO> cart) {
+	public double totalPrice(HashMap<Long, CartDTO> cart) {
 		return cartDAO.totalPrice(cart);
 	}
 }

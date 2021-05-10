@@ -2,8 +2,11 @@ package SnacksShop.UserController;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,15 +15,29 @@ import org.springframework.web.servlet.ModelAndView;
 
 import SnacksShop.DAO.ProductsDAO;
 import SnacksShop.DTO.ProductsDTO;
+import SnacksShop.Service.User.AccountServiecImple;
+import SnacksShop.Service.User.BillServiceImple;
 import SnacksShop.Service.User.IBillService;
+import SnacksShop.Service.User.ProductDetailsServiceImple;
 
 @Controller
 public class HomeController extends BaseController {
 	@Autowired
 	ProductsDAO _ProductsDAO;
-	
+
 	@Autowired
 	private IBillService _billService;
+
+	@Autowired
+	AccountServiecImple accountServiecImple = new AccountServiecImple();
+
+	@Autowired
+	BillServiceImple billServiceImple = new BillServiceImple();
+
+	// -------------------
+	@Autowired
+	ProductDetailsServiceImple productDetailsServiceImple = new ProductDetailsServiceImple();
+	// -----------------------
 
 	@RequestMapping(value = { "/", "/trang-chu" })
 	public ModelAndView Index() {
@@ -43,14 +60,14 @@ public class HomeController extends BaseController {
 		_mvShare.setViewName("user/products/allProducts");
 		return _mvShare;
 	}
-	
+
 	@RequestMapping(value = "/gioi-thieu")
 	public ModelAndView aboutUs() {
 
 		_mvShare.setViewName("user/aboutUS");
 		return _mvShare;
 	}
-	
+
 	@RequestMapping(value = "/lien-he")
 	public ModelAndView contact() {
 
@@ -75,6 +92,17 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
+	// xóa user
+	@RequestMapping(value = "/deleteUser/{id}")
+	public String deleteUser(@PathVariable int id, Model model, HttpServletRequest request) {
+
+		accountServiecImple.delete(id);
+
+		model.addAttribute("listUser", accountServiecImple.GetDataUsers());
+
+		return "redirect:" + request.getHeader("Referer");
+	}
+
 	// ---Products---
 	@RequestMapping(value = { "/quan-ly-san-pham" })
 	public ModelAndView productsManager() {
@@ -83,6 +111,27 @@ public class HomeController extends BaseController {
 		_mvShare.setViewName("admin/productsManager/products");
 		return _mvShare;
 	}
+
+	@RequestMapping(value = { "/them-san-pham" })
+	public ModelAndView index() {
+
+		// model.addAttribute("addProduct", new ProductsDTO());
+
+		_mvShare.setViewName("admin/productsManager/addProduct");
+		return _mvShare;
+	}
+
+	// ------------------------------------
+
+	@RequestMapping(value = { "/addProduct" })
+	public String addProduct(Model model, HttpServletRequest request) {
+
+		model.addAttribute("addProduct", new ProductsDTO());
+
+		_mvShare.setViewName("admin/productsManager/addProduct");
+		return "redirect:" + request.getHeader("Referer");
+	}
+	// ------------------------------------
 
 	// Bill
 	@RequestMapping(value = { "/quan-ly-hoa-don" })
@@ -93,14 +142,25 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
+	// chi tiết bill
 	@RequestMapping(value = { "/quan-ly-chi-tiet-hoa-don/{id}" })
 	public ModelAndView billsManagerDetails(@PathVariable int id) {
-		
+
 		_mvShare.setViewName("admin/billManager/billManagerDetaills");
 		_mvShare.addObject("billDetails", _billService.GetBillDetailsByIDBill(id));
 		return _mvShare;
 	}
 
+	// xóa Bill
+	@RequestMapping(value = "/deleteBill/{id}")
+	public String deleteBill(@PathVariable int id, Model model, HttpServletRequest request) {
+
+		billServiceImple.delete(id);
+
+		model.addAttribute("listBill", billServiceImple.GetAllBills());
+
+		return "redirect:" + request.getHeader("Referer");
+	}
 	//
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)

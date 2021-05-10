@@ -41,11 +41,11 @@ public class CartController extends BaseController {
 	}
 
 	@RequestMapping(value = "AddCart/{id}")
-	public String addcart(HttpServletRequest request, HttpSession session, @PathVariable String id) {
-		HashMap<String, CartDTO> cart = (HashMap<String, CartDTO>) session.getAttribute("Cart");
+	public String addcart(HttpServletRequest request, HttpSession session, @PathVariable long id) {
+		HashMap<Long, CartDTO> cart = (HashMap<Long, CartDTO>) session.getAttribute("Cart");
 
 		if (cart == null) {
-			cart = new HashMap<String, CartDTO>();
+			cart = new HashMap<Long, CartDTO>();
 		}
 		cart = cartServiceImple.addCart(id, cart);
 		session.setAttribute("Cart", cart);
@@ -56,12 +56,12 @@ public class CartController extends BaseController {
 	}
 
 	@RequestMapping(value = "EditCart/{id}/{quantity}")
-	public String editCart(HttpServletRequest request, HttpSession session, @PathVariable String id,
+	public String editCart(HttpServletRequest request, HttpSession session, @PathVariable long id,
 			@PathVariable int quantity) {
-		HashMap<String, CartDTO> cart = (HashMap<String, CartDTO>) session.getAttribute("Cart");
+		HashMap<Long, CartDTO> cart = (HashMap<Long, CartDTO>) session.getAttribute("Cart");
 
 		if (cart == null) {
-			cart = new HashMap<String, CartDTO>();
+			cart = new HashMap<Long, CartDTO>();
 		}
 		cart = cartServiceImple.editCart(id, quantity, cart);
 		session.setAttribute("Cart", cart);
@@ -72,11 +72,11 @@ public class CartController extends BaseController {
 	}
 
 	@RequestMapping(value = "DeleteCart/{id}")
-	public String deleteCart(HttpServletRequest request, HttpSession session, @PathVariable String id) {
-		HashMap<String, CartDTO> cart = (HashMap<String, CartDTO>) session.getAttribute("Cart");
+	public String deleteCart(HttpServletRequest request, HttpSession session, @PathVariable long id) {
+		HashMap<Long, CartDTO> cart = (HashMap<Long, CartDTO>) session.getAttribute("Cart");
 
 		if (cart == null) {
-			cart = new HashMap<String, CartDTO>();
+			cart = new HashMap<Long, CartDTO>();
 		}
 		cart = cartServiceImple.deleteCart(id, cart);
 		session.setAttribute("Cart", cart);
@@ -124,7 +124,7 @@ public class CartController extends BaseController {
 		bill.setTotal((double)session.getAttribute("TotalPriceCart"));
 		
 		if(billServiceImple.addBill(bill) > 0) {
-			HashMap<String, CartDTO> carts = (HashMap<String, CartDTO>)session.getAttribute("Cart");
+			HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>)session.getAttribute("Cart");
 			billServiceImple.addBillDetails(carts);
 		}
 		

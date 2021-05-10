@@ -17,8 +17,10 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<ul class="breadcrumb">
-							<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span class="divider">/</span></li>
-							<li><a href="<c:url value="/quan-tri"/>">Trang quản trị</a> <span class="divider">/</span></li>
+							<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span
+								class="divider">/</span></li>
+							<li><a href="<c:url value="/quan-tri"/>">Trang quản trị</a>
+								<span class="divider">/</span></li>
 							<li class="active">Quản lý hóa đơn</li>
 						</ul>
 						<h1 class="page-header">Quản Lý Hóa Đơn</h1>
@@ -61,14 +63,15 @@
 													<td>${ item.quantity }</td>
 													<td><fmt:formatNumber type="number"
 															groupingUsed="true" value="${ item.total }" /> ₫</td>
-													<%-- <c:url  value="/DeleteCart/${ item.key }"/> --%>
 													<td><a
 														href="<c:url value="/quan-ly-chi-tiet-hoa-don/${ item.id }"/>"
 														class="btn btn-mini btn-danger" type="button"> <span
 															class="icon-search"></span>
 													</a></td>
-													<td><a href="#" class="btn btn-mini btn-danger"
-														type="button"> <span class="icon-remove"></span>
+													<td><a
+														href="<c:url value="/deleteBill/${ item.id }"/>"
+														class="btn btn-mini btn-danger" type="button"> <span
+															class="icon-remove"></span>
 													</a></td>
 												</tr>
 											</c:forEach>

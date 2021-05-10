@@ -15,7 +15,7 @@ public class ProductDetailsController extends BaseController {
 	private IProductDetailsService _productDetailsService;
 
 	@RequestMapping(value = { "san-pham/chi-tiet-san-pham/{id}", "chi-tiet-san-pham/{id}" })
-	public ModelAndView Index(@PathVariable String id) {
+	public ModelAndView Index(@PathVariable long id) {
 
 		_mvShare.setViewName("user/products/productDetail");
 		_mvShare.addObject("productDetail", _productDetailsService.GetProductByID(id));

@@ -3,7 +3,7 @@ package SnacksShop.Entity;
 
 public class BillDetails {
 	private int id;
-	private String idProduct;
+	private long idProduct;
 	private int idBill;
 	private int quantity;
 	private double total;
@@ -20,11 +20,11 @@ public class BillDetails {
 		this.id = id;
 	}
 
-	public String getIdProduct() {
+	public long getIdProduct() {
 		return idProduct;
 	}
 
-	public void setIdProduct(String idProduct) {
+	public void setIdProduct(long idProduct) {
 		this.idProduct = idProduct;
 	}
 

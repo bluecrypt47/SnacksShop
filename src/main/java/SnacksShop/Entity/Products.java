@@ -3,7 +3,7 @@ package SnacksShop.Entity;
 import java.sql.Date;
 
 public class Products {
-	private String maSP;
+	private long maSP;
 	private int maLoai;
 	private String tenSP;
 	private String image;
@@ -19,11 +19,11 @@ public class Products {
 		super();
 	}
 
-	public String getMaSP() {
+	public long getMaSP() {
 		return maSP;
 	}
 
-	public void setMaSP(String maSP) {
+	public void setMaSP(long maSP) {
 		this.maSP = maSP;
 	}
 

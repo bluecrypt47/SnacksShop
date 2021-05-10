@@ -16,7 +16,7 @@ public class CartDAO extends BaseDAO {
 	ProductsDAO productsDAO = new ProductsDAO();
 
 	// Ham nay dung de them cac san pham co trong gio hang
-	public HashMap<String, CartDTO> addCart(String id, HashMap<String, CartDTO> cart) {
+	public HashMap<Long, CartDTO> addCart(long id, HashMap<Long, CartDTO> cart) {
 		CartDTO itemCart = new CartDTO();
 		
 		// Su dung FindProductByID(id); cua ham ProductsDAO de co the tim kiem san pham theo id cua no 
@@ -40,7 +40,7 @@ public class CartDAO extends BaseDAO {
 	}
 
 	// Sua lai so luong
-	public HashMap<String, CartDTO> editCart(String id, int quantity, HashMap<String, CartDTO> cart) {
+	public HashMap<Long, CartDTO> editCart(long id, int quantity, HashMap<Long, CartDTO> cart) {
 		CartDTO itemCart = new CartDTO();
 
 		if (cart == null) {
@@ -60,7 +60,7 @@ public class CartDAO extends BaseDAO {
 	}
 
 	// Xoa san pham 
-	public HashMap<String, CartDTO> deleteCart(String id, HashMap<String, CartDTO> cart) {
+	public HashMap<Long, CartDTO> deleteCart(long id, HashMap<Long, CartDTO> cart) {
 		CartDTO itemCart = new CartDTO();
 
 		if (cart == null) {
@@ -74,11 +74,11 @@ public class CartDAO extends BaseDAO {
 	}
 
 	// Tinh tong so luong
-	public int totalQuantity(HashMap<String, CartDTO> cart) {
+	public int totalQuantity(HashMap<Long, CartDTO> cart) {
 
 		int totalQua = 0;
 
-		for (Map.Entry<String, CartDTO> itemCart : cart.entrySet()) {
+		for (Map.Entry<Long, CartDTO> itemCart : cart.entrySet()) {
 			totalQua += itemCart.getValue().getQuantity();
 		}
 
@@ -86,11 +86,11 @@ public class CartDAO extends BaseDAO {
 	}
 
 	// Tong gia
-	public double totalPrice(HashMap<String, CartDTO> cart) {
+	public double totalPrice(HashMap<Long, CartDTO> cart) {
 
 		double totalPri = 0;
 
-		for (Map.Entry<String, CartDTO> itemCart : cart.entrySet()) {
+		for (Map.Entry<Long, CartDTO> itemCart : cart.entrySet()) {
 			totalPri += itemCart.getValue().getTotalPrice();
 		}
 

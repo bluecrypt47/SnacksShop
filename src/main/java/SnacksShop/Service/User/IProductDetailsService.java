@@ -8,7 +8,7 @@ import SnacksShop.DTO.ProductsDTO;
 
 @Service
 public interface IProductDetailsService {
-	public ProductsDTO GetProductByID(String id);
+	public ProductsDTO GetProductByID(long id);
 	public List<ProductsDTO> GetProductByIDType(int id);
 	//
 	public ProductsDTO GetProductName(String name);

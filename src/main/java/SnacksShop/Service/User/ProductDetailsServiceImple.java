@@ -15,7 +15,7 @@ public class ProductDetailsServiceImple implements IProductDetailsService{
 	ProductsDAO productsDAO = new ProductsDAO();
 	
 	@Override
-	public ProductsDTO GetProductByID(String id) {
+	public ProductsDTO GetProductByID(long id) {
 		
 		List<ProductsDTO> listProductDetails = productsDAO.GetProductByID(id);
 		
@@ -38,6 +38,10 @@ public class ProductDetailsServiceImple implements IProductDetailsService{
 	public ProductsDTO GetProductName(String name) {
 		List<ProductsDTO> listProductDetails = productsDAO.GetSearchProduct(name);
 		return listProductDetails.get(2);
+	}
+	
+	public void add(ProductsDTO productDTO) {
+		productsDAO.addProduct(productDTO);
 	}
 
 }
