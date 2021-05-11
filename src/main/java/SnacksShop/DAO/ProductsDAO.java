@@ -3,6 +3,8 @@ package SnacksShop.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import SnacksShop.DTO.ProductsDTO;
@@ -10,6 +12,9 @@ import SnacksShop.DTO.ProductsDTOMapper;
 
 @Repository
 public class ProductsDAO extends BaseDAO {
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
 	private final boolean YES = true;
 	private final boolean NO = false;
@@ -121,10 +126,30 @@ public class ProductsDAO extends BaseDAO {
 		List<ProductsDTO> listAllProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
 		return listAllProducts;
 	}
+	
+	// xóa
+	public void delete(int id) {
+		String sql = "DELETE FROM `sanpham` WHERE maSP = '" + id + "'";
+		_jdbcTemplate.update(sql);
+		
+	}
 
+	//----------------------------------------------1
 	public void addProduct(ProductsDTO productsDTO) {
 		String sql = "INSERT INTO `sanpham`(`maSP`,`maLoai`,`tenSP`,`image`, `giaBan`,`giamGia`,`gioiThieu`) VALUES ('?', '?', '?', '?', '?', '?', '?')";
 		_jdbcTemplate.update(sql, productsDTO.getMaSP(), productsDTO.getMaLoai(), productsDTO.getTenSP(),
 				productsDTO.getImage(), productsDTO.getGiaBan(), productsDTO.getGiamGia(), productsDTO.getGioiThieu());
 	}
+	//----------------------------------------------
+
+	
+	//----------------------------------------------2
+	
+
+	public ProductsDTO findByName(String name) {
+		String sql ="SELECT * FROM `sanpham` WHERE tenSP LIKE '%"+name+"%'";
+		 return jdbcTemplate.queryForObject(sql, new ProductsDTOMapper());
+	}
+	
+	//----------------------------------------------
 }

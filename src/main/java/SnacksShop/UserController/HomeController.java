@@ -1,7 +1,5 @@
 package SnacksShop.UserController;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import SnacksShop.DAO.ProductsDAO;
@@ -121,17 +118,36 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
-	// ------------------------------------
+	// ------------------------------------1
 
-	@RequestMapping(value = { "/addProduct" })
+	@RequestMapping(value = { "/addProduct" }, method = RequestMethod.GET)
 	public String addProduct(Model model, HttpServletRequest request) {
 
-		model.addAttribute("addProduct", new ProductsDTO());
+		model.addAttribute("addProducts", new ProductsDTO());
 
 		_mvShare.setViewName("admin/productsManager/addProduct");
 		return "redirect:" + request.getHeader("Referer");
 	}
 	// ------------------------------------
+	
+	// ------------------------------------2
+	@RequestMapping("/search/{name}")
+	  public String viewCustomer(@PathVariable String name, Model model) {
+	    ProductsDTO productsDTO = productDetailsServiceImple.findByName(name);
+	    model.addAttribute("search", productsDTO);
+	    return "tat-ca-san-pham";
+	  }
+	// ------------------------------------
+
+	@RequestMapping(value = "/deleteProduct/{id}")
+	public String deleteProduct(@PathVariable int id, Model model, HttpServletRequest request) {
+
+		productDetailsServiceImple.delete(id);
+
+		model.addAttribute("listProduct", _homeService.GetAllProducts());
+
+		return "redirect:" + request.getHeader("Referer");
+	}
 
 	// Bill
 	@RequestMapping(value = { "/quan-ly-hoa-don" })
@@ -160,11 +176,5 @@ public class HomeController extends BaseController {
 		model.addAttribute("listBill", billServiceImple.GetAllBills());
 
 		return "redirect:" + request.getHeader("Referer");
-	}
-	//
-
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public List<ProductsDTO> searchProduct(@RequestParam(value = "searchName") String searchName) {
-		return _ProductsDAO.GetSearchProduct(searchName);
 	}
 }

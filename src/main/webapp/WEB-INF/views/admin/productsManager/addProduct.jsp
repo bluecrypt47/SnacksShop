@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <head>
 <meta charset="UTF-8">
@@ -41,19 +40,12 @@
 						sản phẩm</a> <span class="divider">/</span></li>
 				<li class="active">Thêm sản phẩm</li>
 			</ul>
-			<div class="well">
-				<form:form action=" /addProduct"  class="form-horizontal"
-					method="POST" modelAttribute="addProduct">
-					<h3>Thêm Sản Phẩm</h3>
+			<div class="well" >
+				<h2 style="text-align: center;">Thêm Sản Phẩm</h2><br>
+				<form:form action=" addProduct" class="form-horizontal"
+					method="POST" modelAttribute="addProducts" >
 					<div class="control-group">
-						<label class="control-label">Mã sản phẩm <sup>*</sup></label>
-						<div class="controls">
-							<%-- <form:input  type="text" placeholder=" VD: BA001,..." path="maSP"/> --%>
-							<input type="text" placeholder=" VD: BA001,...">
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">Loại sản phẩm <sup>*</sup></label>
+						<label class="control-label" >Loại sản phẩm <sup>*</sup></label>
 						<div class="controls">
 							<%-- <form:input  type="text" placeholder=" VD: Bánh,..." path="maLoai"/> --%>
 							<input type="text" placeholder=" VD: Bánh,...">
@@ -88,7 +80,7 @@
 						<div class="controls">
 							<%-- <form:input path="giamGia" type="text"
 								placeholder=" VD: Có thể không cần điền!" /> --%>
-							<input type="text" placeholder=" VD: Có thể không cần điền!">
+							<input type="text" placeholder=" Có thể để trống!">
 						</div>
 					</div>
 					<div class="control-group">
@@ -96,7 +88,8 @@
 						<div class="controls">
 							<%-- <form:input path="gioiThieu" type="text" maxlength="1000"
 								placeholder=" " /> --%>
-							<input type="text" maxlength="1000"  placeholder=" ">
+							<input type="text" maxlength="1000"
+								placeholder=" Có thể để trống!">
 						</div>
 					</div>
 
@@ -109,8 +102,6 @@
 					</div>
 				</form:form>
 			</div>
-
-
 		</div>
 	</div>
 </body>
