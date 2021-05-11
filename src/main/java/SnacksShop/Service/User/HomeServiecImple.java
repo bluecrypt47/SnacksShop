@@ -56,4 +56,9 @@ public class HomeServiecImple implements IHomeService {
 		return listAllProducts;
 	}
 
+	public List<ProductsDTO> GetDataProductsViewNew() {
+		List<ProductsDTO> listProducts = productsDAO.GetDataProductsViewNew();
+		return listProducts;
+	}
+
 }

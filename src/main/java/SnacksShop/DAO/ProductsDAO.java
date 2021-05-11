@@ -152,4 +152,23 @@ public class ProductsDAO extends BaseDAO {
 	}
 	
 	//----------------------------------------------
+	
+	//----------------------------------------------3
+	private String SqlProductsViewNew(boolean sanPhamMoi) {
+		StringBuffer sql = SqlString();
+		if (sanPhamMoi) {
+			sql.append("WHERE sanPhamMoi = true ");
+		}
+		sql.append("ORDER BY RAND() ");
+		sql.append("LIMIT 6 ");
+		return sql.toString();
+	}
+	
+	public List<ProductsDTO> GetDataProductsViewNew() {
+		String sql = SqlProductsViewNew(YES);
+		List<ProductsDTO> listProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
+		return listProducts;
+	}
+		
+	//----------------------------------------------
 }

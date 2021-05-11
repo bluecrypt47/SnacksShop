@@ -47,6 +47,7 @@ public class HomeController extends BaseController {
 		_mvShare.addObject("slides", _homeService.GetDataSlide());
 		_mvShare.addObject("catogorys", _homeService.GetDataCatogorys());
 		_mvShare.addObject("products", _homeService.GetDataProducts());
+		_mvShare.addObject("viewProductsNew", _homeService.GetDataProductsViewNew());
 		_mvShare.addObject("searchProducts", _homeService.GetSearchProducts(name));
 
 		_mvShare.setViewName("user/index");
