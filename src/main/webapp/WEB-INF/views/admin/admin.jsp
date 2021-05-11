@@ -338,7 +338,7 @@ table.dataTable thead .sorting:after {
 }
 
 .huge {
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .panel-green {

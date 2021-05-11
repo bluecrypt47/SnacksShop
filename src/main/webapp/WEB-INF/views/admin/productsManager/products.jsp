@@ -29,8 +29,7 @@
 							<form:form method="get">
 								<div style="text-align: right;">
 									<a href="<c:url value="/them-san-pham"/>"><button
-											name="button" type="button">Thêm sản phẩm</button></a> <a href=""><button
-											name="button" type="button">Sửa sản phẩm</button></a>
+											name="button" type="button">Thêm sản phẩm</button></a>
 								</div>
 							</form:form>
 						</h1>
@@ -56,6 +55,7 @@
 												<th>Giới Thiệu</th>
 												<th>Sản Phẩm Nổi Bật</th>
 												<th>Sản Phẩm Mới</th>
+												<th>Sửa</th>
 												<th>Xóa</th>
 											</tr>
 										</thead>
@@ -87,6 +87,9 @@
 													<c:if test="${ item.sanPhamMoi == false }">
 														<td></td>
 													</c:if>
+													<td><a href="<c:url value="/sua-san-pham"/>" " class="btn btn-mini btn-danger"
+														type="button"> <span class="icon-edit"></span>
+													</a></td>
 													<td><a
 														href="<c:url value="/deleteProduct/${item.maSP}"/>"
 														" class="btn btn-mini btn-danger" type="button"> <span

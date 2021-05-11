@@ -5,7 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 
 <!DOCTYPE html>
@@ -40,29 +41,32 @@
 			<div class="container">
 				<div class="alignR">
 					<div class="pull-left socialNw">
-						<a href="#"><span class="icon-twitter"></span></a> <a href="#"><span
-							class="icon-facebook"></span></a> <a href="#"><span
+						<a href="<c:url value="https://twitter.com/"/>"><span
+							class="icon-twitter"></span></a> <a
+							href="<c:url value="https://www.facebook.com/chuong.le.bluec/"/>"><span
+							class="icon-facebook"></span></a> <a
+							href="<c:url value="https://www.youtube.com/"/>"><span
 							class="icon-youtube"></span></a> <a href="#"><span
 							class="icon-tumblr"></span></a>
 					</div>
-					<a class="active" href="<c:url value="/trang-chu"/>"> <span class="icon-home"></span>
-						Trang chủ
-					</a> 
+					<a class="active" href="<c:url value="/trang-chu"/>"> <span
+						class="icon-home"></span> Trang chủ
+					</a>
 					<c:if test="${ not empty loginInfo }">
 						<a href="#"><span class="icon-user"></span>${ loginInfo.name }
 							<a href="<c:url value="/dang-xuat"/>"><span class="icon-edit"></span>Đăng
-								xuất </a>
-						<c:if test="${ loginInfo.idRoles == true }">
-							<a href="<c:url value="/quan-tri"/>"><span class="icon-user"></span> Quản trị</a>
-						</c:if>
+								xuất </a> <c:if test="${ loginInfo.idRoles == true }">
+								<a href="<c:url value="/quan-tri"/>"><span class="icon-user"></span>
+									Quản trị</a>
+							</c:if>
 					</c:if>
 
 					<c:if test="${ empty loginInfo }">
 						<a href="<c:url value="/dang-ky"/>"><span class="icon-edit"></span>
 							Đăng nhập- Đăng ký </a>
 					</c:if>
-					<a href="<c:url value="/lien-he"/>"><span class="icon-envelope"></span> Liên
-						hệ</a><a href="<c:url value="/gio-hang"/>"><span
+					<a href="<c:url value="/lien-he"/>"><span class="icon-envelope"></span>
+						Liên hệ</a><a href="<c:url value="/gio-hang"/>"><span
 						class="icon-shopping-cart"></span> ${ TotalQuantityCart } Sản phẩm
 						- <span class="badge badge-warning"><fmt:formatNumber
 								type="number" groupingUsed="true" value="${TotalPriceCart}" />₫</span></a>

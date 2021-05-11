@@ -8,8 +8,7 @@ Clients
 -->
 <section class="our_client">
 	<hr class="soften" />
-	<h4 class="title cntr">
-	</h4>
+	<h4 class="title cntr"></h4>
 	<!-- <hr class="soften" />
 	<div class="row">
 		<div class="span2">
@@ -41,14 +40,15 @@ Footer
 		<div class="span2">
 			<h5>Tài Khoản Của Bạn</h5>
 			<a href="#">TÀI KHOẢN CỦA BẠN</a><br> <a href="#">CÁ NHÂN
-				THÔNG TIN</a><br> <a href="<c:url value="/lien-he"/>">ĐỊA CHỈ</a><br> <a href="#">GIẢM
-				GIÁ</a><br> <a href="#">LỊCH SỬ ĐẶT HÀNG</a><br>
+				THÔNG TIN</a><br> <a href="<c:url value="/lien-he"/>">ĐỊA CHỈ</a><br>
+			<a href="#">GIẢM GIÁ</a><br> <a href="#">LỊCH SỬ ĐẶT HÀNG</a><br>
 		</div>
 		<div class="span2">
 			<h5>Thông Tin</h5>
-			<a href="<c:url value="/lien-he"/>">LIÊN LẠC</a><br> <a href="<c:url value="/lien-he"/>">BẢN ĐỒ</a><br>
-			<a href="#">THÔNG TIN PHÁP LÝ</a><br> <a href="#">ĐIỀU KHOẢN</a><br>
-			<a href="<c:url value="/gioi-thieu"/>">GIỚI THIỆU</a><br>
+			<a href="<c:url value="/lien-he"/>">LIÊN LẠC</a><br> <a
+				href="<c:url value="/lien-he"/>">BẢN ĐỒ</a><br> <a href="#">THÔNG
+				TIN PHÁP LÝ</a><br> <a href="#">ĐIỀU KHOẢN</a><br> <a
+				href="<c:url value="/gioi-thieu"/>">GIỚI THIỆU</a><br>
 		</div>
 		<div class="span2">
 			<h5>Ưu Đãi</h5>
@@ -58,11 +58,18 @@ Footer
 		</div>
 		<div class="span6">
 			<h5>Mô tả Website</h5>
-			Website được là ra bởi nhu cầu thị trường với mục đích số hóa mua- bán
-			hàng một cách dễ dàng và thuận tiện trong thời điểm dịch bệnh hiện nay.
-			“Website bán thức ăn vặt” để khách hàng có thể chọn mua trực tiếp trên 
-			bất kỳ thiết bị nào có thể truy cập vào mạng. Và được phát triển bởi nhóm TCL...
+			Website được là ra bởi nhu cầu thị trường với mục đích số hóa mua-
+			bán hàng một cách dễ dàng và thuận tiện trong thời điểm dịch bệnh
+			hiện nay. “Website bán thức ăn vặt” để khách hàng có thể chọn mua
+			trực tiếp trên bất kỳ thiết bị nào có thể truy cập vào mạng. Và được
+			phát triển bởi nhóm TCL...
 		</div>
 	</div>
+
+	<script src="assets/user/js/jquery.js"></script>
+	<script src="assets/user/js/bootstrap.min.js"></script>
+	<script src="assets/user/js/jquery.easing-1.3.min.js"></script>
+	<script src="assets/user/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+	<script src="assets/user/js/shop.js"></script>
 </footer>
 

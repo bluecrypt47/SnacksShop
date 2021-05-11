@@ -1,10 +1,12 @@
 package SnacksShop.UserController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import SnacksShop.DAO.ProductsDAO;
 import SnacksShop.DTO.ProductsDTO;
+import SnacksShop.Entity.Users;
 import SnacksShop.Service.User.AccountServiecImple;
 import SnacksShop.Service.User.BillServiceImple;
 import SnacksShop.Service.User.IBillService;
@@ -121,22 +124,48 @@ public class HomeController extends BaseController {
 	// ------------------------------------1
 
 	@RequestMapping(value = { "/addProduct" }, method = RequestMethod.GET)
-	public String addProduct(Model model, HttpServletRequest request) {
+	public ModelAndView addProduct() {
 
-		model.addAttribute("addProducts", new ProductsDTO());
-
+		_mvShare.addObject("addProducts", new ProductsDTO());
 		_mvShare.setViewName("admin/productsManager/addProduct");
-		return "redirect:" + request.getHeader("Referer");
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = { "/addProduct" }, method = RequestMethod.POST)
+	public ModelAndView createProduct(@ModelAttribute("addProducts") ProductsDTO addProducts) {
+		_mvShare.setViewName("admin/productsManager/addProduct");
+		return _mvShare;
 	}
 	// ------------------------------------
-	
+
 	// ------------------------------------2
-	@RequestMapping("/search/{name}")
-	  public String viewCustomer(@PathVariable String name, Model model) {
-	    ProductsDTO productsDTO = productDetailsServiceImple.findByName(name);
-	    model.addAttribute("search", productsDTO);
-	    return "tat-ca-san-pham";
-	  }
+	@RequestMapping(value = "/search/{name}")
+	public String searchProduct(@PathVariable String name, Model model) {
+		ProductsDTO productsDTO = productDetailsServiceImple.findByName(name);
+		model.addAttribute("search", productsDTO);
+		return "tat-ca-san-pham";
+	}
+	// ------------------------------------
+
+	// ------------------------------------3
+	@RequestMapping(value = "/sua-san-pham", method = RequestMethod.GET)
+	public ModelAndView editProduct(HttpServletRequest request, HttpSession session) {
+		_mvShare.setViewName("admin/productsManager/editProduct");
+		//---------------------------
+		/*
+		 * ProductsDTO productsDTO = new ProductsDTO(); ProductsDTO infoProduct =
+		 * (ProductsDTO)session.getAttribute("infoProduct"); if(infoProduct != null) {
+		 * productsDTO.setMaLoai(infoProduct.getMaLoai());
+		 * productsDTO.setTenSP(infoProduct.getTenSP());
+		 * productsDTO.setImage(infoProduct.getImage());
+		 * productsDTO.setGiaBan(infoProduct.getGiaBan());
+		 * productsDTO.setGiamGia(infoProduct.getGiamGia()); }
+		 * 
+		 * _mvShare.addObject("productsDTO", productsDTO);
+		 */
+		//---------------------------
+		return _mvShare;
+	}
 	// ------------------------------------
 
 	@RequestMapping(value = "/deleteProduct/{id}")
