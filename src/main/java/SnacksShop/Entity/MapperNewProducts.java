@@ -16,6 +16,7 @@ public class MapperNewProducts implements RowMapper<Products> {
 		products.setTenSP(rs.getString("tenSP"));
 		products.setImage(rs.getString("image"));
 		products.setNgayTao(rs.getDate("ngayTao"));
+		products.setDvt(rs.getString("dvt"));
 		products.setNgayCapNhat(rs.getDate("ngayCapNhat"));
 		products.setGiaBan(rs.getDouble("giaBan"));
 		products.setGiamGia(rs.getInt("giamGia"));

@@ -32,6 +32,7 @@ Body Section
 							<th>Tên sản phẩm</th>
 							<th>Mô tả</th>
 							<th>Giá bán</th>
+							<th>ĐVT</th>
 							<th>Số lượng</th>
 							<th>Chỉnh sửa</th>
 							<th>Xóa</th>
@@ -49,6 +50,7 @@ Body Section
 								<td>${ item.value.product.gioiThieu }</td>
 								<td><fmt:formatNumber type="number" groupingUsed="true"
 										value="${ item.value.product.giaBan }" /> ₫</td>
+										<td>${ item.value.product.dvt }</td>
 								<td><input type="number" min="0" max="100" class="span1"
 									style="max-width: 34px" placeholder="1"
 									id="quantity-cart-${ item.key }" size="16" type="text"

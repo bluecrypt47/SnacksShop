@@ -8,12 +8,21 @@ public class Products {
 	private String tenSP;
 	private String image;
 	private Date ngayTao;
+	private String dvt;
 	private Date ngayCapNhat;
 	private double giaBan;
 	private int giamGia;
 	private String gioiThieu;
 	private boolean noiBat;
 	private boolean sanPhamMoi;
+
+	public String getDvt() {
+		return dvt;
+	}
+
+	public void setDvt(String dvt) {
+		this.dvt = dvt;
+	}
 
 	public Products() {
 		super();

@@ -8,6 +8,7 @@ public class ProductsDTO {
 	private String tenSP;
 	private String image;
 	private Date ngayTao;
+	private String dvt;
 	private Date ngayCapNhat;
 	private double giaBan;
 	private int giamGia;
@@ -57,6 +58,14 @@ public class ProductsDTO {
 
 	public void setNgayTao(Date ngayTao) {
 		this.ngayTao = ngayTao;
+	}
+
+	public String getDvt() {
+		return dvt;
+	}
+
+	public void setDvt(String dvt) {
+		this.dvt = dvt;
 	}
 
 	public Date getNgayCapNhat() {

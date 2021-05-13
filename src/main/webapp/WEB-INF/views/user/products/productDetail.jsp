@@ -66,7 +66,7 @@ Body Section
 							<div class="control-group">
 								<label class="control-label"><span><fmt:formatNumber
 											type="number" groupingUsed="true"
-											value="${productDetail.giaBan}" /> ₫</span></label>
+											value="${productDetail.giaBan}" /> ₫/ ${ productDetail.dvt }</span></label>
 								<!-- <div class="controls">
 									<input type="number" min="0" value="0" class="span6">
 								</div> -->

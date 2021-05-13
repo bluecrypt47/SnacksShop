@@ -151,14 +151,14 @@ Body Section
 										<div class="caption">
 											<h5>${ item.tenSP }</h5>
 											<h4>
-												<a class="defaultBtn"
+												<%-- <a class="defaultBtn"
 													href="san-pham/chi-tiet-san-pham/${item.maSP}"
-													title="Nhấn để xem"><span class="icon-zoom-in"></span></a>
+													title="Nhấn để xem"><span class="icon-zoom-in"></span></a> --%>
 												<a class="shopBtn"
 													href="<c:url value="/AddCart/${ item.maSP }"/>"
 													title="Thêm vào giỏ"><span class="icon-plus"></span></a> <span
 													class="pull-right"> <fmt:formatNumber type="number"
-														groupingUsed="true" value="${item.giaBan}" /> ₫
+														groupingUsed="true" value="${item.giaBan}" /> ₫/ ${ item.dvt }
 												</span>
 											</h4>
 										</div>

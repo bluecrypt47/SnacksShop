@@ -133,12 +133,28 @@ public class ProductsDAO extends BaseDAO {
 		_jdbcTemplate.update(sql);
 		
 	}
+	
+	private String SqlProductsViewNew(boolean sanPhamMoi) {
+		StringBuffer sql = SqlString();
+		if (sanPhamMoi) {
+			sql.append("WHERE sanPhamMoi = true ");
+		}
+		sql.append("ORDER BY RAND() ");
+		sql.append("LIMIT 7 ");
+		return sql.toString();
+	}
+	
+	public List<ProductsDTO> GetDataProductsViewNew() {
+		String sql = SqlProductsViewNew(YES);
+		List<ProductsDTO> listProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
+		return listProducts;
+	}
 
 	//----------------------------------------------1
 	public void addProduct(ProductsDTO productsDTO) {
-		String sql = "INSERT INTO `sanpham`(`maSP`,`maLoai`,`tenSP`,`image`, `giaBan`,`giamGia`,`gioiThieu`) VALUES ('?', '?', '?', '?', '?', '?', '?')";
+		String sql = "INSERT INTO `sanpham`(`maSP`,`maLoai`,`tenSP`,`image`, `giaBan`, `dvt`,`giamGia`,`gioiThieu`) VALUES ('?', '?', '?', '?', '?', '?', '?', '?')";
 		_jdbcTemplate.update(sql, productsDTO.getMaSP(), productsDTO.getMaLoai(), productsDTO.getTenSP(),
-				productsDTO.getImage(), productsDTO.getGiaBan(), productsDTO.getGiamGia(), productsDTO.getGioiThieu());
+				productsDTO.getImage(), productsDTO.getGiaBan(),productsDTO.getDvt(), productsDTO.getGiamGia(), productsDTO.getGioiThieu());
 	}
 	//----------------------------------------------
 
@@ -153,22 +169,4 @@ public class ProductsDAO extends BaseDAO {
 	
 	//----------------------------------------------
 	
-	//----------------------------------------------3
-	private String SqlProductsViewNew(boolean sanPhamMoi) {
-		StringBuffer sql = SqlString();
-		if (sanPhamMoi) {
-			sql.append("WHERE sanPhamMoi = true ");
-		}
-		sql.append("ORDER BY RAND() ");
-		sql.append("LIMIT 6 ");
-		return sql.toString();
-	}
-	
-	public List<ProductsDTO> GetDataProductsViewNew() {
-		String sql = SqlProductsViewNew(YES);
-		List<ProductsDTO> listProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
-		return listProducts;
-	}
-		
-	//----------------------------------------------
 }
