@@ -53,7 +53,7 @@
 						class="icon-home"></span> Trang chủ
 					</a>
 					<c:if test="${ not empty loginInfo }">
-						<a href="#"><span class="icon-user"></span>${ loginInfo.name }
+						<a href="<c:url value="/thong-tin-tai-khoan"/>"><span class="icon-user"></span>${ loginInfo.name }
 							<a href="<c:url value="/dang-xuat"/>"><span class="icon-edit"></span>Đăng
 								xuất </a> <c:if test="${ loginInfo.idRoles == true }">
 								<a href="<c:url value="/quan-tri"/>"><span class="icon-user"></span>

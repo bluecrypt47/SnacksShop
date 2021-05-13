@@ -63,6 +63,15 @@ public class UserController extends BaseController {
 		return "redirect:" + request.getHeader("Referer");
 	}
 	
+	//-----------------------------------------
+	@RequestMapping(value = "/thong-tin-tai-khoan")
+	public ModelAndView infoAccount() {
+		
+		_mvShare.setViewName("user/account/infoAccount");
+		return _mvShare;
+	}
+	//-----------------------------------------
+	
 
 
 }

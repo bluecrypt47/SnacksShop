@@ -40,16 +40,30 @@
 						sản phẩm</a> <span class="divider">/</span></li>
 				<li class="active">Thêm sản phẩm</li>
 			</ul>
-			<div class="well" >
-				<h2 style="text-align: center;">Thêm Sản Phẩm</h2><br>
+			<div class="well">
+				<h2 style="text-align: center;">Thêm Sản Phẩm</h2>
+				<br>
 				<form:form action=" addProduct" class="form-horizontal"
-					method="POST" modelAttribute="addProducts" >
+					method="POST" modelAttribute="addProducts">
 					<div class="control-group">
-						<label class="control-label" >Loại sản phẩm <sup>*</sup></label>
+						<label class="control-label">Loại sản phẩm <sup>*</sup></label>
+						<!-- <div class="controls"> -->
+						<%-- <form:input  type="text" placeholder=" VD: Bánh,..." path="maLoai"/> --%>
+						<!-- <input type="text" placeholder=" VD: Bánh,..."> -->
+						<!-- <label class="control-label">Title <sup>*</sup></label> -->
 						<div class="controls">
-							<%-- <form:input  type="text" placeholder=" VD: Bánh,..." path="maLoai"/> --%>
-							<input type="text" placeholder=" VD: Bánh,...">
+							<select>
+								<option value="">---Loại sản phẩm---</option>
+								<option value="1">Bánh</option>
+								<option value="2">Kẹo</option>
+								<option value="3">Mứt</option>
+								<option value="4">Đồ ăn nhanh</option>
+								<option value="5">Nước giải khát</option>
+								<option value="6">Thịt khô</option>
+								<option value="7">Khác...</option>
+							</select>
 						</div>
+						<!-- </div> -->
 					</div>
 					<div class="control-group">
 						<label class="control-label">Tên sản phẩm <sup>*</sup></label>
@@ -88,8 +102,7 @@
 						<div class="controls">
 							<%-- <form:input path="gioiThieu" type="text" maxlength="1000"
 								placeholder=" " /> --%>
-							<input type="text" maxlength="1000"
-								placeholder=" Có thể để trống!">
+							<textarea></textarea>
 						</div>
 					</div>
 
@@ -102,6 +115,9 @@
 					</div>
 				</form:form>
 			</div>
+			<br /> <a href="<c:url value="/quan-ly-san-pham"/>"
+				class="shopBtn btn-large"><span class="icon-arrow-left"></span>
+				Quay Lại </a>
 		</div>
 	</div>
 </body>
