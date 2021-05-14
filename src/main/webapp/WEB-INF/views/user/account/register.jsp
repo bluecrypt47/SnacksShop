@@ -117,13 +117,6 @@ Body Section
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="inputEmail">Địa chỉ </label>
-								<div class="controls">
-									<form:input type="text" class="span3" placeholder=""
-										path="address" />
-								</div>
-							</div>
-							<div class="control-group">
 								<label class="control-label" for="inputEmail">Số điện
 									thoại liên lạc </label>
 								<div class="controls">
@@ -131,6 +124,16 @@ Body Section
 										path="phoneNumber" />
 								</div>
 							</div>
+							<div class="control-group">
+								<label class="control-label" for="inputEmail">Địa chỉ </label>
+								<div class="controls">
+									<%-- <form:input type="text" class="span3" placeholder=""
+										path="address" /> --%>
+										<form:textarea path="address" rows="6" cols="30" type="text" class="span3" placeholder="" />
+										<!-- <textarea path="address" rows="6" cols="30"></textarea> -->
+								</div>
+							</div>
+							
 							<div class="controls">
 								<button type="submit" class="btn block">Tạo tài khoản</button>
 							</div>

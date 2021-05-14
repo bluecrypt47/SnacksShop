@@ -7,15 +7,11 @@
 
 <title>Trang chủ</title>
 <body>
-	<!-- 
-Body Section 
--->
 	<%-- <h1>${ allProducts.size() }</h1> --%>
 	<div class="row">
 		<div id="sidebar" class="span3">
 			<div class="well well-small">
 				<ul class="nav nav-list">
-
 					<c:forEach var="item" items="${catogorys }">
 						<li><a href='<c:url value="/san-pham/${ item.maLoai }"/>'><span
 								class="icon-circle-blank"></span> ${ item.tenLoai }</a></li>
@@ -38,7 +34,8 @@ Body Section
 							<a class="zoomTool"
 								href="san-pham/chi-tiet-san-pham/${item.maSP}"
 								title="Thêm vào giỏ"><span class="icon-search"></span> Xem
-								chi tiết</a> <img src="<c:url value="/assets/user/img/anh/${ item.image }"/>"
+								chi tiết</a> <img
+								src="<c:url value="/assets/user/img/anh/${ item.image }"/>"
 								alt="bootstrap ecommerce templates">
 							<div class="caption">
 								<h4>
@@ -52,7 +49,6 @@ Body Section
 					</li>
 					<li style="border: 0">&nbsp;</li>
 				</c:forEach>
-
 			</ul>
 		</div>
 		<div class="span9">
@@ -60,8 +56,6 @@ Body Section
 				<div id="myCarousel" class="carousel slide homCar">
 
 					<div class="carousel-inner">
-						<%-- <p>${slides.size()}</p> --%>
-
 						<c:forEach var="item" items="${slides }" varStatus="index">
 							<c:if test="${index.first }">
 								<div class="item active">
@@ -80,7 +74,6 @@ Body Section
 							</div>
 					</div>
 					</c:forEach>
-
 				</div>
 				<a class="left carousel-control" href="#myCarousel"
 					data-slide="prev">&lsaquo;</a> <a class="right carousel-control"
@@ -88,8 +81,8 @@ Body Section
 			</div>
 		</div>
 		<!-- 
-		Sản Phẩm Mới
- -->
+Sản Phẩm Mới
+-->
 		<div class="well well-small">
 			<h3>Sản Phẩm Mới</h3>
 			<hr class="soften" />
@@ -121,7 +114,6 @@ Body Section
 						</c:if>
 						</c:forEach>
 						</c:if>
-
 					</div>
 					<a class="left carousel-control" href="#newProductCar"
 						data-slide="prev">&lsaquo;</a> <a class="right carousel-control"
@@ -130,8 +122,8 @@ Body Section
 			</div>
 		</div>
 		<!--
-	Featured Products
-	-->
+Featured Products
+-->
 		<div class="well well-small">
 			<h3>Sản Phẩm Nổi Bật</h3>
 			<hr class="soften" />

@@ -1,7 +1,5 @@
 package SnacksShop.Entity;
 
-import javax.validation.constraints.NotBlank;
-
 public class Users {
 	private long id;
 	private boolean idRoles;

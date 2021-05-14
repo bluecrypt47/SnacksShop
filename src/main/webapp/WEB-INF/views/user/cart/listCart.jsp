@@ -14,7 +14,8 @@ Body Section
 	<div class="row">
 		<div class="span12">
 			<ul class="breadcrumb">
-				<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span class="divider">/</span></li>
+				<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span
+					class="divider">/</span></li>
 				<li class="active">Thanh toán</li>
 			</ul>
 			<div class="well well-small">
@@ -50,7 +51,7 @@ Body Section
 								<td>${ item.value.product.gioiThieu }</td>
 								<td><fmt:formatNumber type="number" groupingUsed="true"
 										value="${ item.value.product.giaBan }" /> ₫</td>
-										<td>${ item.value.product.dvt }</td>
+								<td>${ item.value.product.dvt }</td>
 								<td><input type="number" min="0" max="100" class="span1"
 									style="max-width: 34px" placeholder="1"
 									id="quantity-cart-${ item.key }" size="16" type="text"
@@ -69,12 +70,12 @@ Body Section
 						</c:forEach>
 					</tbody>
 				</table>
-				<br /> <a href="<c:url value="/trang-chu"/>" class="shopBtn btn-large"><span
-					class="icon-arrow-left"></span> Tiếp Tục Mua Sắm </a> <a
-					href="<c:url value="/checkout"/>" class="shopBtn btn-large pull-right">Thanh
-					Toán <span class="icon-arrow-right"></span>
+				<br /> <a href="<c:url value="/trang-chu"/>"
+					class="shopBtn btn-large"><span class="icon-arrow-left"></span>
+					Tiếp Tục Mua Sắm </a> <a href="<c:url value="/checkout"/>"
+					class="shopBtn btn-large pull-right">Thanh Toán <span
+					class="icon-arrow-right"></span>
 				</a>
-
 			</div>
 		</div>
 	</div>

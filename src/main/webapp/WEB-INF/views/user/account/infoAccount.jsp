@@ -35,7 +35,9 @@
 				<li class="active">Thông tin tài khoản</li>
 			</ul>
 			<div class="well">
-				<form class="form-horizontal">
+				<%-- <form class="form-horizontal"> --%>
+				<form:form action="thong-tin-tai-khoan" method="post"
+					modelAttribute="Users" class="form-horizontal">
 					<h3>Thông tin tài khoản</h3>
 
 					<div class="control-group">
@@ -43,25 +45,20 @@
 							dùng <sup>*</sup>
 						</label>
 						<div class="controls">
-							<input type="text" id="inputFname" placeholder="Tên người dùng">
+							<form:input type="text" placeholder="VD: Trần Văn A" path="name" />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="inputLname">Email <sup>*</sup></label>
 						<div class="controls">
-							<input type="email" id="inputLname" placeholder="Email">
+							<form:input type="text" placeholder="abc@gmail.com" path="user" />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Password <sup>*</sup></label>
 						<div class="controls">
-							<input type="password" placeholder="Password">
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="inputEmail">Địa chỉ <sup>*</sup></label>
-						<div class="controls">
-							<input type="text" placeholder="Địa chỉ">
+							<form:input type="password" placeholder="Password"
+								path="password" />
 						</div>
 					</div>
 					<div class="control-group">
@@ -69,16 +66,23 @@
 							thoại <sup>*</sup>
 						</label>
 						<div class="controls">
-							<input type="text" placeholder="Số điện thoại">
+							<form:input type="text" placeholder="" path="phoneNumber" />
 						</div>
 					</div>
+					<div class="control-group">
+						<label class="control-label" for="inputEmail">Địa chỉ <sup>*</sup></label>
+						<div class="controls">
+							<form:textarea path="address" rows="6" cols="30" />
+						</div>
+					</div>
+
 					<div class="control-group">
 						<div class="controls">
 							<input type="submit" name="submitAccount"
 								value="Cập nhật thông tin" class="exclusive shopBtn">
 						</div>
 					</div>
-				</form>
+				</form:form>
 			</div>
 			<br /> <a href="<c:url value="/trang-chu"/>"
 				class="shopBtn btn-large"><span class="icon-arrow-left"></span>

@@ -34,13 +34,8 @@
 <body>
 	<div class="well well-small">
 		<div class="row">
-			<span style="margin-left: 25px;">Danh sách sản phẩm</span> <!-- <select
-				class="pull-right">
-				<option>A - Z</option>
-				<option>Cao - Thấp</option>
-			</select> -->
+			<span style="margin-left: 25px;">Danh sách sản phẩm</span>
 		</div>
-
 		<c:if test="${ productsPaginate.size() > 0 }">
 			<div class="row-fluid">
 				<ul class="thumbnails">
@@ -62,18 +57,14 @@
 
 									</p>
 									<h4>
-										<a class="shopBtn" href="<c:url value="/AddCart/${ item.maSP }"/>" title="add to cart"> Thêm vào
-											giỏ </a>
+										<a class="shopBtn"
+											href="<c:url value="/AddCart/${ item.maSP }"/>"
+											title="add to cart"> Thêm vào giỏ </a>
 									</h4>
-									<!-- <div class="actionList">
-										<a class="pull-left" href="#">Thêm vào danh sách yêu thích
-										</a> <a class="pull-left" href="#"> Add to Compare </a>
-									</div> -->
 									<br class="clr">
 								</div>
 							</div>
 						</li>
-
 						<c:if
 							test="${ (loop.index + 1)  %3 ==0 || (loop.index+1) == productsPaginate.size()}">
 				</ul>
@@ -84,9 +75,7 @@
 			</c:if>
 		</c:if>
 		</c:forEach>
-
 		</c:if>
-
 	</div>
 
 	<div class="pagination">

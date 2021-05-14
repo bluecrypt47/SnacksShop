@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import SnacksShop.DAO.ProductsDAO;
 import SnacksShop.DTO.ProductsDTO;
+import SnacksShop.Entity.Bill;
 import SnacksShop.Entity.Users;
 import SnacksShop.Service.User.AccountServiecImple;
 import SnacksShop.Service.User.BillServiceImple;
@@ -124,15 +125,15 @@ public class HomeController extends BaseController {
 
 	// ------------------------------------1
 
-	@RequestMapping(value = { "/addProduct" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/them-san-pham" }, method = RequestMethod.GET)
 	public ModelAndView addProduct() {
 
 		_mvShare.addObject("addProducts", new ProductsDTO());
 		_mvShare.setViewName("admin/productsManager/addProduct");
 		return _mvShare;
 	}
-	
-	@RequestMapping(value = { "/addProduct" }, method = RequestMethod.POST)
+
+	@RequestMapping(value = { "/them-san-pham" }, method = RequestMethod.POST)
 	public ModelAndView createProduct(@ModelAttribute("addProducts") ProductsDTO addProducts) {
 		_mvShare.setViewName("admin/productsManager/addProduct");
 		return _mvShare;
@@ -152,21 +153,47 @@ public class HomeController extends BaseController {
 	@RequestMapping(value = "/sua-san-pham", method = RequestMethod.GET)
 	public ModelAndView editProduct(HttpServletRequest request, HttpSession session) {
 		_mvShare.setViewName("admin/productsManager/editProduct");
-		//---------------------------
-		/*
-		 * ProductsDTO productsDTO = new ProductsDTO(); ProductsDTO infoProduct =
-		 * (ProductsDTO)session.getAttribute("infoProduct"); if(infoProduct != null) {
-		 * productsDTO.setMaLoai(infoProduct.getMaLoai());
-		 * productsDTO.setTenSP(infoProduct.getTenSP());
-		 * productsDTO.setImage(infoProduct.getImage());
-		 * productsDTO.setGiaBan(infoProduct.getGiaBan());
-		 * productsDTO.setGiamGia(infoProduct.getGiamGia()); }
-		 * 
-		 * _mvShare.addObject("productsDTO", productsDTO);
-		 */
-		//---------------------------
+		// ---------------------------
+
+		ProductsDTO productsDTO = new ProductsDTO();
+		ProductsDTO infoProduct = (ProductsDTO) session.getAttribute("infoProduct");
+		if (infoProduct != null) {
+			productsDTO.setMaLoai(infoProduct.getMaLoai());
+			productsDTO.setTenSP(infoProduct.getTenSP());
+			productsDTO.setImage(infoProduct.getImage());
+			productsDTO.setGiaBan(infoProduct.getGiaBan());
+			productsDTO.setGiamGia(infoProduct.getGiamGia());
+		}
+
+		_mvShare.addObject("products", productsDTO);
+
+		// ---------------------------
 		return _mvShare;
 	}
+
+	//
+	@RequestMapping(value = "/sua-san-pham", method = RequestMethod.POST)
+	public ModelAndView editProduct(HttpServletRequest request, HttpSession session, @ModelAttribute("product") ProductsDTO product) {
+		_mvShare.setViewName("admin/productsManager/editProduct");
+		// ---------------------------
+
+		ProductsDTO productsDTO = new ProductsDTO();
+		ProductsDTO infoProduct = (ProductsDTO) session.getAttribute("infoProduct");
+		if (infoProduct != null) {
+			productsDTO.setMaLoai(infoProduct.getMaLoai());
+			productsDTO.setTenSP(infoProduct.getTenSP());
+			productsDTO.setImage(infoProduct.getImage());
+			productsDTO.setGiaBan(infoProduct.getGiaBan());
+			productsDTO.setGiamGia(infoProduct.getGiamGia());
+			productsDTO.setGioiThieu(infoProduct.getGioiThieu());
+		}
+
+		_mvShare.addObject("products", productsDTO);
+
+		// ---------------------------
+		return _mvShare;
+	}
+	//
 	// ------------------------------------
 
 	@RequestMapping(value = "/deleteProduct/{id}")

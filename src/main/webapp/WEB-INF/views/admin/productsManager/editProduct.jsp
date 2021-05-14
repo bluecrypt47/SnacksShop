@@ -43,84 +43,74 @@
 			<div class="well">
 				<h2 style="text-align: center;">Sửa Sản Phẩm</h2>
 				<br>
-				<form:form action=" addProduct" class="form-horizontal"
-					method="POST" modelAttribute="addProducts">
+				<form:form action="sua-san-pham" class="form-horizontal"
+					method="POST" modelAttribute="products">
 					<div class="control-group">
 						<label class="control-label">Loại sản phẩm <sup>*</sup></label>
-						<!-- <div class="controls"> -->
-						<%-- <form:input  type="text" placeholder=" VD: Bánh,..." path="maLoai"/> --%>
-						<!-- <input type="text" placeholder=" VD: Bánh,..."> -->
-						<!-- <label class="control-label">Title <sup>*</sup></label> -->
 						<div class="controls">
-							<select>
-								<option value="">---Loại sản phẩm---</option>
-								<option value="1">Bánh</option>
-								<option value="2">Kẹo</option>
-								<option value="3">Mứt</option>
-								<option value="4">Đồ ăn nhanh</option>
-								<option value="5">Nước giải khát</option>
-								<option value="6">Thịt khô</option>
-								<option value="7">Khác...</option>
-							</select>
+							<form:select path="maLoai">
+								<form:option value="0">---Loại sản phẩm---</form:option>
+								<form:option value="1">Bánh</form:option>
+								<form:option value="2">Kẹo</form:option>
+								<form:option value="3">Mứt</form:option>
+								<form:option value="4">Đồ ăn nhanh</form:option>
+								<form:option value="5">Nước giải khát</form:option>
+								<form:option value="6">Thịt khô</form:option>
+								<form:option value="7">Khác...</form:option>
+							</form:select>
 						</div>
 						<!-- </div> -->
 					</div>
 					<div class="control-group">
 						<label class="control-label">Tên sản phẩm <sup>*</sup></label>
 						<div class="controls">
-							<%-- <form:input path="tenSP" type="text"
-								placeholder=" VD: Bánh đa,..." /> --%>
-							<input type="text" placeholder=" VD: Bánh đa,...">
+							<form:input path="tenSP" type="text"
+								placeholder=" VD: Bánh đa,..." />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Hình ảnh <sup>*</sup></label>
 						<div class="controls">
-							<%-- <form:input path="image" type="text"
-								placeholder=" VD: banh-da.png,..." /> --%>
-							<input type="text" placeholder=" VD: banh-da.png,...">
+							<form:input path="image" type="text"
+								placeholder=" VD: banh-da.png,..." />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Giá bán <sup>*</sup></label>
 						<div class="controls">
-							<%-- <form:input path="giaBan" type="text"
-								placeholder=" VD: 10000,..." /> --%>
-							<input type="text" placeholder=" VD: 10000,...">
+							<form:input path="giaBan" type="text"
+								placeholder=" VD: 10000,..." />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Giảm giá <sup>*</sup></label>
 						<div class="controls">
-							<%-- <form:input path="giamGia" type="text"
-								placeholder=" VD: Có thể không cần điền!" /> --%>
-							<input type="text" placeholder=" Có thể để trống!">
+							<form:input path="giamGia" type="text"
+								placeholder=" VD: Có thể không cần điền!" />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Giới thiệu <sup>*</sup></label>
 						<div class="controls">
-							<%-- <form:input path="gioiThieu" type="text" maxlength="1000"
-								placeholder=" " /> --%>
-							<textarea></textarea>
+							<form:textarea path="gioiThieu" rows="6" cols="30"></form:textarea>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Sản phẩm nổi bật <sup>*</sup></label>
 						<div class="controls">
-							<%-- <form:input path="gioiThieu" type="text" maxlength="1000"
-								placeholder=" " /> --%>
-							<input type="text" maxlength="1000"
-								placeholder=" Có thể để trống!">
+							<form:select path="noiBat">
+								<form:option value="0">Không nổi bật</form:option>
+								<form:option value="1">Nổi bật</form:option>
+							</form:select>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Sản phẩm mới <sup>*</sup></label>
 						<div class="controls">
-							<%-- <form:input path="gioiThieu" type="text" maxlength="1000"
-								placeholder=" " /> --%>
-							<input type="text" maxlength="1000"
-								placeholder=" Có thể để trống!">
+							<form:select path="sanPhamMoi">
+								<form:option value="0">Sản phẩm mới</form:option>
+								<form:option value="1">Sản phẩm cũ</form:option>
+							</form:select>
 						</div>
 					</div>
 

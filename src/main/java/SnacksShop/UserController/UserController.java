@@ -1,5 +1,7 @@
 package SnacksShop.UserController;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import SnacksShop.DTO.CartDTO;
+import SnacksShop.Entity.Bill;
 import SnacksShop.Entity.Users;
 import SnacksShop.Service.User.AccountServiecImple;
 
@@ -62,16 +66,46 @@ public class UserController extends BaseController {
 		session.removeAttribute("loginInfo");
 		return "redirect:" + request.getHeader("Referer");
 	}
-	
-	//-----------------------------------------
-	@RequestMapping(value = "/thong-tin-tai-khoan")
-	public ModelAndView infoAccount() {
-		
+
+	// -----------------------------------------
+	/*
+	 * @RequestMapping(value = "/thong-tin-tai-khoan") public ModelAndView
+	 * infoAccount() {
+	 * 
+	 * _mvShare.setViewName("user/account/infoAccount"); return _mvShare; }
+	 */
+
+	@RequestMapping(value = "/thong-tin-tai-khoan", method = RequestMethod.GET)
+	public ModelAndView infoAccount(HttpServletRequest request, HttpSession session) {
 		_mvShare.setViewName("user/account/infoAccount");
+		
+		Users user = new Users();
+
+		Users infoAcc = (Users) session.getAttribute("infoAcc");
+		if (infoAcc != null) {
+			user.setUser(infoAcc.getUser());
+			user.setPassword(infoAcc.getPassword());
+			user.setName(infoAcc.getName());
+			user.setAddress(infoAcc.getAddress());
+			user.setPhoneNumber(infoAcc.getPhoneNumber());
+
+		}
+
+		_mvShare.addObject("Users", user);
 		return _mvShare;
 	}
-	//-----------------------------------------
 	
-
+	/*
+	 * @RequestMapping(value = "/thong-tin-tai-khoan", method = RequestMethod.POST)
+	 * public String infoAcc(HttpServletRequest request, HttpSession session,
+	 * 
+	 * @ModelAttribute("user") Users user) {
+	 * 
+	 * if(accountServiecImple.editAcc(user) > 0) {
+	 * billServiceImple.addBillDetails(carts); }
+	 * 
+	 * session.removeAttribute("Cart"); return "redirect:gio-hang"; }
+	 */
+	// -----------------------------------------
 
 }

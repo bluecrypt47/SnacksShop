@@ -62,7 +62,8 @@ Body Section
 						<h3>${ productDetail.tenSP }</h3>
 						<hr class="soft" />
 
-						<form class="form-horizontal qtyFrm" method="get" action="<c:url value="/AddCart/${ productDetail.maSP }"/>">
+						<form class="form-horizontal qtyFrm" method="get"
+							action="<c:url value="/AddCart/${ productDetail.maSP }"/>">
 							<div class="control-group">
 								<label class="control-label"><span><fmt:formatNumber
 											type="number" groupingUsed="true"
@@ -89,21 +90,17 @@ Body Section
 							Sản Phẩm</a></li>
 					<li class=""><a href="#profile" data-toggle="tab">Sản Phẩm
 							Liên Quan</a></li>
-
 				</ul>
 				<div id="myTabContent" class="tab-content tabWrapper">
 					<div class="tab-pane fade active in" id="home">
-
 						${productDetail.gioiThieu}</div>
 					<div class="tab-pane fade" id="profile">
-
-						<c:set var="countList" value="${productDetailByIDType.size()}"/>
-
+						<c:set var="countList" value="${productDetailByIDType.size()}" />
 						<c:if test="${productDetailByIDType.size() > 5 }">
-							<c:set var="countList" value="5"/>
+							<c:set var="countList" value="5" />
 						</c:if>
-
-						<c:forEach var="item" items="${ productDetailByIDType }" begin="1" end="${ countList }" varStatus="loop">
+						<c:forEach var="item" items="${ productDetailByIDType }" begin="1"
+							end="${ countList }" varStatus="loop">
 							<div class="row-fluid">
 								<div class="span2">
 									<img
@@ -118,7 +115,8 @@ Body Section
 									<form class="form-horizontal qtyFrm">
 										<h3>
 											<fmt:formatNumber type="number" groupingUsed="true"
-												value="${item.giaBan}" />₫
+												value="${item.giaBan}" />
+											₫
 										</h3>
 										<div class="btn-group">
 											<a href="product_details.html" class="defaultBtn"><span
@@ -131,12 +129,8 @@ Body Section
 							<hr class="soft" />
 						</c:forEach>
 					</div>
-
-
 				</div>
-
 			</div>
 		</div>
 	</div>
-	<!-- Body wrapper -->
 </body>
