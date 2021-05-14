@@ -119,9 +119,9 @@ Body Section
 											₫
 										</h3>
 										<div class="btn-group">
-											<a href="product_details.html" class="defaultBtn"><span
+											<a href="<c:url value="/AddCart/${ item.maSP }"/>" class="defaultBtn"><span
 												class=" icon-shopping-cart"></span> Thêm vào giỏ</a> <a
-												href="product_details.html" class="shopBtn">Xem</a>
+												href="${item.maSP}" class="shopBtn">Xem</a>
 										</div>
 									</form>
 								</div>
