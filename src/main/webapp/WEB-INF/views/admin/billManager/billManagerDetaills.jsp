@@ -23,11 +23,7 @@ Body Section
 				<li class="active">Chi tiết đơn hàng</li>
 			</ul>
 			<div class="well well-small">
-				<%-- <h1>
-					Chi Tiết Đơn Hàng
-					<small class="pull-right"> ${ billManager.quantity }
-						Sản phẩm có trong đơn hàng </small>
-				</h1> --%>
+				<h1>Chi Tiết Đơn Hàng</h1>
 				<hr class="soften" />
 
 				<table class="table table-bordered table-condensed">
@@ -47,18 +43,12 @@ Body Section
 							<tr>
 								<td>${ i.index + 1 }</td>
 								<td><img width="100"
-									src="<c:url value="/assets/admin/img/anh/${ item.getProducts().getImage() }"/>"
+									src="<c:url value="/assets/admin/img/anh/${ item.products.image }"/>"
 									alt=""></td>
-								<td>${ item.getProducts().getTenSP() }</td>
-								<td>${ item.getProducts().getGioiThieu() }</td>
+								<td>${ item.products.tenSP }</td>
+								<td>${ item.products.gioiThieu }</td>
 								<td><fmt:formatNumber type="number" groupingUsed="true"
-										value="${ item.getProducts().getGiaBan() }" /> ₫</td>
-								<%-- <c:forEach var="itemmm" items="${ productBillDetails }">
-									<td>${ itemmm.getProducts().getTenSP() }</td>
-									<td>${ itemmm.getProducts().getGioiThieu() }</td>
-									<td><fmt:formatNumber type="number" groupingUsed="true"
-											value="${ itemmm.getProducts().getGiaBan() }" /> ₫</td>
-								</c:forEach> --%>
+										value="${ item.products.giaBan }" /> ₫</td>
 								<td>${ item.quantity }</td>
 								<td><fmt:formatNumber type="number" groupingUsed="true"
 										value="${ item.total }" /> ₫</td>

@@ -159,14 +159,5 @@ public class ProductsDAO extends BaseDAO {
 	//----------------------------------------------
 
 	
-	//----------------------------------------------2
-	
-
-	public ProductsDTO findByName(String name) {
-		String sql ="SELECT * FROM `sanpham` WHERE tenSP LIKE '%"+name+"%'";
-		 return jdbcTemplate.queryForObject(sql, new ProductsDTOMapper());
-	}
-	
-	//----------------------------------------------
 	
 }

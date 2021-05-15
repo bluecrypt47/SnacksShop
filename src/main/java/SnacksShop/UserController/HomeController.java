@@ -1,5 +1,7 @@
 package SnacksShop.UserController;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import SnacksShop.DAO.ProductsDAO;
@@ -139,15 +142,13 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 	// ------------------------------------
-
-	// ------------------------------------2
-	@RequestMapping(value = "/search/{name}")
-	public String searchProduct(@PathVariable String name, Model model) {
-		ProductsDTO productsDTO = productDetailsServiceImple.findByName(name);
-		model.addAttribute("search", productsDTO);
-		return "tat-ca-san-pham";
+	@RequestMapping(value = "/search")
+	public ModelAndView searchProduct(@RequestParam String name) {
+		List< ProductsDTO> productsDTO = productDetailsServiceImple.GetProductByName(name);
+		_mvShare.addObject("search", productsDTO);
+		_mvShare.setViewName("user/products/searchProduct");
+		return _mvShare;
 	}
-	// ------------------------------------
 
 	// ------------------------------------3
 	@RequestMapping(value = "/sua-san-pham", method = RequestMethod.GET)

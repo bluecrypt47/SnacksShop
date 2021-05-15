@@ -48,8 +48,4 @@ public class ProductDetailsServiceImple implements IProductDetailsService{
 		productsDAO.delete(id);
 	}
 
-	public ProductsDTO findByName(String name) {
-		return productsDAO.findByName(name);
-	}
-
 }
