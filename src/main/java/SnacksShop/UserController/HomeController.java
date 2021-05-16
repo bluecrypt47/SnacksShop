@@ -17,8 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import SnacksShop.DAO.ProductsDAO;
 import SnacksShop.DTO.ProductsDTO;
-import SnacksShop.Entity.Bill;
-import SnacksShop.Entity.Users;
 import SnacksShop.Service.User.AccountServiecImple;
 import SnacksShop.Service.User.BillServiceImple;
 import SnacksShop.Service.User.IBillService;
@@ -39,6 +37,9 @@ public class HomeController extends BaseController {
 	BillServiceImple billServiceImple = new BillServiceImple();
 
 	// -------------------
+	@Autowired
+	ProductDetailsServiceImple _productDetailsServiceImple;
+
 	@Autowired
 	ProductDetailsServiceImple productDetailsServiceImple = new ProductDetailsServiceImple();
 	// -----------------------
@@ -138,13 +139,24 @@ public class HomeController extends BaseController {
 
 	@RequestMapping(value = { "/them-san-pham" }, method = RequestMethod.POST)
 	public ModelAndView createProduct(@ModelAttribute("addProducts") ProductsDTO addProducts) {
+		int count = _productDetailsServiceImple.addAccount(addProducts);
+
+		if (count > 0) {
+			_mvShare.addObject("statusAdd", "Thêm sản phẩm thành công!!!");
+		} else {
+			_mvShare.addObject("statusAdd", "Thêm sản phẩm thất bại!!!");
+		}
+
+		// _mvShare.addObject("addProducts",
+		// _productDetailsServiceImple.addAccount(addProducts));
 		_mvShare.setViewName("admin/productsManager/addProduct");
 		return _mvShare;
 	}
+
 	// ------------------------------------
 	@RequestMapping(value = "/search")
 	public ModelAndView searchProduct(@RequestParam String name) {
-		List< ProductsDTO> productsDTO = productDetailsServiceImple.GetProductByName(name);
+		List<ProductsDTO> productsDTO = productDetailsServiceImple.GetProductByName(name);
 		_mvShare.addObject("search", productsDTO);
 		_mvShare.setViewName("user/products/searchProduct");
 		return _mvShare;
@@ -174,7 +186,8 @@ public class HomeController extends BaseController {
 
 	//
 	@RequestMapping(value = "/sua-san-pham", method = RequestMethod.POST)
-	public ModelAndView editProduct(HttpServletRequest request, HttpSession session, @ModelAttribute("product") ProductsDTO product) {
+	public ModelAndView editProduct(HttpServletRequest request, HttpSession session,
+			@ModelAttribute("product") ProductsDTO product) {
 		_mvShare.setViewName("admin/productsManager/editProduct");
 		// ---------------------------
 

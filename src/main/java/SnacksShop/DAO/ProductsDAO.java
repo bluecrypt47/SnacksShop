@@ -12,7 +12,7 @@ import SnacksShop.DTO.ProductsDTOMapper;
 
 @Repository
 public class ProductsDAO extends BaseDAO {
-	
+
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -126,14 +126,14 @@ public class ProductsDAO extends BaseDAO {
 		List<ProductsDTO> listAllProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
 		return listAllProducts;
 	}
-	
+
 	// xóa
 	public void delete(int id) {
 		String sql = "DELETE FROM `sanpham` WHERE maSP = '" + id + "'";
 		_jdbcTemplate.update(sql);
-		
+
 	}
-	
+
 	private String SqlProductsViewNew(boolean sanPhamMoi) {
 		StringBuffer sql = SqlString();
 		if (sanPhamMoi) {
@@ -143,21 +143,40 @@ public class ProductsDAO extends BaseDAO {
 		sql.append("LIMIT 7 ");
 		return sql.toString();
 	}
-	
+
 	public List<ProductsDTO> GetDataProductsViewNew() {
 		String sql = SqlProductsViewNew(YES);
 		List<ProductsDTO> listProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
 		return listProducts;
 	}
 
-	//----------------------------------------------1
-	public void addProduct(ProductsDTO productsDTO) {
-		String sql = "INSERT INTO `sanpham`(`maSP`,`maLoai`,`tenSP`,`image`, `giaBan`, `dvt`,`giamGia`,`gioiThieu`) VALUES ('?', '?', '?', '?', '?', '?', '?', '?')";
-		_jdbcTemplate.update(sql, productsDTO.getMaSP(), productsDTO.getMaLoai(), productsDTO.getTenSP(),
-				productsDTO.getImage(), productsDTO.getGiaBan(),productsDTO.getDvt(), productsDTO.getGiamGia(), productsDTO.getGioiThieu());
-	}
-	//----------------------------------------------
+	// ----------------------------------------------1
 
-	
-	
+	public int addAccount(ProductsDTO addProducts) {
+
+		StringBuffer sql = new StringBuffer();
+		sql.append("INSERT ");
+		sql.append("INTO `sanpham` ");
+		sql.append("( ");
+		sql.append(" `maLoai`,`tenSP`,`image`, `giaBan`, `dvt`,`giamGia`,`gioiThieu` ");
+		sql.append(" )  ");
+		sql.append(" VALUES ");
+		sql.append("( ");
+		sql.append("'" + addProducts.getMaLoai() + "','" + addProducts.getTenSP() + "','" + addProducts.getImage()
+				+ "','" + addProducts.getGiaBan() + "','" + addProducts.getDvt() + "','" + addProducts.getGiamGia()
+				+ "','" + addProducts.getGioiThieu() + "' ");
+		sql.append(" )  ");
+		int result = _jdbcTemplate.update(sql.toString());
+
+		/*
+		 * String sql =
+		 * "INSERT INTO `sanpham`(`maLoai`,`tenSP`,`image`, `giaBan`, `dvt`,`giamGia`,`gioiThieu`) VALUES ( '?', '?', '?', '?', '?', '?', '?')"
+		 * ; int result = _jdbcTemplate.update(sql, addProducts.getMaLoai(),
+		 * addProducts.getTenSP(), addProducts.getImage(), addProducts.getGiaBan(),
+		 * addProducts.getDvt(), addProducts.getGiamGia(), addProducts.getGioiThieu());
+		 */
+		return result;
+	}
+	// ----------------------------------------------
+
 }

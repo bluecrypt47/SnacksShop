@@ -39,13 +39,13 @@ public class ProductDetailsServiceImple implements IProductDetailsService{
 		List<ProductsDTO> listProductDetails = productsDAO.GetSearchProduct(name);
 		return listProductDetails.get(2);
 	}
-	
-	public void add(ProductsDTO productDTO) {
-		productsDAO.addProduct(productDTO);
-	}
 
 	public void delete(int id) {
 		productsDAO.delete(id);
+	}
+
+	public int addAccount(ProductsDTO addProducts) {
+		return productsDAO.addAccount(addProducts);
 	}
 
 }

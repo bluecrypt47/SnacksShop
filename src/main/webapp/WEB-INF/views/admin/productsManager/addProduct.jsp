@@ -97,6 +97,13 @@
 						</div>
 					</div>
 					<div class="control-group">
+						<label class="control-label">Đơn vị tính <sup>*</sup></label>
+						<div class="controls">
+							<form:input path="dvt" type="text"
+								placeholder=" VD: Cái,..." />
+						</div>
+					</div>
+					<div class="control-group">
 						<label class="control-label">Giảm giá <sup>*</sup></label>
 						<div class="controls">
 							<form:input path="giamGia" type="text"
@@ -115,7 +122,9 @@
 						<div class="controls">
 							<input type="submit" name="submitAccount" value="Thêm sản phẩm"
 								class="exclusive shopBtn">
+								<h6 class="status" style="color: red; ">${ statusAdd}</h6>
 						</div>
+						
 					</div>
 				</form:form>
 			</div>

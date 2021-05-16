@@ -25,15 +25,14 @@
 					<div class="col-lg-12">
 						<h1 class="page-header">
 							Quản Lý Sản Phẩm
-
-							<form:form method="get">
-								<div style="text-align: right;">
-									<a href="<c:url value="/them-san-pham"/>"><button
-											name="button" type="button">Thêm sản phẩm</button></a>
-								</div>
-							</form:form>
+							<div style="text-align: right;">
+								<a href="<c:url value="/them-san-pham"/>"
+									class="shopBtn btn-large">
+									<!-- <span
+								class="icon-arrow-plus"></span> -->Thêm sản phẩm
+								</a>
+							</div>
 						</h1>
-
 					</div>
 				</div>
 				<div class="row">
@@ -87,8 +86,9 @@
 													<c:if test="${ item.sanPhamMoi == false }">
 														<td></td>
 													</c:if>
-													<td><a href="<c:url value="/sua-san-pham"/>" " class="btn btn-mini btn-danger"
-														type="button"> <span class="icon-edit"></span>
+													<td><a href="<c:url value="/sua-san-pham"/>"
+														" class="btn btn-mini btn-danger" type="button"> <span
+															class="icon-edit"></span>
 													</a></td>
 													<td><a
 														href="<c:url value="/deleteProduct/${item.maSP}"/>"
