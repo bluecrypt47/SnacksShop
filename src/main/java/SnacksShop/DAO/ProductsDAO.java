@@ -134,6 +134,7 @@ public class ProductsDAO extends BaseDAO {
 
 	}
 
+	// Truy vấn lấy random 7 sản phẩm mới 
 	private String SqlProductsViewNew(boolean sanPhamMoi) {
 		StringBuffer sql = SqlString();
 		if (sanPhamMoi) {
@@ -144,15 +145,15 @@ public class ProductsDAO extends BaseDAO {
 		return sql.toString();
 	}
 
+	// Hiện lên website
 	public List<ProductsDTO> GetDataProductsViewNew() {
 		String sql = SqlProductsViewNew(YES);
 		List<ProductsDTO> listProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
 		return listProducts;
 	}
-
-	// ----------------------------------------------1
-
-	public int addAccount(ProductsDTO addProducts) {
+	
+	// Thêm sản phẩm
+	public int addProduct(ProductsDTO addProducts) {
 
 		StringBuffer sql = new StringBuffer();
 		sql.append("INSERT ");
@@ -167,16 +168,7 @@ public class ProductsDAO extends BaseDAO {
 				+ "','" + addProducts.getGioiThieu() + "' ");
 		sql.append(" )  ");
 		int result = _jdbcTemplate.update(sql.toString());
-
-		/*
-		 * String sql =
-		 * "INSERT INTO `sanpham`(`maLoai`,`tenSP`,`image`, `giaBan`, `dvt`,`giamGia`,`gioiThieu`) VALUES ( '?', '?', '?', '?', '?', '?', '?')"
-		 * ; int result = _jdbcTemplate.update(sql, addProducts.getMaLoai(),
-		 * addProducts.getTenSP(), addProducts.getImage(), addProducts.getGiaBan(),
-		 * addProducts.getDvt(), addProducts.getGiamGia(), addProducts.getGioiThieu());
-		 */
 		return result;
 	}
-	// ----------------------------------------------
 
 }

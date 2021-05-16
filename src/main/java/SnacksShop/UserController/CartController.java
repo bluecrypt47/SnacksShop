@@ -28,6 +28,7 @@ public class CartController extends BaseController {
 	@Autowired
 	private BillServiceImple billServiceImple = new BillServiceImple();
 
+	// Hiện thị trang giỏ hàng
 	@RequestMapping(value = "gio-hang")
 	public ModelAndView listCart() {
 
@@ -40,6 +41,7 @@ public class CartController extends BaseController {
 		return _mvShare;
 	}
 
+	// Thêm vào giỏ hàng
 	@RequestMapping(value = "AddCart/{id}")
 	public String addcart(HttpServletRequest request, HttpSession session, @PathVariable long id) {
 		HashMap<Long, CartDTO> cart = (HashMap<Long, CartDTO>) session.getAttribute("Cart");
@@ -55,6 +57,7 @@ public class CartController extends BaseController {
 		return "redirect:" + request.getHeader("Referer");
 	}
 
+	// Sửa số lượng sản phẩm theo id của sản phẩm
 	@RequestMapping(value = "EditCart/{id}/{quantity}")
 	public String editCart(HttpServletRequest request, HttpSession session, @PathVariable long id,
 			@PathVariable int quantity) {
@@ -71,6 +74,7 @@ public class CartController extends BaseController {
 		return "redirect:" + request.getHeader("Referer");
 	}
 
+	// Xóa sản phẩm theo id của sản phẩm
 	@RequestMapping(value = "DeleteCart/{id}")
 	public String deleteCart(HttpServletRequest request, HttpSession session, @PathVariable long id) {
 		HashMap<Long, CartDTO> cart = (HashMap<Long, CartDTO>) session.getAttribute("Cart");
@@ -86,48 +90,36 @@ public class CartController extends BaseController {
 		return "redirect:" + request.getHeader("Referer");
 	}
 
+	// Trang thanh toán đơn hàng
 	@RequestMapping(value = "checkout", method = RequestMethod.GET)
 	public ModelAndView checkout(HttpServletRequest request, HttpSession session) {
 		_mvShare.setViewName("user/bill/checkout");
 		//
-		
+
 		Bill bill = new Bill();
-		Users loginInfo = (Users)session.getAttribute("loginInfo");
-		if(loginInfo != null) {
+		Users loginInfo = (Users) session.getAttribute("loginInfo");
+		if (loginInfo != null) {
 			bill.setAddress(loginInfo.getAddress());
 			bill.setName(loginInfo.getName());
 			bill.setPhoneNumber(loginInfo.getPhoneNumber());
 			bill.setEmail(loginInfo.getUser());
 		}
-		
+
 		_mvShare.addObject("bill", bill);
-		//
-//		_mvShare.addObject("bill", new Bill());
-		
 		return _mvShare;
 	}
 
-	/*
-	 * @RequestMapping(value = "checkout", method = RequestMethod.POST) public
-	 * ModelAndView checkoutBill(HttpServletRequest request, HttpSession session,
-	 * 
-	 * @ModelAttribute("bill") Bill bill) {
-	 * _mvShare.setViewName("user/bill/checkout"); return _mvShare; }
-	 */
-	
-	//
 	@RequestMapping(value = "checkout", method = RequestMethod.POST)
-	public String checkoutBill(HttpServletRequest request, HttpSession session,
-			@ModelAttribute("bill") Bill bill) {
-		
-		bill.setQuantity((int)session.getAttribute("TotalQuantityCart"));
-		bill.setTotal((double)session.getAttribute("TotalPriceCart"));
-		
-		if(billServiceImple.addBill(bill) > 0) {
-			HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>)session.getAttribute("Cart");
+	public String checkoutBill(HttpServletRequest request, HttpSession session, @ModelAttribute("bill") Bill bill) {
+
+		bill.setQuantity((int) session.getAttribute("TotalQuantityCart"));
+		bill.setTotal((double) session.getAttribute("TotalPriceCart"));
+
+		if (billServiceImple.addBill(bill) > 0) {
+			HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("Cart");
 			billServiceImple.addBillDetails(carts);
 		}
-		
+
 		session.removeAttribute("Cart");
 		return "redirect:gio-hang";
 	}

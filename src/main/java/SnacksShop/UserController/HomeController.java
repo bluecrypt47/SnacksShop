@@ -44,6 +44,7 @@ public class HomeController extends BaseController {
 	ProductDetailsServiceImple productDetailsServiceImple = new ProductDetailsServiceImple();
 	// -----------------------
 
+	// Hiển thị trang chủ
 	@RequestMapping(value = { "/", "/trang-chu" })
 	public ModelAndView Index() {
 
@@ -59,6 +60,7 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
+	// Hiển thị trang tất cả sản phẩm
 	@RequestMapping(value = "/tat-ca-san-pham")
 	public ModelAndView Product() {
 		_mvShare.addObject("allProducts", _homeService.GetAllProducts());
@@ -67,6 +69,7 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
+	// Hiển thị trang giới thiệu website
 	@RequestMapping(value = "/gioi-thieu")
 	public ModelAndView aboutUs() {
 
@@ -74,6 +77,7 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
+	//Hiển thị trang liên hệ
 	@RequestMapping(value = "/lien-he")
 	public ModelAndView contact() {
 
@@ -81,7 +85,8 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
-	// ADMIN
+	// ***********************************************************ADMIN***********************************************************
+	// Hiện thị trang quản trị
 	@RequestMapping(value = { "/quan-tri" })
 	public ModelAndView IndexAdmin() {
 
@@ -89,7 +94,8 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
-	// ---Account---
+	// ----------------Account----------------
+	// Hiển thị trang quản lý tài khoản
 	@RequestMapping(value = { "/quan-ly-tai-khoan" })
 	public ModelAndView accountsManager() {
 
@@ -109,7 +115,8 @@ public class HomeController extends BaseController {
 		return "redirect:" + request.getHeader("Referer");
 	}
 
-	// ---Products---
+	// ----------------Products----------------
+	// Hiển thị trang quản lý sản phẩm
 	@RequestMapping(value = { "/quan-ly-san-pham" })
 	public ModelAndView productsManager() {
 
@@ -118,6 +125,7 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
+	// Hiển thị trang thêm sản phẩm
 	@RequestMapping(value = { "/them-san-pham" })
 	public ModelAndView index() {
 
@@ -127,8 +135,7 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
-	// ------------------------------------1
-
+	//  Thêm sản phẩm
 	@RequestMapping(value = { "/them-san-pham" }, method = RequestMethod.GET)
 	public ModelAndView addProduct() {
 
@@ -139,21 +146,18 @@ public class HomeController extends BaseController {
 
 	@RequestMapping(value = { "/them-san-pham" }, method = RequestMethod.POST)
 	public ModelAndView createProduct(@ModelAttribute("addProducts") ProductsDTO addProducts) {
-		int count = _productDetailsServiceImple.addAccount(addProducts);
+		int count = _productDetailsServiceImple.addProduct(addProducts);
 
 		if (count > 0) {
 			_mvShare.addObject("statusAdd", "Thêm sản phẩm thành công!!!");
 		} else {
 			_mvShare.addObject("statusAdd", "Thêm sản phẩm thất bại!!!");
 		}
-
-		// _mvShare.addObject("addProducts",
-		// _productDetailsServiceImple.addAccount(addProducts));
 		_mvShare.setViewName("admin/productsManager/addProduct");
 		return _mvShare;
 	}
 
-	// ------------------------------------
+	// Tìm kiếm sản phẩm
 	@RequestMapping(value = "/search")
 	public ModelAndView searchProduct(@RequestParam String name) {
 		List<ProductsDTO> productsDTO = productDetailsServiceImple.GetProductByName(name);
@@ -163,6 +167,7 @@ public class HomeController extends BaseController {
 	}
 
 	// ------------------------------------3
+	// Sửa sản phẩm
 	@RequestMapping(value = "/sua-san-pham", method = RequestMethod.GET)
 	public ModelAndView editProduct(HttpServletRequest request, HttpSession session) {
 		_mvShare.setViewName("admin/productsManager/editProduct");
@@ -210,6 +215,7 @@ public class HomeController extends BaseController {
 	//
 	// ------------------------------------
 
+	// Xóa sản phẩm
 	@RequestMapping(value = "/deleteProduct/{id}")
 	public String deleteProduct(@PathVariable int id, Model model, HttpServletRequest request) {
 
@@ -220,7 +226,8 @@ public class HomeController extends BaseController {
 		return "redirect:" + request.getHeader("Referer");
 	}
 
-	// Bill
+	// ----------------Bill----------------
+	// Hiển thị trang quản lý hóa đơn mua hàng
 	@RequestMapping(value = { "/quan-ly-hoa-don" })
 	public ModelAndView billsManager() {
 		_mvShare.addObject("billManager", _billService.GetAllBills());
@@ -229,7 +236,7 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
-	// chi tiết bill
+	// Hiển thị chi tiết hóa đơn theo id của đơn hàng 
 	@RequestMapping(value = { "/quan-ly-chi-tiet-hoa-don/{id}" })
 	public ModelAndView billsManagerDetails(@PathVariable int id) {
 

@@ -13,7 +13,7 @@ import SnacksShop.Entity.Menus;
 @Repository
 public class MenusDAO extends BaseDAO {
 	
-	// lay menu ra
+	// lấy menu ra
 	public List<Menus> GetDataMenus() {
 		List<Menus> listMenus = new ArrayList<Menus>();
 

@@ -24,11 +24,13 @@ public class BillServiceImple implements IBillService {
 	@Autowired
 	BillDetailsManagerDAO billDetailsManagerDAO = new BillDetailsManagerDAO();
 
+	// Thêm đơn hàng
 	@Override
 	public int addBill(Bill bill) {
 		return billDAO.addBill(bill);
 	}
 
+	// Thêm vào chi tiết đơn hàng
 	@Override
 	public void addBillDetails(HashMap<Long, CartDTO> carts) {
 
@@ -44,11 +46,13 @@ public class BillServiceImple implements IBillService {
 		}
 	}
 
+	// Lấy tất cả đơn hàng ra
 	@Override
 	public List<Bill> GetAllBills() {
 		return billDAO.GetDataBill();
 	}
 
+	// Lấy tất cả sản phẩm có trong đơn hàng theo id của đơn hàng
 	@Override
 	public Bill GetAllProdutsByIDBill(int idBill) {
 		List<Bill> listBill = billDAO.GetDataBillByID(idBill);
@@ -60,7 +64,6 @@ public class BillServiceImple implements IBillService {
 		return billDAO.GetDataBillByID(id);
 	}
 
-
 	//
 	/*
 	 * @Override public BillDetailsManagerDTO GetBillDetailsByIDBill(int idBill) {
@@ -68,20 +71,18 @@ public class BillServiceImple implements IBillService {
 	 * billDetailsManagerDAO.GetBillDetailsByIDBill(idBill); return
 	 * listProductDetailsByIDBill.get(0); }
 	 */
-	
+
 	@Override
 	public List<BillDetailsManagerDTO> GetBillDetailsByIDBill(int idBill) {
-		//List<BillDetailsManagerDTO> listProductDetailsByIDBill = billDetailsManagerDAO.GetBillDetailsByIDBill(idBill);
+		// List<BillDetailsManagerDTO> listProductDetailsByIDBill =
+		// billDetailsManagerDAO.GetBillDetailsByIDBill(idBill);
 		return billDetailsManagerDAO.GetBillDetailsByIDBill(idBill);
 	}
 
-	//-------------
+	// Xóa đơn hàng
 	public void delete(int id) {
 		billDAO.deleteBill(id);
-		
-	}
-	//-------------
 
-	
+	}
 
 }

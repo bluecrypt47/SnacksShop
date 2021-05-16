@@ -1,7 +1,5 @@
 package SnacksShop.UserController;
 
-import java.util.HashMap;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import SnacksShop.DTO.CartDTO;
-import SnacksShop.Entity.Bill;
 import SnacksShop.Entity.Users;
 import SnacksShop.Service.User.AccountServiecImple;
 
@@ -22,6 +18,7 @@ public class UserController extends BaseController {
 	@Autowired
 	AccountServiecImple accountServiecImple = new AccountServiecImple();
 
+	// Đăng ký
 	@RequestMapping(value = "/dang-ky", method = RequestMethod.GET)
 	public ModelAndView register() {
 
@@ -46,6 +43,7 @@ public class UserController extends BaseController {
 		return _mvShare;
 	}
 
+	// Đăng nhập
 	@RequestMapping(value = "/dang-nhap", method = RequestMethod.POST)
 	public ModelAndView login(HttpSession session, @ModelAttribute("users") Users users) {
 
@@ -60,6 +58,7 @@ public class UserController extends BaseController {
 		return _mvShare;
 	}
 
+	// Đăng xuất
 	@RequestMapping(value = "/dang-xuat", method = RequestMethod.GET)
 	public String logout(HttpSession session, HttpServletRequest request) {
 
@@ -68,13 +67,8 @@ public class UserController extends BaseController {
 	}
 
 	// -----------------------------------------
-	/*
-	 * @RequestMapping(value = "/thong-tin-tai-khoan") public ModelAndView
-	 * infoAccount() {
-	 * 
-	 * _mvShare.setViewName("user/account/infoAccount"); return _mvShare; }
-	 */
 
+	// Thông tin tài khoản
 	@RequestMapping(value = "/thong-tin-tai-khoan", method = RequestMethod.GET)
 	public ModelAndView infoAccount(HttpServletRequest request, HttpSession session) {
 		_mvShare.setViewName("user/account/infoAccount");
@@ -94,18 +88,6 @@ public class UserController extends BaseController {
 		_mvShare.addObject("Users", user);
 		return _mvShare;
 	}
-	
-	/*
-	 * @RequestMapping(value = "/thong-tin-tai-khoan", method = RequestMethod.POST)
-	 * public String infoAcc(HttpServletRequest request, HttpSession session,
-	 * 
-	 * @ModelAttribute("user") Users user) {
-	 * 
-	 * if(accountServiecImple.editAcc(user) > 0) {
-	 * billServiceImple.addBillDetails(carts); }
-	 * 
-	 * session.removeAttribute("Cart"); return "redirect:gio-hang"; }
-	 */
 	// -----------------------------------------
 
 }

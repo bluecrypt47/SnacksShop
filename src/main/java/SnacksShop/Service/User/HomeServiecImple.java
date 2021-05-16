@@ -26,36 +26,43 @@ public class HomeServiecImple implements IHomeService {
 	@Autowired
 	private ProductsDAO productsDAO;
 
+	// Lấy dữ liệu từ bảng slide ra
 	@Override
 	public List<Slides> GetDataSlide() {
 		return slidesDAO.GetDataSlide();
 	}
 
+	// Lấy dữ liệu từ bảng catogorys ra
 	public List<Catogorys> GetDataCatogorys() {
 		return catogorysDAO.GetDataCatogorys();
 	}
 
+	// Lấy dữ liệu từ bảng menu ra
 	public List<Menus> GetDataMenus() {
 		return menusDAO.GetDataMenus();
 	}
 
+	// Lấy dữ liệu từ bảng products ra
 	@Override
 	public List<ProductsDTO> GetDataProducts() {
 		List<ProductsDTO> listProducts = productsDAO.GetDataProducts();
 		return listProducts;
 	}
 	
+	// Lấy tất cả dữ liệu từ bảng slide ra
 	@Override
 	public List<ProductsDTO> GetAllProducts() {
 		List<ProductsDTO> listAllProducts = productsDAO.GetAllProduct();
 		return listAllProducts;
 	}
 	
+	// Tìm kiếm theo tên của sản phẩm
 	public List<ProductsDTO> GetSearchProducts(String name) {
 		List<ProductsDTO> listAllProducts = productsDAO.GetAllProduct();
 		return listAllProducts;
 	}
 
+	// Lấy dữ liệu của sản phẩm mới
 	public List<ProductsDTO> GetDataProductsViewNew() {
 		List<ProductsDTO> listProducts = productsDAO.GetDataProductsViewNew();
 		return listProducts;

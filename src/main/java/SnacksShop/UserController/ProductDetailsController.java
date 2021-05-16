@@ -14,6 +14,7 @@ public class ProductDetailsController extends BaseController {
 	@Autowired
 	private IProductDetailsService _productDetailsService;
 
+	// Hiện thị chi tiết sản phẩm
 	@RequestMapping(value = { "san-pham/chi-tiet-san-pham/{id}", "chi-tiet-san-pham/{id}" })
 	public ModelAndView Index(@PathVariable long id) {
 

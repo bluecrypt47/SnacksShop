@@ -50,6 +50,7 @@ public class UsersDAO extends BaseDAO {
 		return result;
 	}
 
+	// Lấy dữ liệu của user ra và sắp xếp theo idRoles
 	public List<Users> GetDataUsers() {
 		List<Users> listUsers = new ArrayList<Users>();
 
@@ -60,6 +61,7 @@ public class UsersDAO extends BaseDAO {
 		return listUsers;
 	}
 
+	// Xóa user
 	public void delete(int id) {
 		String sql = "DELETE FROM `users` WHERE id = "+id+"";
 		jdbcTemplate.update(sql);

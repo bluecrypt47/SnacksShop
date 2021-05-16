@@ -15,6 +15,7 @@ public class AccountServiecImple implements IAccountService{
 	@Autowired
 	UsersDAO userDAO = new UsersDAO();
 
+	// Thêm user
 	public int addAccount(Users user) {
 
 		// dung ham BCrypt de ma hoa password
@@ -23,6 +24,7 @@ public class AccountServiecImple implements IAccountService{
 		return userDAO.addAccount(user);
 	}
 
+	// Kiểm tra user
 	public Users checkAccount(Users user) {
 		String passw = user.getPassword();
 
@@ -40,11 +42,12 @@ public class AccountServiecImple implements IAccountService{
 	}
 	
 	
-	
+	// Lấy dữ liệu của user
 	public List<Users> GetDataUsers() {
 		return userDAO.GetDataUsers();
 	}
 
+	// Xóa user
 	public void delete(int id) {
 		userDAO.delete(id);
 	}

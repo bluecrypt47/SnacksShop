@@ -21,6 +21,7 @@ public class TypeProductsController extends BaseController {
 
 	private int TotalProductsOfPage = 12;
 
+	// Phân trang theo số lượng sản phẩm của mỗi catogory
 	@RequestMapping(value = "/san-pham/{id}")
 	public ModelAndView Products(@PathVariable int id) {
 

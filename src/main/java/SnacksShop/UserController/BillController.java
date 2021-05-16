@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class BillController extends BaseController {
 	
+	// Hiển thị trang thanh toán
 	@RequestMapping(value = "/checkout")
 	public ModelAndView Product() {
 		ModelAndView mv = new ModelAndView("user/bill/checkout");
