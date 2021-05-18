@@ -101,6 +101,7 @@ Body Section
 									<form:input type="email" class="span3" placeholder="Email"
 										id="email" path="user" />
 								</div>
+								<h6 class="status">${ statusEmail }</h6>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="inputEmail">Mật khẩu</label>
@@ -108,6 +109,7 @@ Body Section
 									<form:input type="password" class="span3"
 										placeholder="********" path="password" />
 								</div>
+								<h6 class="status">${ statusPassword }</h6>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="inputEmail">Họ và tên</label>
@@ -115,6 +117,7 @@ Body Section
 									<form:input type="text" class="span3"
 										placeholder="VD: Trần Văn A" path="name" />
 								</div>
+								<h6 class="status">${ statusName }</h6>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="inputEmail">Số điện
@@ -152,9 +155,6 @@ Body Section
 								<div class="controls">
 									<form:input class="span3" type="text" placeholder="Email"
 										path="user" />
-
-									<%-- <form:errors path="user" /> --%>
-
 								</div>
 							</div>
 							<div class="control-group">

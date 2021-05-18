@@ -31,11 +31,21 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "/dang-ky", method = RequestMethod.POST)
 	public ModelAndView createAccount(@ModelAttribute("users") Users users) {
 
-		int count = accountServiecImple.addAccount(users);
-		if (count > 0) {
-			_mvShare.addObject("status", "Đăng ký tài khoản thành công!!!");
-		} else {
+		if (users.getUser() == "" || users.getPassword() == "" || users.getName() == "" || users.getUser() == users.getUser()) {
 			_mvShare.addObject("status", "Đăng ký tài khoản thất bại!!!");
+
+		}else if(users.getUser() == "") {
+			_mvShare.addObject("statusEmail", "Vui lòng nhập Email!!!");
+		}else if( users.getPassword() == "" ) {
+			_mvShare.addObject("statusPassword", "Vui lòng nhập Password!!!");
+		}else if(users.getName() == "") {
+			_mvShare.addObject("statusName", "Vui lòng nhập Họ và Tên!!!");
+		} else {
+
+			int count = accountServiecImple.addAccount(users);
+			if (count > 0) {
+				_mvShare.addObject("status", "Đăng ký tài khoản thành công!!!");
+			}
 		}
 
 		_mvShare.setViewName("user/account/register");
@@ -47,13 +57,15 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "/dang-nhap", method = RequestMethod.POST)
 	public ModelAndView login(HttpSession session, @ModelAttribute("users") Users users) {
 
-		users = accountServiecImple.checkAccount(users);
-
-		if (users != null) {
-			_mvShare.setViewName("redirect:trang-chu");
-			session.setAttribute("loginInfo", users);
-		} else {
+		if (users.getUser() == "" || users.getPassword() == "") {
 			_mvShare.addObject("statusLogin", "Đăng nhập tài khoản thất bại!!!");
+		} else {
+			users = accountServiecImple.checkAccount(users);
+
+			if (users != null) {
+				_mvShare.setViewName("redirect:trang-chu");
+				session.setAttribute("loginInfo", users);
+			}
 		}
 		return _mvShare;
 	}

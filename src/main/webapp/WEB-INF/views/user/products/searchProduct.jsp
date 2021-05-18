@@ -24,6 +24,10 @@ New Products
 		<h3>Sản phẩm của chúng tôi</h3>
 		<div class="row-fluid">
 			<ul class="thumbnails">
+				<c:if test="${ search.size() <=0 }">
+					<h3 style="text-align: center; color: red;">Hiện tại chưa có
+						sản phẩm này!!!</h3>
+				</c:if>
 				<c:if test="${ search.size() >0 }">
 					<ul class="thumbnails">
 						<c:forEach var="item" items="${ search }" varStatus="loop">

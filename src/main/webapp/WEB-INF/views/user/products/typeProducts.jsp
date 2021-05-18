@@ -34,8 +34,12 @@
 <body>
 	<div class="well well-small">
 		<div class="row">
-			<span style="margin-left: 25px;">Danh sách sản phẩm</span>
+			<h3 style="margin-left: 25px;">Danh sách sản phẩm</h3>
 		</div>
+		<c:if test="${ productsPaginate.size() <=0 }">
+			<h3 style="text-align: center; color: red;">Hiện tại chưa có sản
+				phẩm loại này!!</h3>
+		</c:if>
 		<c:if test="${ productsPaginate.size() > 0 }">
 			<div class="row-fluid">
 				<ul class="thumbnails">
