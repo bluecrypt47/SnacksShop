@@ -49,7 +49,6 @@
 						<label class="control-label">Loại sản phẩm <sup>*</sup></label>
 						<div class="controls">
 							<form:select path="maLoai">
-								<form:option value="0">---Loại sản phẩm---</form:option>
 								<form:option value="1">Bánh</form:option>
 								<form:option value="2">Kẹo</form:option>
 								<form:option value="3">Mứt</form:option>

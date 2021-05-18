@@ -42,6 +42,7 @@
 			</ul>
 			<div class="well">
 				<h2 style="text-align: center;">Thêm Sản Phẩm</h2>
+				<h6 class="status" style="color: red; text-align: center;">${ statusAdd }</h6>
 				<br>
 				<form:form action=" them-san-pham" class="form-horizontal"
 					method="POST" modelAttribute="addProducts">
@@ -53,7 +54,6 @@
 						<!-- <label class="control-label">Title <sup>*</sup></label> -->
 						<div class="controls">
 							<form:select path="maLoai">
-								<form:option value="0">---Loại sản phẩm---</form:option>
 								<form:option value="1">Bánh</form:option>
 								<form:option value="2">Kẹo</form:option>
 								<form:option value="3">Mứt</form:option>
@@ -113,7 +113,6 @@
 						<div class="controls">
 							<input type="submit" name="submitAccount" value="Thêm sản phẩm"
 								class="exclusive shopBtn">
-								<h6 class="status" style="color: red; ">${ statusAdd}</h6>
 						</div>
 						
 					</div>

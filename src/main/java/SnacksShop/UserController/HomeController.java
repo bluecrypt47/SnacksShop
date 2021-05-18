@@ -146,13 +146,18 @@ public class HomeController extends BaseController {
 
 	@RequestMapping(value = { "/them-san-pham" }, method = RequestMethod.POST)
 	public ModelAndView createProduct(@ModelAttribute("addProducts") ProductsDTO addProducts) {
-		int count = _productDetailsServiceImple.addProduct(addProducts);
 
-		if (count > 0) {
-			_mvShare.addObject("statusAdd", "Thêm sản phẩm thành công!!!");
-		} else {
+		if (addProducts.getMaLoai() == 0 || addProducts.getTenSP() == "" || addProducts.getImage() == ""
+				|| addProducts.getGiaBan() == 0 || addProducts.getDvt() == "") {
 			_mvShare.addObject("statusAdd", "Thêm sản phẩm thất bại!!!");
+		} else {
+			int count = _productDetailsServiceImple.addProduct(addProducts);
+
+			if (count > 0) {
+				_mvShare.addObject("statusAdd", "Thêm sản phẩm thành công!!!");
+			}
 		}
+
 		_mvShare.setViewName("admin/productsManager/addProduct");
 		return _mvShare;
 	}
@@ -247,7 +252,7 @@ public class HomeController extends BaseController {
 	 * 
 	 * return "redirect:quan-ly-san-pham"; }
 	 */
-	//****************************************************
+	// ****************************************************
 	// ------------------------------------
 
 	// Xóa sản phẩm

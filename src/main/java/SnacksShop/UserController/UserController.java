@@ -31,11 +31,13 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "/dang-ky", method = RequestMethod.POST)
 	public ModelAndView createAccount(@ModelAttribute("users") Users users) {
 
-		if (users.getUser() == "" || users.getPassword() == "" || users.getName() == "" || users.getUser() == users.getUser()) {
+		if (users.getUser() == "" && users.getPassword() == "" && users.getName() == "" && users.getUser() == users.getUser()) {
 			_mvShare.addObject("status", "Đăng ký tài khoản thất bại!!!");
 
 		}else if(users.getUser() == "") {
 			_mvShare.addObject("statusEmail", "Vui lòng nhập Email!!!");
+		}else if(users.getUser() == users.getUser()) {
+			_mvShare.addObject("statusEmail", "Email đã có người sử dụng!!!");
 		}else if( users.getPassword() == "" ) {
 			_mvShare.addObject("statusPassword", "Vui lòng nhập Password!!!");
 		}else if(users.getName() == "") {
@@ -57,8 +59,12 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "/dang-nhap", method = RequestMethod.POST)
 	public ModelAndView login(HttpSession session, @ModelAttribute("users") Users users) {
 
-		if (users.getUser() == "" || users.getPassword() == "") {
+		if (users.getUser() == "" && users.getPassword() == "") {
 			_mvShare.addObject("statusLogin", "Đăng nhập tài khoản thất bại!!!");
+		} else if(users.getUser() == ""){
+			_mvShare.addObject("statusLoginUser", "Vui lòng kiểm tra Email!!!");
+		} else if(users.getUser() == ""){
+			_mvShare.addObject("statusLoginPassword", "Vui lòng kiểm tra Password!!!");
 		} else {
 			users = accountServiecImple.checkAccount(users);
 

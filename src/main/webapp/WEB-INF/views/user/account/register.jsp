@@ -156,6 +156,7 @@ Body Section
 									<form:input class="span3" type="text" placeholder="Email"
 										path="user" />
 								</div>
+								<h6 class="status">${ statusLoginUser }</h6>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="inputPassword">Mật
@@ -163,8 +164,8 @@ Body Section
 								<div class="controls">
 									<form:input type="password" class="span3"
 										placeholder="********" path="password" />
-									<!-- <span id="password_err"></span> -->
 								</div>
+								<h6 class="status">${ statusLoginPassword }</h6>
 							</div>
 							<div class="control-group">
 								<div class="controls" style="text-align: center;">
