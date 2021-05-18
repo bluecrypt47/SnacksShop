@@ -54,7 +54,7 @@
 							<form:input type="text" placeholder="abc@gmail.com" path="user" />
 						</div>
 					</div>
-					<div class="control-group">
+					<div class="control-group" hidden="">
 						<label class="control-label">Password <sup>*</sup></label>
 						<div class="controls">
 							<form:input type="password" placeholder="Password"

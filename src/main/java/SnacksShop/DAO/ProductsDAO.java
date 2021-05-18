@@ -54,7 +54,7 @@ public class ProductsDAO extends BaseDAO {
 	private StringBuffer SqlProductsByID(int id) {
 		StringBuffer sql = SqlString();
 
-		sql.append("WHERE maLoai = " + id + "  ORDER BY RAND()  ");
+		sql.append("WHERE maLoai = " + id + "   ");
 
 		return sql;
 	}
@@ -90,7 +90,7 @@ public class ProductsDAO extends BaseDAO {
 		return listProducts;
 	}
 
-	// lay ra tat ca san pham co cung id san pham
+	// lay ra san pham co id 
 	private String SqlProductDetailsByID(long id) {
 		StringBuffer sql = SqlString();
 

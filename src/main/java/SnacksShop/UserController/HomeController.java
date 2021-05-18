@@ -77,7 +77,7 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
-	//Hiển thị trang liên hệ
+	// Hiển thị trang liên hệ
 	@RequestMapping(value = "/lien-he")
 	public ModelAndView contact() {
 
@@ -135,7 +135,7 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
-	//  Thêm sản phẩm
+	// Thêm sản phẩm
 	@RequestMapping(value = { "/them-san-pham" }, method = RequestMethod.GET)
 	public ModelAndView addProduct() {
 
@@ -212,7 +212,42 @@ public class HomeController extends BaseController {
 		// ---------------------------
 		return _mvShare;
 	}
-	//
+	/*
+	 * //****************************************************
+	 * 
+	 * @RequestMapping(value = "/sua-san-pham/{id}") public ModelAndView
+	 * editProduct(HttpServletRequest request, HttpSession session, long id) {
+	 * _mvShare.setViewName("admin/productsManager/editProduct"); //
+	 * ---------------------------
+	 * 
+	 * _mvShare.addObject("products",
+	 * _productDetailsServiceImple.GetProductByID(id));
+	 * 
+	 * ProductsDTO productsDTO = new ProductsDTO(); ProductsDTO infoProduct =
+	 * (ProductsDTO) session.getAttribute("infoProduct"); if (infoProduct != null) {
+	 * productsDTO.setMaLoai(infoProduct.getMaLoai());
+	 * productsDTO.setTenSP(infoProduct.getTenSP());
+	 * productsDTO.setImage(infoProduct.getImage());
+	 * productsDTO.setGiaBan(infoProduct.getGiaBan());
+	 * productsDTO.setGiamGia(infoProduct.getGiamGia()); }
+	 * 
+	 * 
+	 * // --------------------------- return _mvShare; }
+	 * 
+	 * //
+	 * 
+	 * @RequestMapping(value = "/sua-san-pham", method = RequestMethod.POST) public
+	 * String editProduct(HttpServletRequest request, HttpSession session,
+	 * 
+	 * @ModelAttribute("product") ProductsDTO product) {
+	 * _mvShare.setViewName("admin/productsManager/editProduct"); //
+	 * ---------------------------
+	 * 
+	 * // ---------------------------
+	 * 
+	 * return "redirect:quan-ly-san-pham"; }
+	 */
+	//****************************************************
 	// ------------------------------------
 
 	// Xóa sản phẩm
@@ -236,7 +271,7 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
-	// Hiển thị chi tiết hóa đơn theo id của đơn hàng 
+	// Hiển thị chi tiết hóa đơn theo id của đơn hàng
 	@RequestMapping(value = { "/quan-ly-chi-tiet-hoa-don/{id}" })
 	public ModelAndView billsManagerDetails(@PathVariable int id) {
 

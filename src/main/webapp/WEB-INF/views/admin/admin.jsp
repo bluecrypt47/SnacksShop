@@ -778,7 +778,7 @@ table.dataTable thead .sorting:after {
 								<div class="row">
 									<div class="col-xs-3">
 										<!-- <i class="fa fa-support fa-5x"></i> -->
-										<i class="fa fa-user" style="font-size:75px"></i>
+										<i class="fa fa-user" style="font-size:70px"></i>
 									</div>
 									<div class="col-xs-9 text-right">
 										<div class="huge">${ accManagger.size() }</div>

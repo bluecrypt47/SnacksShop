@@ -56,7 +56,8 @@
 								<form:option value="4">Đồ ăn nhanh</form:option>
 								<form:option value="5">Nước giải khát</form:option>
 								<form:option value="6">Thịt khô</form:option>
-								<form:option value="7">Khác...</form:option>
+								<form:option value="7">Chè</form:option>
+								<form:option value="100000">Khác...</form:option>
 							</form:select>
 						</div>
 						<!-- </div> -->

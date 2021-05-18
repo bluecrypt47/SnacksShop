@@ -66,16 +66,14 @@ public class UserController extends BaseController {
 		return "redirect:" + request.getHeader("Referer");
 	}
 
-	// -----------------------------------------
-
 	// Thông tin tài khoản
 	@RequestMapping(value = "/thong-tin-tai-khoan", method = RequestMethod.GET)
 	public ModelAndView infoAccount(HttpServletRequest request, HttpSession session) {
 		_mvShare.setViewName("user/account/infoAccount");
-		
+
 		Users user = new Users();
 
-		Users infoAcc = (Users) session.getAttribute("infoAcc");
+		Users infoAcc = (Users) session.getAttribute("loginInfo");
 		if (infoAcc != null) {
 			user.setUser(infoAcc.getUser());
 			user.setPassword(infoAcc.getPassword());
@@ -88,6 +86,20 @@ public class UserController extends BaseController {
 		_mvShare.addObject("Users", user);
 		return _mvShare;
 	}
-	// -----------------------------------------
+
+	// *****************************************************
+
+	/*
+	 * @RequestMapping(value = "/thong-tin-tai-khoan", method = RequestMethod.POST)
+	 * public String editInfoAccount(HttpServletRequest request, HttpSession
+	 * session,
+	 * 
+	 * @ModelAttribute("users") Users users) {
+	 * 
+	 * 
+	 * return "redirect:" + request.getHeader("Referer"); }
+	 */
+
+	// *****************************************************
 
 }

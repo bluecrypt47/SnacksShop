@@ -27,8 +27,7 @@
 							Quản Lý Sản Phẩm
 							<div style="text-align: right;">
 								<a href="<c:url value="/them-san-pham"/>"
-									class="shopBtn btn-large">
-									<!-- <span
+									class="shopBtn btn-large"> <!-- <span
 								class="icon-arrow-plus"></span> -->Thêm sản phẩm
 								</a>
 							</div>
@@ -86,6 +85,7 @@
 													<c:if test="${ item.sanPhamMoi == false }">
 														<td></td>
 													</c:if>
+													<%-- <td><a href="<c:url value="/sua-san-pham/${item.maSP}"/>" --%>
 													<td><a href="<c:url value="/sua-san-pham"/>"
 														" class="btn btn-mini btn-danger" type="button"> <span
 															class="icon-edit"></span>
