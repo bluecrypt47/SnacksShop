@@ -37,6 +37,7 @@
 				<form:form action="checkout" method="post" modelAttribute="bill"
 					class="form-horizontal">
 					<h3>Thanh toán đơn hàng</h3>
+					<h6 class="status" style="color: red;">${ statusCheckout }</h6>
 					<div class="control-group">
 						<label class="control-label">Họ và tên <sup>*</sup></label>
 						<div class="controls">

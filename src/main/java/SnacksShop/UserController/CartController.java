@@ -110,18 +110,37 @@ public class CartController extends BaseController {
 	}
 
 	@RequestMapping(value = "checkout", method = RequestMethod.POST)
-	public String checkoutBill(HttpServletRequest request, HttpSession session, @ModelAttribute("bill") Bill bill) {
+	public ModelAndView checkoutBill(HttpServletRequest request, HttpSession session,
+			@ModelAttribute("bill") Bill bill) {
 
-		bill.setQuantity((int) session.getAttribute("TotalQuantityCart"));
-		bill.setTotal((double) session.getAttribute("TotalPriceCart"));
+		try {
+			if (bill.getName() == "" || bill.getEmail() == "" || bill.getPhoneNumber() == ""
+					|| bill.getAddress() == "") {
+				_mvShare.addObject("statusCheckout", "Thanh toán thất bại!!!");
+			} else {
 
-		if (billServiceImple.addBill(bill) > 0) {
-			HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("Cart");
-			billServiceImple.addBillDetails(carts);
+				bill.setQuantity((int) session.getAttribute("TotalQuantityCart"));
+				bill.setTotal((double) session.getAttribute("TotalPriceCart"));
+
+				if (billServiceImple.addBill(bill) > 0) {
+					HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("Cart");
+
+					if (carts == null) {
+						_mvShare.addObject("statusCheckout", "Hiện không có sản phẩm nào trong giỏ hàng!!!");
+					} else {
+						billServiceImple.addBillDetails(carts);
+					}
+				}
+
+				_mvShare.addObject("statusCheckout", "Thanh toán thành công!!!");
+				_mvShare.setViewName("redirect:" + request.getHeader("Referer"));
+				session.removeAttribute("Cart");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		session.removeAttribute("Cart");
-		return "redirect:gio-hang";
+		return _mvShare;
 	}
 	//
 }
