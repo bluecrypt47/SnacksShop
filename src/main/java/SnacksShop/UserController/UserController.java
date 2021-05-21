@@ -4,8 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,9 +39,10 @@ public class UserController extends BaseController {
 
 		} else if (users.getUser() == "") {
 			_mvShare.addObject("statusEmail", "Vui lòng nhập Email!!!");
-		} else if (users.getUser() == users.getUser()) {
-			_mvShare.addObject("statusEmail", "Email đã có người sử dụng!!!");
-		} else if (users.getPassword() == "") {
+		} else /*
+				 * if (users.getUser() == users.getUser()) { _mvShare.addObject("statusEmail",
+				 * "Email đã có người sử dụng!!!"); } else
+				 */ if (users.getPassword() == "") {
 			_mvShare.addObject("statusPassword", "Vui lòng nhập Password!!!");
 		} else if (users.getName() == "") {
 			_mvShare.addObject("statusName", "Vui lòng nhập Họ và Tên!!!");
@@ -99,25 +102,34 @@ public class UserController extends BaseController {
 			user.setName(infoAcc.getName());
 			user.setAddress(infoAcc.getAddress());
 			user.setPhoneNumber(infoAcc.getPhoneNumber());
-
 		}
 
 		_mvShare.addObject("Users", user);
 		return _mvShare;
 	}
 
-	// *****************************************************
+	// ***************************************************** dang dở
 
-	/*
-	 * @RequestMapping(value = "/thong-tin-tai-khoan", method = RequestMethod.POST)
-	 * public String editInfoAccount(HttpServletRequest request, HttpSession
-	 * session,
-	 * 
-	 * @ModelAttribute("users") Users users) {
-	 * 
-	 * 
-	 * return "redirect:" + request.getHeader("Referer"); }
-	 */
+	@RequestMapping(value = "/thong-tin-tai-khoan", method = RequestMethod.POST)
+	public ModelAndView editInfoAccount(HttpServletRequest request, HttpSession session,
+			@ModelAttribute("Users") Users Users) {
+
+		// Users user = (Users) session.getAttribute("Users");
+		if (Users.getName() == "" || Users.getAddress() == "" || Users.getPhoneNumber() == ""
+				|| Users.getUser() == "") {
+			_mvShare.addObject("statusUpdateInfo", "Cập nhật thất bại!!!");
+		} else {
+			accountServiecImple.editInfo(Users);
+
+			_mvShare.addObject("statusUpdateInfo", "Cập nhật thành công!!!");
+			
+		}
+		
+		_mvShare.setViewName("redirect:" + request.getHeader("Referer"));
+		session.setAttribute("loginInfo", Users);
+		
+		return _mvShare;
+	}
 
 	// *****************************************************
 

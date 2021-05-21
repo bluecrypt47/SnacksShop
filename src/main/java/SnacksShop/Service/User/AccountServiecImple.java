@@ -52,4 +52,10 @@ public class AccountServiecImple implements IAccountService{
 		userDAO.delete(id);
 	}
 
+	//************************************dang dở
+	public void editInfo(Users users) {
+		
+		userDAO.editInfo(users);
+	}
+	//************************************
 }

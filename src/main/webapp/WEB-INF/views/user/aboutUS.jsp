@@ -27,35 +27,38 @@
 				các tốc độ tăng trưởng dương trong năm 2020. Chính vì đều này, nhóm
 				chúng em sẽ xây dựng dự án “Website bán thức ăn vặt” để khách hàng
 				có thể chọn mua trực tiếp trên bất kỳ thiết bị nào có thể truy cập
-				vào mạng.<br> <br> Sản phẩm sẽ có hình ảnh minh họa, mã,
-				tên sản phẩm, ngày sản xuất, hạn sử dụng và giá của sản phẩm đó. Mỗi
-				sản phẩm sẽ thuộc về một loại sản phẩm và nhà cung cấp khác nhau
-				(nhà cung cấp gồm: địa chỉ và tên nhà cung cấp). Mỗi khi người bán
-				hết sản phẩm thì người bán sẽ liên lạc với nhà cung cấp và đặt hàng
-				nhà cung cấp sẽ xuất phiếu nhập hàng cho người bán để nhập hàng.
-				Người bán có thể mua hàng từ nhiều nhà cung cấp khác nhau và nhà
-				cung cấp cũng sẽ có nhiều mặt hàng để bán. <br> <br> Trang
-				web sẽ có chức năng đăng nhập, đăng xuất (Admin và User). Đối với
-				tài khoản Admin người dùng có thể toàn quyền sử dụng các chức năng
-				mà trang web có (thêm, xóa, sửa, đánh giá, tìm kiếm theo danh mục…
-				sản phẩm). User là tài khoản của khách hàng nếu muốn mua sản phẩm
-				thì phải đăng nhập và điền đầy đủ thông tin để người bán có thể biết
-				và lập đơn hàng.<br> <br> Người mua có thể xem và tìm
-				kiếm, tùy chọn loại hàng mà mình muốn mua. Khi mua, người mua bắt
-				buộc phải đăng nhập vào tài khoản của mình đã đăng ký trước đó hoặc
-				có thể đăng ký ngay lập tức trên web. Khi đăng ký người dùng chỉ cần
-				điền thông tin tài khoản gồm (email, username, password). Mỗi tài
-				khoản người dùng đăng ký như vậy sẽ được hệ thống kiểm tra và phản
-				hồi ngay lại tức (Thành công nếu chưa tồn tại thông tin trước đây;
-				Thất bại nếu nếu email đã tồn tại) và mỗi tài khoản sẽ được hệ thống
-				tự động thêm vào tài khoản user của hệ thống.<br> <br> Khi
-				mua, hệ thống sẽ lập hóa đơn (gồm mã hóa đơn, ngày lập) cho khách
-				hàng. Người mua có thể phản hồi lại mặt hàng mà mình đã mua trong
-				phần đánh giá của mỗi sản phẩm. Phần đánh giá gồm mã đánh giá, mã
-				sản phẩm, username và ngày đánh giá. Website này sử dụng ngôn ngữ
-				Java là chính. Công nghệ mà chúng em sử dụng là Java Spring MVC. Đây
-				là một công nghệ mới của Java được sử dụng để lập trình web (trước
-				đây có Java Servlet). <br>
+				vào mạng. Sản phẩm sẽ có hình ảnh minh họa, mã sản phẩm, tên sản
+				phẩm, ngày tạo, ngày cập nhật thông tin sản phẩm, giá bán, đơn vị
+				tính, giảm giá (nếu có), giới thiệu sản phẩm, sản phẩm nổi bật và
+				sản phẩm mới của sản phẩm đó. Mỗi sản phẩm sẽ thuộc về một loại sản
+				phẩm. Trang web sẽ có chức năng đăng nhập, đăng xuất (Admin và
+				User). Đối với tài khoản Admin người dùng có thể toàn quyền sử dụng
+				các chức năng mà trang web có (thêm, xóa, sửa, tìm kiếm theo danh
+				mục,… sản phẩm). User là tài khoản của khách hàng nếu muốn mua sản
+				phẩm thì khách hàng có 2 lựa chọn: 1- Đăng nhập và website sẽ tự
+				động điền thông tin mà khách hàng đã đăng ký tài khoản trước đó và
+				khách hàng chỉ cần điền hoặc sửa thông tin nếu muốn; 2- Khách hàng
+				phải điền đầy đủ thông tin (như: tên, email, số điện thoại, địa chỉ
+				nhận hàng và ghi chú (nếu có),…) để người bán có thể biết và lập đơn
+				hàng. Nếu không điền đầy đủ thông tin thì hệ thống sẽ hiện lỗi cho
+				khách hàng biết. Người mua có thể xem và tìm kiếm, tùy chọn loại
+				hàng mà mình muốn mua. Khi mua, sẽ tiện hơn khi khách hàng đăng ký
+				một tài khoản trước đó. Việc này sẽ giúp cho khách hàng tốn ít thời
+				gian nhất có thể khi thanh toán để mua hàng. Khi đăng ký người dùng
+				chỉ cần điền thông tin tài khoản gồm (email, password, tên hiển thị,
+				số điện thoại (nếu có) và địa chỉ nhận (nếu có)). Mỗi tài khoản
+				người dùng đăng ký như vậy sẽ được hệ thống kiểm tra và phản hồi
+				ngay lại tức (Thành công nếu chưa tồn tại thông tin trước đây; Thất
+				bại nếu nếu email đã tồn tại) và mỗi tài khoản sẽ được hệ thống tự
+				động thêm vào tài khoản user của hệ thống. Khi mua, hệ thống sẽ lập
+				hóa đơn (gồm mã hóa đơn, ngày lập, thông tin khách hàng, số lượng và
+				tổng tiền của đơn hàng) cho khách hàng và hệ thống sẽ tự động thêm
+				vào chi tiết của hóa đơn gồm (mã chi tiết, mã hóa đơn, mà sản phẩm,
+				số lượng sản phẩm và tổng số tiền của sản phẩm đó) cho khách hàng.
+				Website này sử dụng ngôn ngữ Java là chính. Công nghệ mà chúng em sử
+				dụng là Java Spring MVC. Đây là một công nghệ mới của Java được sử
+				dụng để lập trình web (trước đây có Java Servlet). Ngoài ra, nhóm
+				còn nhờ vào github để có thể làm việc hiệu quả hơn. <br>
 			</p>
 		</div>
 		<div class="span4" style="text-align: center;">

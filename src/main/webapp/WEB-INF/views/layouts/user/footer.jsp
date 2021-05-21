@@ -39,9 +39,10 @@ Footer
 	<div class="row-fluid">
 		<div class="span2">
 			<h5>Tài Khoản Của Bạn</h5>
-			<a href="#">TÀI KHOẢN CỦA BẠN</a><br> <a href="#">CÁ NHÂN
-				THÔNG TIN</a><br> <a href="<c:url value="/lien-he"/>">ĐỊA CHỈ</a><br>
-			<a href="#">GIẢM GIÁ</a><br> <a href="#">LỊCH SỬ ĐẶT HÀNG</a><br>
+			<a href="<c:url value="/thong-tin-tai-khoan"/>">TÀI KHOẢN CỦA BẠN</a><br>
+			<a href="<c:url value="/thong-tin-tai-khoan"/>">THÔNG TIN CÁ NHÂN</a><br>
+			<a href="<c:url value="/lien-he"/>">ĐỊA CHỈ</a><br> <a href="#">GIẢM
+				GIÁ</a><br> <a href="#">LỊCH SỬ ĐẶT HÀNG</a><br>
 		</div>
 		<div class="span2">
 			<h5>Thông Tin</h5>

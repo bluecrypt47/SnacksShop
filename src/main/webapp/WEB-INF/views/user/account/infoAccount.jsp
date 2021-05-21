@@ -9,6 +9,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Thông tin tài khoản</title>
+<style>
+.err {
+	color: red;
+	font-size: italic;
+}
+
+.status {
+	color: red;
+	font-size: italic;
+}
+
+.statusLogin {
+	color: red;
+	font-size: italic;
+}
+</style>
 </head>
 <body>
 	<div class="row">
@@ -39,7 +55,7 @@
 				<form:form action="thong-tin-tai-khoan" method="post"
 					modelAttribute="Users" class="form-horizontal">
 					<h3>Thông tin tài khoản</h3>
-
+					<h6 class="status" >${ statusUpdateInfo }</h6>
 					<div class="control-group">
 						<label class="control-label" for="inputFname">Tên người
 							dùng <sup>*</sup>
@@ -51,7 +67,7 @@
 					<div class="control-group">
 						<label class="control-label" for="inputLname">Email <sup>*</sup></label>
 						<div class="controls">
-							<form:input type="text" placeholder="abc@gmail.com" path="user" />
+							<form:input type="text" disabled="true" placeholder="abc@gmail.com" path="user" />
 						</div>
 					</div>
 					<div class="control-group" hidden="">

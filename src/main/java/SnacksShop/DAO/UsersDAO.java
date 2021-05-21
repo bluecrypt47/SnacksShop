@@ -15,7 +15,7 @@ import SnacksShop.Entity.Users;
 
 @Repository
 public class UsersDAO extends BaseDAO {
-	
+
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -63,7 +63,16 @@ public class UsersDAO extends BaseDAO {
 
 	// Xóa user
 	public void delete(int id) {
-		String sql = "DELETE FROM `users` WHERE id = "+id+"";
+		String sql = "DELETE FROM `users` WHERE id = " + id + "";
 		jdbcTemplate.update(sql);
 	}
+
+	//************************************dang dở
+	public void editInfo(Users users) {
+		String sql = "UPDATE `users` SET  `password`='" + users.getPassword() + "',`name`='" + users.getName()
+				+ "',`address`='" + users.getAddress() + "',`phoneNumber`='" + users.getPhoneNumber()
+				+ "' WHERE  `user`='" + users.getUser() + "' ";
+		jdbcTemplate.update(sql);
+	}
+	//************************************
 }

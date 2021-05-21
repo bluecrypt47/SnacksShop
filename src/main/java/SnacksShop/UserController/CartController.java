@@ -118,21 +118,19 @@ public class CartController extends BaseController {
 					|| bill.getAddress() == "") {
 				_mvShare.addObject("statusCheckout", "Thanh toán thất bại!!!");
 			} else {
-
+				
 				bill.setQuantity((int) session.getAttribute("TotalQuantityCart"));
 				bill.setTotal((double) session.getAttribute("TotalPriceCart"));
+				HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("Cart");
 
 				if (billServiceImple.addBill(bill) > 0) {
-					HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("Cart");
-
 					if (carts == null) {
 						_mvShare.addObject("statusCheckout", "Hiện không có sản phẩm nào trong giỏ hàng!!!");
 					} else {
 						billServiceImple.addBillDetails(carts);
+						_mvShare.addObject("statusCheckout", "Thanh toán thành công!!!");
 					}
 				}
-
-				_mvShare.addObject("statusCheckout", "Thanh toán thành công!!!");
 				_mvShare.setViewName("redirect:" + request.getHeader("Referer"));
 				session.removeAttribute("Cart");
 			}
