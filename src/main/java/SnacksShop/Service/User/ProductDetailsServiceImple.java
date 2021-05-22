@@ -53,4 +53,9 @@ public class ProductDetailsServiceImple implements IProductDetailsService{
 		return productsDAO.addProduct(addProducts);
 	}
 
+	public void editProduct(ProductsDTO product) {
+		productsDAO.editProduct(product);
+		
+	}
+
 }

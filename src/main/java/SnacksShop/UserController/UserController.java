@@ -127,6 +127,7 @@ public class UserController extends BaseController {
 		
 		_mvShare.setViewName("redirect:" + request.getHeader("Referer"));
 		session.setAttribute("loginInfo", Users);
+		//_mvShare.addObject("loginInfo", Users);
 		
 		return _mvShare;
 	}

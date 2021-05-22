@@ -42,6 +42,7 @@
 			</ul>
 			<div class="well">
 				<h2 style="text-align: center;">Sửa Sản Phẩm</h2>
+				<h6 style="text-align: center; color: red;">${ statusUpdateProdcut }</h6>
 				<br>
 				<form:form action="sua-san-pham" class="form-horizontal"
 					method="POST" modelAttribute="products">
@@ -83,6 +84,13 @@
 						</div>
 					</div>
 					<div class="control-group">
+						<label class="control-label">ĐVT <sup>*</sup></label>
+						<div class="controls">
+							<form:input path="dvt" type="text"
+								placeholder=" VD: Cái,..." />
+						</div>
+					</div>
+					<div class="control-group">
 						<label class="control-label">Giảm giá <sup>*</sup></label>
 						<div class="controls">
 							<form:input path="giamGia" type="text"
@@ -117,7 +125,7 @@
 
 					<div class="control-group">
 						<div class="controls">
-							<input type="submit" name="submitAccount" value="Sửa sản phẩm"
+							<input type="submit" name="submitAccount" value="Cập nhật sản phẩm"
 								class="exclusive shopBtn">
 						</div>
 					</div>

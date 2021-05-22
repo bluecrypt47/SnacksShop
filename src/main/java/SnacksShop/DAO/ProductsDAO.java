@@ -90,7 +90,7 @@ public class ProductsDAO extends BaseDAO {
 		return listProducts;
 	}
 
-	// lay ra san pham co id 
+	// lay ra san pham co id
 	private String SqlProductDetailsByID(long id) {
 		StringBuffer sql = SqlString();
 
@@ -134,7 +134,7 @@ public class ProductsDAO extends BaseDAO {
 
 	}
 
-	// Truy vấn lấy random 7 sản phẩm mới 
+	// Truy vấn lấy random 7 sản phẩm mới
 	private String SqlProductsViewNew(boolean sanPhamMoi) {
 		StringBuffer sql = SqlString();
 		if (sanPhamMoi) {
@@ -151,7 +151,7 @@ public class ProductsDAO extends BaseDAO {
 		List<ProductsDTO> listProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
 		return listProducts;
 	}
-	
+
 	// Thêm sản phẩm
 	public int addProduct(ProductsDTO addProducts) {
 
@@ -169,6 +169,15 @@ public class ProductsDAO extends BaseDAO {
 		sql.append(" )  ");
 		int result = _jdbcTemplate.update(sql.toString());
 		return result;
+	}
+
+	public void editProduct(ProductsDTO product) {
+		String sql = "UPDATE `sanpham` SET `maLoai`='" + product.getMaLoai() + "',`tenSP`='" + product.getTenSP()
+				+ "',`image`='" + product.getImage() + "',`giaBan`='" + product.getGiaBan() + "',`dvt`='"
+				+ product.getDvt() + "',`giamGia`='" + product.getGiamGia() + "',`gioiThieu`='" + product.getGioiThieu()
+				+ "',`noiBat`='" + product.isNoiBat() + "',`sanPhamMoi`='" + product.isSanPhamMoi() + "' WHERE `maSP`='"
+				+ product.getMaSP() + "'";
+		jdbcTemplate.update(sql);
 	}
 
 }

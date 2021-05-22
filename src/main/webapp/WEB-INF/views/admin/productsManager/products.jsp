@@ -49,6 +49,7 @@
 												<th>Ngày Đăng</th>
 												<th>Ngày Cập Nhật</th>
 												<th>Giá Bán</th>
+												<th>ĐVT</th>
 												<th>Giảm Giá</th>
 												<th>Giới Thiệu</th>
 												<th>Sản Phẩm Nổi Bật</th>
@@ -70,6 +71,7 @@
 													<td>${ item.ngayCapNhat }</td>
 													<td><fmt:formatNumber type="number"
 															groupingUsed="true" value="${ item.giaBan }" /> ₫</td>
+													<td>${ item.dvt }</td>
 													<td><fmt:formatNumber type="number"
 															groupingUsed="true" value="${ item.giamGia }" /> ₫</td>
 													<td>${ item.gioiThieu }</td>
@@ -85,8 +87,8 @@
 													<c:if test="${ item.sanPhamMoi == false }">
 														<td></td>
 													</c:if>
-													<%-- <td><a href="<c:url value="/sua-san-pham/${item.maSP}"/>" --%>
-													<td><a href="<c:url value="/sua-san-pham"/>"
+													<td><a href="<c:url value="/sua-san-pham/${item.maSP}"/>"
+													<%-- <td><a href="<c:url value="/sua-san-pham"/>" --%>
 														" class="btn btn-mini btn-danger" type="button"> <span
 															class="icon-edit"></span>
 													</a></td>
