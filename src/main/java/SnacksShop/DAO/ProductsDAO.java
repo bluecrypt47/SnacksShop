@@ -171,6 +171,7 @@ public class ProductsDAO extends BaseDAO {
 		return result;
 	}
 
+	// cập nhật sản phẩm
 	public void editProduct(ProductsDTO product) {
 		String sql = "UPDATE `sanpham` SET `maLoai`='" + product.getMaLoai() + "',`tenSP`='" + product.getTenSP()
 				+ "',`image`='" + product.getImage() + "',`giaBan`='" + product.getGiaBan() + "',`dvt`='"
@@ -178,6 +179,20 @@ public class ProductsDAO extends BaseDAO {
 				+ "',`noiBat`='" + product.isNoiBat() + "',`sanPhamMoi`='" + product.isSanPhamMoi() + "' WHERE `maSP`='"
 				+ product.getMaSP() + "'";
 		jdbcTemplate.update(sql);
+	}
+
+	// lấy danh sách sản phẩm mới
+	public List<ProductsDTO> GetAllNewProducts() {
+		String sql = "SELECT * FROM `sanpham` WHERE sanPhamMoi= true";
+		List<ProductsDTO> listNewProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
+		return listNewProducts;
+	}
+
+	// lấy danh sách sản phẩm nổi bật
+	public List<ProductsDTO> GetAllHighlighProducts() {
+		String sql = "SELECT * FROM `sanpham` WHERE noiBat= true";
+		List<ProductsDTO> listNewProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
+		return listNewProducts;
 	}
 
 }

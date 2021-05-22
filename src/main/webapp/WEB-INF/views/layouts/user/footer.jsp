@@ -53,7 +53,8 @@ Footer
 		</div>
 		<div class="span2">
 			<h5>Ưu Đãi</h5>
-			<a href="#">SẢN PHẨM MỚI</a> <br> <a href="#">BÁN CHẠY NHẤT</a><br>
+			<a href="<c:url value="/san-pham-moi"/>">SẢN PHẨM MỚI</a> <br> <a
+				href="<c:url value="/san-pham-noi-bat"/>">BÁN CHẠY NHẤT</a><br>
 			<a href="#">ĐẶC BIỆT</a><br> <a href="#">NHÀ SẢN XUẤT</a><br>
 			<a href="#">NHÀ CUNG CẤP</a> <br />
 		</div>

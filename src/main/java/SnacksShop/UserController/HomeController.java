@@ -69,6 +69,24 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
+	// Hiển thị trang tất cả sản phẩm mới
+	@RequestMapping(value = "/san-pham-moi")
+	public ModelAndView newProduct() {
+		_mvShare.addObject("allNewProducts", _homeService.GetAllNewProducts());
+
+		_mvShare.setViewName("user/products/newProducts");
+		return _mvShare;
+	}
+	
+	// Hiển thị trang tất cả sản nổi bật
+		@RequestMapping(value = "/san-pham-noi-bat")
+		public ModelAndView highlightProduct() {
+			_mvShare.addObject("allHighlighProducts", _homeService.GetAllHighlighProducts());
+
+			_mvShare.setViewName("user/products/highlighProducts");
+			return _mvShare;
+		}
+
 	// Hiển thị trang giới thiệu website
 	@RequestMapping(value = "/gioi-thieu")
 	public ModelAndView aboutUs() {
