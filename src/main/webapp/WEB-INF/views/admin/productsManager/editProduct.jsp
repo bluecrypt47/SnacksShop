@@ -42,7 +42,10 @@
 			</ul>
 			<div class="well">
 				<h2 style="text-align: center;">Sửa Sản Phẩm</h2>
-				<h6 style="text-align: center; color: red;">${ statusUpdateProdcut }</h6>
+				<h6 style="text-align: center; color: red;">
+					Những ô có dấu (<sup>*</sup>) không được để trống!!!
+				</h6>
+
 				<br>
 				<form:form action="sua-san-pham" class="form-horizontal"
 					method="POST" modelAttribute="products">
@@ -65,46 +68,44 @@
 					<div class="control-group">
 						<label class="control-label">Tên sản phẩm <sup>*</sup></label>
 						<div class="controls">
-							<form:input path="tenSP" type="text"
-								placeholder=" VD: Bánh đa,..." />
+							<form:input path="tenSP" type="text" placeholder=" Bánh đa,..." />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Hình ảnh <sup>*</sup></label>
 						<div class="controls">
 							<form:input path="image" type="text"
-								placeholder=" VD: banh-da.png,..." />
+								placeholder="  banh-da.png,..." />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Giá bán <sup>*</sup></label>
 						<div class="controls">
-							<form:input path="giaBan" type="text"
-								placeholder=" VD: 10000,..." />
+							<form:input path="giaBan" type="text" placeholder=" 10000,..." />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">ĐVT <sup>*</sup></label>
 						<div class="controls">
-							<form:input path="dvt" type="text"
-								placeholder=" VD: Cái,..." />
+							<form:input path="dvt" type="text" placeholder=" Cái,..." />
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Giảm giá <sup>*</sup></label>
+						<label class="control-label">Giảm giá </label>
 						<div class="controls">
 							<form:input path="giamGia" type="text"
-								placeholder=" VD: Có thể không cần điền!" />
+								placeholder="Có thể để trống!" />
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Giới thiệu <sup>*</sup></label>
+						<label class="control-label">Giới thiệu </label>
 						<div class="controls">
-							<form:textarea path="gioiThieu" rows="6" cols="30"></form:textarea>
+							<form:textarea path="gioiThieu" rows="6" cols="30"
+								placeholder="Có thể để trống!"></form:textarea>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Sản phẩm nổi bật <sup>*</sup></label>
+						<label class="control-label">Sản phẩm nổi bật </label>
 						<div class="controls">
 							<form:select path="noiBat">
 								<form:option value="0">Không nổi bật</form:option>
@@ -113,7 +114,7 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Sản phẩm mới <sup>*</sup></label>
+						<label class="control-label">Sản phẩm mới </label>
 						<div class="controls">
 							<form:select path="sanPhamMoi">
 								<form:option value="0">Sản phẩm mới</form:option>
@@ -125,8 +126,9 @@
 
 					<div class="control-group">
 						<div class="controls">
-							<input type="submit" name="submitAccount" value="Cập nhật sản phẩm"
-								class="exclusive shopBtn">
+							<h6 style="color: red;">${ statusUpdateProdcut }</h6>
+							<input type="submit" name="submitAccount"
+								value="Cập nhật sản phẩm" class="exclusive shopBtn">
 						</div>
 					</div>
 				</form:form>

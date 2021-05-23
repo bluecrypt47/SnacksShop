@@ -42,7 +42,10 @@
 			</ul>
 			<div class="well">
 				<h2 style="text-align: center;">Thêm Sản Phẩm</h2>
-				<h6 class="status" style="color: red; text-align: center;">${ statusAdd }</h6>
+				<h6 style="text-align: center; color: red;">
+					Những ô có dấu (<sup>*</sup>) không được để trống!!!
+				</h6>
+
 				<br>
 				<form:form action=" them-san-pham" class="form-horizontal"
 					method="POST" modelAttribute="addProducts">
@@ -69,40 +72,37 @@
 					<div class="control-group">
 						<label class="control-label">Tên sản phẩm <sup>*</sup></label>
 						<div class="controls">
-							<form:input path="tenSP" type="text"
-								placeholder=" VD: Bánh đa,..." />
+							<form:input path="tenSP" type="text" placeholder=" Bánh đa,..." />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Hình ảnh <sup>*</sup></label>
 						<div class="controls">
 							<form:input path="image" type="text"
-								placeholder=" VD: banh-da.png,..." />
+								placeholder=" banh-da.png,..." />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Giá bán <sup>*</sup></label>
 						<div class="controls">
-							<form:input path="giaBan" type="text"
-								placeholder=" VD: 10000,..." />
+							<form:input path="giaBan" type="text" placeholder=" 10000,..." />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Đơn vị tính <sup>*</sup></label>
 						<div class="controls">
-							<form:input path="dvt" type="text"
-								placeholder=" VD: Cái,..." />
+							<form:input path="dvt" type="text" placeholder="Cái,..." />
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Giảm giá <sup>*</sup></label>
+						<label class="control-label">Giảm giá </label>
 						<div class="controls">
 							<form:input path="giamGia" type="text"
-								placeholder=" VD: Có thể không cần điền!" />
+								placeholder="Có thể để trống!" />
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Giới thiệu <sup>*</sup></label>
+						<label class="control-label">Giới thiệu </label>
 						<div class="controls">
 							<form:textarea path="gioiThieu" rows="6" cols="30"></form:textarea>
 						</div>
@@ -111,10 +111,11 @@
 
 					<div class="control-group">
 						<div class="controls">
+							<h6 class="status" style="color: red;">${ statusAdd }</h6>
 							<input type="submit" name="submitAccount" value="Thêm sản phẩm"
 								class="exclusive shopBtn">
 						</div>
-						
+
 					</div>
 				</form:form>
 			</div>

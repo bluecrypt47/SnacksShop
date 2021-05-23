@@ -37,11 +37,14 @@
 				<form:form action="checkout" method="post" modelAttribute="bill"
 					class="form-horizontal">
 					<h3>Thanh toán đơn hàng</h3>
+					<h6 style="text-align: center; color: red;">
+						Những ô có dấu (<sup>*</sup>) không được để trống!!!
+					</h6>
 					<h6 class="status" style="color: red;">${ statusCheckout }</h6>
 					<div class="control-group">
 						<label class="control-label">Họ và tên <sup>*</sup></label>
 						<div class="controls">
-							<form:input type="text" placeholder="VD: Trần Văn A" path="name" />
+							<form:input type="text" placeholder="Trần Văn A" path="name" />
 						</div>
 					</div>
 					<div class="control-group">
@@ -54,20 +57,20 @@
 					<div class="control-group">
 						<label class="control-label">Số điện thoại <sup>*</sup></label>
 						<div class="controls">
-							<form:input type="text" class="span3" placeholder=""
+							<form:input type="text" class="span3" placeholder="0123456789"
 								path="phoneNumber" />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">Địa chỉ <sup>*</sup></label>
 						<div class="controls">
-							<form:textarea path="address" rows="6" cols="30" />
+							<form:textarea path="address" rows="6" cols="30"  placeholder="TP. HCM"/>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Ghi chú <sup>*</sup></label>
+						<label class="control-label">Ghi chú</label>
 						<div class="controls">
-							<form:textarea path="note" rows="6" cols="30" />
+							<form:textarea path="note" rows="6" cols="30"  placeholder="Có thể để trống"/>
 						</div>
 					</div>
 					<div class="control-group">

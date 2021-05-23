@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <head>
-<title>Sản phẩm nổi bật</title>
+<title>Sản phẩm bán chạy</title>
 <style>
 .pagination {
 	display: flex;
@@ -23,7 +23,7 @@
 .pagination a.active {
 	background-color: #4CAF50;
 	color: white;
-	border: 1px solid #4CAF50;
+	border-radius: 5px;
 }
 
 .pagination a:hover:not(.active) {
@@ -34,7 +34,7 @@
 <body>
 
 	<div class="well well-small">
-		<h3>Sản phẩm nổi bật</h3>
+		<h3>Sản phẩm bán chạy</h3>
 		<div class="row-fluid">
 			<ul class="thumbnails">
 				<c:if test="${ allHighlithsProductsPaginate.size() <=0 }">
@@ -72,7 +72,8 @@
 							<c:if
 								test="${ (loop.index+1)  %3 ==0 || (loop.index+1) == allHighlithsProductsPaginate.size()}">
 					</ul>
-					<c:if test="${ (loop.index+1) < allHighlithsProductsPaginate.size()}">
+					<c:if
+						test="${ (loop.index+1) < allHighlithsProductsPaginate.size()}">
 						<ul class="thumbnails">
 					</c:if>
 				</c:if>
@@ -84,11 +85,13 @@
 	<div class="pagination">
 		<c:forEach var="item" begin="1"
 			end="${ paginateInfoAllHighlithsProdcts.totalPage }" varStatus="loop">
-			<c:if test="${ (loop.index) == paginateInfoAllHighlithsProdcts.currentPage }">
+			<c:if
+				test="${ (loop.index) == paginateInfoAllHighlithsProdcts.currentPage }">
 				<a href="<c:url value="/san-pham-noi-bat/${ loop.index }"/>"
 					class="active">${ loop.index }</a>
 			</c:if>
-			<c:if test="${ (loop.index) != paginateInfoAllHighlithsProdcts.currentPage }">
+			<c:if
+				test="${ (loop.index) != paginateInfoAllHighlithsProdcts.currentPage }">
 				<a href="<c:url value="/san-pham-noi-bat/${ loop.index }"/>">${ loop.index }</a>
 			</c:if>
 		</c:forEach>

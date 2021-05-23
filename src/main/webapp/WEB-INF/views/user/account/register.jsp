@@ -25,39 +25,6 @@
 	font-size: italic;
 }
 </style>
-<!-- <script>
-	function getValue(id) {
-		return document.getElementById(id).value.trim();
-	}
-	
-	function showErr(key, mess) {
-		
-		document.getElementById(key+'_err').innerHTML = mess;
-	}
-
-	function validateLogin() {
-		
-		var flag = true;
-
-		// email
-		var email = getValue('email');
-		var emailFomat = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-		if (!emailFomat.test(email)) {
-			flag = false;
-			//showErr('email_err', "Vui lòng nhập đúng và không để trống Email!");
-			console.log("Vui lòng nhập đúng và không để trống Email!");
-		}
-		
-		// pass
-		var password = getValue('password');
-		if (password == '' ) {
-			flag = false;
-			//showErr('password_err', "Vui lòng không để trống Passowrd!");
-			console.log("Vui lòng không để trống Passowrd!");
-		}
-		return flag;
-	}
-</script> -->
 </head>
 <body>
 	<!-- 
@@ -82,10 +49,14 @@ Body Section
 		</div>
 		<div class="span9">
 			<ul class="breadcrumb">
-				<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span class="divider">/</span></li>
+				<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span
+					class="divider">/</span></li>
 				<li class="active">Người dùng</li>
 			</ul>
-			<h3>Đăng nhập</h3>
+			<h3 style="text-align: center;">Đăng nhập- Đăng ký</h3>
+			<h6 style="text-align: center; color: red;">
+				Những ô có dấu (<sup>*</sup>) không được để trống!!!
+			</h6>
 			<hr class="soft" />
 			<div class="row">
 				<div class="span4">
@@ -96,7 +67,8 @@ Body Section
 							modelAttribute="usersRegister">
 							<div class="control-group">
 								<label class="control-label" for="inputEmail">Địa chỉ
-									E-mail</label>
+									E-mail<sup>*</sup>
+								</label>
 								<div class="controls">
 									<form:input type="email" class="span3" placeholder="Email"
 										id="email" path="user" />
@@ -104,7 +76,7 @@ Body Section
 								<h6 class="status">${ statusEmail }</h6>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="inputEmail">Mật khẩu</label>
+								<label class="control-label" for="inputEmail">Mật khẩu<sup>*</sup></label>
 								<div class="controls">
 									<form:input type="password" class="span3"
 										placeholder="********" path="password" />
@@ -112,10 +84,10 @@ Body Section
 								<h6 class="status">${ statusPassword }</h6>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="inputEmail">Họ và tên</label>
+								<label class="control-label" for="inputEmail">Họ và tên<sup>*</sup></label>
 								<div class="controls">
-									<form:input type="text" class="span3"
-										placeholder="VD: Trần Văn A" path="name" />
+									<form:input type="text" class="span3" placeholder="Trần Văn A"
+										path="name" />
 								</div>
 								<h6 class="status">${ statusName }</h6>
 							</div>
@@ -123,7 +95,7 @@ Body Section
 								<label class="control-label" for="inputEmail">Số điện
 									thoại liên lạc </label>
 								<div class="controls">
-									<form:input type="text" class="span3" placeholder=""
+									<form:input type="text" class="span3" placeholder="0123456789"
 										path="phoneNumber" />
 								</div>
 							</div>
@@ -132,11 +104,11 @@ Body Section
 								<div class="controls">
 									<%-- <form:input type="text" class="span3" placeholder=""
 										path="address" /> --%>
-										<form:textarea path="address" rows="6" cols="30" type="text" class="span3" placeholder="" />
-										<!-- <textarea path="address" rows="6" cols="30"></textarea> -->
+									<form:textarea path="address" rows="6" cols="30" type="text"
+										class="span3" placeholder="Có thể để trống!!!" />
 								</div>
 							</div>
-							
+
 							<div class="controls">
 								<button type="submit" class="btn block">Tạo tài khoản</button>
 							</div>
@@ -151,7 +123,7 @@ Body Section
 						<form:form action="dang-nhap" method="POST"
 							modelAttribute="usersRegister">
 							<div class="control-group">
-								<label class="control-label" for="inputEmail">Email</label>
+								<label class="control-label" for="inputEmail">Email<sup>*</sup></label>
 								<div class="controls">
 									<form:input class="span3" type="text" placeholder="Email"
 										path="user" />
@@ -160,7 +132,8 @@ Body Section
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="inputPassword">Mật
-									khẩu</label>
+									khẩu<sup>*</sup>
+								</label>
 								<div class="controls">
 									<form:input type="password" class="span3"
 										placeholder="********" path="password" />
