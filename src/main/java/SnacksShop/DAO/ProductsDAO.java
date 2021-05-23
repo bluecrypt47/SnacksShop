@@ -74,9 +74,41 @@ public class ProductsDAO extends BaseDAO {
 
 		return sql.toString();
 	}
-	
-	private String SqlAllProductsPaginates( int start, int totalPage) {
+
+	private String SqlAllProductsPaginates(int start, int totalPage) {
 		StringBuffer sql = SqlString();
+
+		sql.append("LIMIT " + start + ", " + totalPage + " ");
+
+		return sql.toString();
+	}
+
+	private StringBuffer SqlAllNewProductsPaginates() {
+		StringBuffer sql = SqlString();
+
+		sql.append("WHERE sanPhamMoi =true ");
+
+		return sql;
+	}
+
+	private StringBuffer SqlAllHighlithsProductsPaginates() {
+		StringBuffer sql = SqlString();
+
+		sql.append("WHERE noiBat =true ");
+
+		return sql;
+	}
+
+	private String SqlAllNewProductsPaginates(int start, int totalPage) {
+		StringBuffer sql = SqlAllNewProductsPaginates();
+
+		sql.append("LIMIT " + start + ", " + totalPage + " ");
+
+		return sql.toString();
+	}
+
+	private String SqlAllHighlithsProductsPaginates(int start, int totalPage) {
+		StringBuffer sql = SqlAllNewProductsPaginates();
 
 		sql.append("LIMIT " + start + ", " + totalPage + " ");
 
@@ -97,21 +129,54 @@ public class ProductsDAO extends BaseDAO {
 
 		return listProducts;
 	}
-	
+
 	// lay ra so san pham tu cau truy van LIMIT
-		public List<ProductsDTO> GetDataAllProductsPaginates( int start, int totalPage) {
-			StringBuffer sqlDataAllProducts = SqlString();
+	public List<ProductsDTO> GetDataAllProductsPaginates(int start, int totalPage) {
+		StringBuffer sqlDataAllProducts = SqlString();
 
-			List<ProductsDTO> listDataAllProducts = _jdbcTemplate.query(sqlDataAllProducts.toString(), new ProductsDTOMapper());
-			List<ProductsDTO> listAllProducts = new ArrayList<ProductsDTO>();
+		List<ProductsDTO> listDataAllProducts = _jdbcTemplate.query(sqlDataAllProducts.toString(),
+				new ProductsDTOMapper());
+		List<ProductsDTO> listAllProducts = new ArrayList<ProductsDTO>();
 
-			if (listDataAllProducts.size() > 0) {
-				String sql = SqlAllProductsPaginates( start, totalPage);
-				listAllProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
-			}
-
-			return listAllProducts;
+		if (listDataAllProducts.size() > 0) {
+			String sql = SqlAllProductsPaginates(start, totalPage);
+			listAllProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
 		}
+
+		return listAllProducts;
+	}
+
+	// lay ra so san pham tu cau truy van LIMIT
+	public List<ProductsDTO> GetDataAllNewProductsPaginates(int start, int totalPage) {
+		StringBuffer sqlDataAllNewProducts = SqlAllNewProductsPaginates();
+
+		List<ProductsDTO> listDataAllNewProducts = _jdbcTemplate.query(sqlDataAllNewProducts.toString(),
+				new ProductsDTOMapper());
+		List<ProductsDTO> listAllNewProducts = new ArrayList<ProductsDTO>();
+
+		if (listDataAllNewProducts.size() > 0) {
+			String sql = SqlAllNewProductsPaginates(start, totalPage);
+			listAllNewProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
+		}
+
+		return listAllNewProducts;
+	}
+
+	// lay ra so san pham tu cau truy van LIMIT
+	public List<ProductsDTO> GetDataAllHighlithsProductsPaginates(int start, int totalPage) {
+		StringBuffer sqlDataAllHighlithsProducts = SqlAllHighlithsProductsPaginates();
+
+		List<ProductsDTO> listDataAllHighlithsProducts = _jdbcTemplate.query(sqlDataAllHighlithsProducts.toString(),
+				new ProductsDTOMapper());
+		List<ProductsDTO> listAllHighlithsProducts = new ArrayList<ProductsDTO>();
+
+		if (listDataAllHighlithsProducts.size() > 0) {
+			String sql = SqlAllHighlithsProductsPaginates(start, totalPage);
+			listAllHighlithsProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
+		}
+
+		return listAllHighlithsProducts;
+	}
 
 	// lay ra san pham co id
 	private String SqlProductDetailsByID(long id) {

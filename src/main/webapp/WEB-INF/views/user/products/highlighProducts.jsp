@@ -33,117 +33,69 @@
 </head>
 <body>
 
-	<div class="row">
-		<div id="sidebar" class="span3">
-			<div class="well well-small">
-				<ul class="nav nav-list">
-
-					<c:forEach var="item" items="${catogorys }">
-						<li><a href='<c:url value="/san-pham/${ item.maLoai }"/>'><span
-								class="icon-circle-blank"></span> ${ item.tenLoai }</a></li>
-						<li>
-					</c:forEach>
-					<li><a class="totalInCart" href="<c:url value="/gio-hang"/>"><strong>Tổng
-								tiền mua <span class="badge badge-warning pull-right"
-								style="line-height: 18px;"><fmt:formatNumber
-										type="number" groupingUsed="true" value="${TotalPriceCart}" />₫</span>
-						</strong></a></li>
-				</ul>
-			</div>
-			<a class="shopBtn btn-block">Sản Phẩm Mới Ra Mắt <br></a> <br>
-			<br>
-			<ul class="nav nav-list promowrapper">
-				<c:forEach var="item" items="${ viewProductsNew }" varStatus="loop">
-					<li>
-						<div class="thumbnail">
-							<a class="zoomTool"
-								href="san-pham/chi-tiet-san-pham/${item.maSP}"
-								title="Thêm vào giỏ"><span class="icon-search"></span> Xem
-								chi tiết</a> <img
-								src="<c:url value="/assets/user/img/anh/${ item.image }"/>"
-								alt="bootstrap ecommerce templates">
-							<div class="caption">
-								<h4>
-									<a class="defaultBtn"
-										href="san-pham/chi-tiet-san-pham/${item.maSP}">XEM</a> <span
-										class="pull-right"><fmt:formatNumber type="number"
-											groupingUsed="true" value="${item.giaBan}" /> ₫</span>
-								</h4>
-							</div>
-						</div>
-					</li>
-					<li style="border: 0">&nbsp;</li>
-				</c:forEach>
-			</ul>
-		</div>
-		<div class="span9">
-			<div class="well well-small">
-				<div class="row">
-					<h3 style="margin-left: 25px;">Sản phẩm bán chạy</h3>
-				</div>
-				<c:if test="${ allHighlighProducts.size() <=0 }">
+	<div class="well well-small">
+		<h3>Sản phẩm nổi bật</h3>
+		<div class="row-fluid">
+			<ul class="thumbnails">
+				<c:if test="${ allHighlithsProductsPaginate.size() <=0 }">
 					<h3 style="text-align: center; color: red;">Hiện tại chưa có
-						sản phẩm nào nổi bật!!</h3>
+						sản phẩm này!!!</h3>
 				</c:if>
-				<c:if test="${ allHighlighProducts.size() > 0 }">
-					<div class="row-fluid">
-						<ul class="thumbnails">
-							<c:forEach var="item" items="${ allHighlighProducts }"
-								varStatus="loop">
-								<li class="span4">
-									<div class="thumbnail">
-										<a href="product_details.html" class="overlay"></a> <a
-											class="zoomTool" href="chi-tiet-san-pham/${item.maSP}"
-											title="add to cart"><span class="icon-search"></span> Xem
-											chi tiết</a> <a href="chi-tiet-san-pham/${ item.maSP }"><img
-											src="<c:url value="/assets/user/img/anh/${ item.image }" />"></a>
-										<div class="caption cntr">
-											<p>${ item.tenSP }</p>
-											<p>
-												<strong> <fmt:formatNumber type="number"
-														groupingUsed="true" value="${item.giaBan}" /> ₫
-												</strong>
-
-											</p>
-											<h4>
-												<a class="shopBtn"
-													href="<c:url value="/AddCart/${ item.maSP }"/>"
-													title="add to cart"> Thêm vào giỏ </a>
-											</h4>
-											<br class="clr">
-										</div>
+				<c:if test="${ allHighlithsProductsPaginate.size() >0 }">
+					<ul class="thumbnails">
+						<c:forEach var="item" items="${ allHighlithsProductsPaginate }"
+							varStatus="loop">
+							<li class="span4">
+								<div class="thumbnail">
+									<a class="zoomTool"
+										href="san-pham/chi-tiet-san-pham/${item.maSP}"
+										title="Xem thêm"><span class="icon-search"></span> Xem
+										thêm</a> <a href="san-pham/chi-tiet-san-pham/${item.maSP}"><img
+										src="<c:url value="/assets/user/img/anh/${ item.image }" />"
+										alt=""></a>
+									<div class="caption">
+										<h5>${ item.tenSP }</h5>
+										<h4>
+											<a class="defaultBtn"
+												href="san-pham/chi-tiet-san-pham/${item.maSP}"
+												title="Nhấn để xem"><span class="icon-zoom-in"></span></a> <a
+												class="shopBtn"
+												href="<c:url value="/AddCart/${ item.maSP }"/>"
+												title="Thêm vào giỏ"><span class="icon-plus"></span></a> <span
+												class="pull-right"> <fmt:formatNumber type="number"
+													groupingUsed="true" value="${item.giaBan}" /> ₫/ ${ item.dvt }
+											</span>
+										</h4>
 									</div>
-								</li>
-								<c:if
-									test="${ (loop.index + 1)  %3 ==0 || (loop.index+1) == allHighlighProducts.size()}">
-						</ul>
-					</div>
-					<c:if test="${ (loop.index + 1) < allHighlighProducts.size()}">
-						<div class="row-fluid">
-							<ul class="thumbnails">
+								</div>
+							</li>
+							<c:if
+								test="${ (loop.index+1)  %3 ==0 || (loop.index+1) == allHighlithsProductsPaginate.size()}">
+					</ul>
+					<c:if test="${ (loop.index+1) < allHighlithsProductsPaginate.size()}">
+						<ul class="thumbnails">
 					</c:if>
 				</c:if>
 				</c:forEach>
 				</c:if>
-			</div>
+			</ul>
 		</div>
-
 	</div>
-
-
-	<%--  --%>
-
-	<%-- <div class="pagination">
-		<c:forEach var="item" begin="1" end="${ paginateInfo.totalPage }"
-			varStatus="loop">
-			<c:if test="${ (loop.index) == paginateInfo.currentPage }">
-				<a href="<c:url value="/san-pham/${ idCategory }/${ loop.index }"/>"
+	<div class="pagination">
+		<c:forEach var="item" begin="1"
+			end="${ paginateInfoAllHighlithsProdcts.totalPage }" varStatus="loop">
+			<c:if test="${ (loop.index) == paginateInfoAllHighlithsProdcts.currentPage }">
+				<a href="<c:url value="/san-pham-noi-bat/${ loop.index }"/>"
 					class="active">${ loop.index }</a>
 			</c:if>
-			<c:if test="${ (loop.index) != paginateInfo.currentPage }">
-				<a href="<c:url value="/san-pham/${ idCategory }/${ loop.index }"/>">${ loop.index }</a>
+			<c:if test="${ (loop.index) != paginateInfoAllHighlithsProdcts.currentPage }">
+				<a href="<c:url value="/san-pham-noi-bat/${ loop.index }"/>">${ loop.index }</a>
 			</c:if>
 		</c:forEach>
-	</div> --%>
+	</div>
+	<!-- </div>
+	</div> -->
+
+
 
 </body>

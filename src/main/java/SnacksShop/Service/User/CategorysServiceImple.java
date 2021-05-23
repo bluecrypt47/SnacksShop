@@ -29,6 +29,13 @@ public class CategorysServiceImple implements ICategorysService {
 	public List<ProductsDTO> GetDataAllProductsPaginate( int start, int totalPage) {
 		return productsDAO.GetDataAllProductsPaginates( start, totalPage);
 	}
+	
+	public List<ProductsDTO> GetDataAllNewProductsPaginate( int start, int totalPage) {
+		return productsDAO.GetDataAllNewProductsPaginates( start, totalPage);
+	}
 
+	public List<ProductsDTO> GetDataAllHighlithsProductsPaginate( int start, int totalPage) {
+		return productsDAO.GetDataAllHighlithsProductsPaginates( start, totalPage);
+	}
 
 }

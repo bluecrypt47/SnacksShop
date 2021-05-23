@@ -71,14 +71,7 @@ public class HomeController extends BaseController {
 		return _mvShare;
 	}
 
-	// Hiển thị trang tất cả sản phẩm
-	/*
-	 * @RequestMapping(value = "/tat-ca-san-pham") public ModelAndView Product() {
-	 * _mvShare.addObject("allProducts", _homeService.GetAllProducts());
-	 * 
-	 * _mvShare.setViewName("user/products/allProducts"); return _mvShare; }
-	 */
-
+	// Hiển thị trang tất cả sản phẩm và phân trang
 	@RequestMapping(value = "/tat-ca-san-pham")
 	public ModelAndView Product() {
 		// _mvShare.addObject("allProducts", _homeService.GetAllProducts());
@@ -95,7 +88,7 @@ public class HomeController extends BaseController {
 
 		return _mvShare;
 	}
-	
+
 	@RequestMapping(value = "/tat-ca-san-pham/{currentPage}")
 	public ModelAndView Product(@PathVariable String currentPage) {
 		// _mvShare.addObject("allProducts", _homeService.GetAllProducts());
@@ -104,7 +97,8 @@ public class HomeController extends BaseController {
 
 		int totalData = _homeService.GetAllProducts().size();
 
-		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage, Integer.parseInt(currentPage));
+		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage,
+				Integer.parseInt(currentPage));
 		_mvShare.addObject("allProducts", _homeService.GetAllProducts());
 		_mvShare.addObject("paginateInfoAllProdcts", paginateInfo);
 		_mvShare.addObject("allProductsPaginate", categorysService
@@ -116,18 +110,71 @@ public class HomeController extends BaseController {
 	// Hiển thị trang tất cả sản phẩm mới
 	@RequestMapping(value = "/san-pham-moi")
 	public ModelAndView newProduct() {
-		_mvShare.addObject("allNewProducts", _homeService.GetAllNewProducts());
+		// _mvShare.addObject("allNewProducts", _homeService.GetAllNewProducts());
 
 		_mvShare.setViewName("user/products/newProducts");
+
+		int totalData = _homeService.GetAllNewProducts().size();
+
+		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage, 1);
+		_mvShare.addObject("allNewProducts", _homeService.GetAllNewProducts());
+		_mvShare.addObject("paginateInfoAllNewProdcts", paginateInfo);
+		_mvShare.addObject("allNewProductsPaginate", categorysService
+				.GetDataAllNewProductsPaginate(paginateInfo.getNumberStartPageOfProduct(), TotalProductsOfPage));
+
+		return _mvShare;
+	}
+
+	@RequestMapping(value = "/san-pham-moi/{currentPage}")
+	public ModelAndView newProduct(@PathVariable String currentPage) {
+		// _mvShare.addObject("allProducts", _homeService.GetAllProducts());
+
+		_mvShare.setViewName("user/products/newProducts");
+
+		int totalData = _homeService.GetAllNewProducts().size();
+
+		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage,
+				Integer.parseInt(currentPage));
+		_mvShare.addObject("allNewProducts", _homeService.GetAllNewProducts());
+		_mvShare.addObject("paginateInfoAllNewProdcts", paginateInfo);
+		_mvShare.addObject("allNewProductsPaginate", categorysService
+				.GetDataAllNewProductsPaginate(paginateInfo.getNumberStartPageOfProduct(), TotalProductsOfPage));
+
 		return _mvShare;
 	}
 
 	// Hiển thị trang tất cả sản nổi bật
 	@RequestMapping(value = "/san-pham-noi-bat")
 	public ModelAndView highlightProduct() {
-		_mvShare.addObject("allHighlighProducts", _homeService.GetAllHighlighProducts());
+		// _mvShare.addObject("allNewProducts", _homeService.GetAllNewProducts());
 
 		_mvShare.setViewName("user/products/highlighProducts");
+
+		int totalData = _homeService.GetAllHighlighProducts().size();
+
+		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage, 1);
+		_mvShare.addObject("allHighlithsProducts", _homeService.GetAllHighlighProducts());
+		_mvShare.addObject("paginateInfoAllHighlithsProdcts", paginateInfo);
+		_mvShare.addObject("allHighlithsProductsPaginate", categorysService
+				.GetDataAllHighlithsProductsPaginate(paginateInfo.getNumberStartPageOfProduct(), TotalProductsOfPage));
+
+		return _mvShare;
+	}
+
+	@RequestMapping(value = "/san-pham-noi-bat/{currentPage}")
+	public ModelAndView highlightProduct(@PathVariable String currentPage) {
+		// _mvShare.addObject("allNewProducts", _homeService.GetAllNewProducts());
+
+		_mvShare.setViewName("user/products/highlighProducts");
+
+		int totalData = _homeService.GetAllHighlighProducts().size();
+
+		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage, Integer.parseInt(currentPage));
+		_mvShare.addObject("allHighlithsProducts", _homeService.GetAllHighlighProducts());
+		_mvShare.addObject("paginateInfoAllHighlithsProdcts", paginateInfo);
+		_mvShare.addObject("allHighlithsProductsPaginate", categorysService
+				.GetDataAllHighlithsProductsPaginate(paginateInfo.getNumberStartPageOfProduct(), TotalProductsOfPage));
+
 		return _mvShare;
 	}
 
