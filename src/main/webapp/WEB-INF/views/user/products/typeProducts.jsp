@@ -7,12 +7,12 @@
 <title>Sản phẩm</title>
 <style>
 .pagination {
-	display: flex;
+  display: flex;
 	justify-content: center;
 }
 
 .pagination a {
-	color: black;
+  color: black;
 	float: left;
 	padding: 8px 16px;
 	text-decoration: none;
@@ -21,13 +21,14 @@
 }
 
 .pagination a.active {
-	background-color: #4CAF50;
-	color: white;
-	border: 1px solid #4CAF50;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
 }
 
 .pagination a:hover:not(.active) {
-	background-color: #ddd;
+  background-color: #ddd;
+  border-radius: 5px;
 }
 </style>
 </head>

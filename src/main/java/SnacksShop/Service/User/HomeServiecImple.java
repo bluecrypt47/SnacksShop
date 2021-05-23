@@ -69,13 +69,13 @@ public class HomeServiecImple implements IHomeService {
 	}
 
 	// Lấy dữ liệu tất cả sản phẩm mới
-	public Object GetAllNewProducts() {
+	public List<ProductsDTO> GetAllNewProducts() {
 		List<ProductsDTO> listAllNewProducts = productsDAO.GetAllNewProducts();
 		return listAllNewProducts;
 	}
 
 	// Lấy dữ liệu tất cả sản phẩm nổi bật
-	public Object GetAllHighlighProducts() {
+	public List<ProductsDTO> GetAllHighlighProducts() {
 		List<ProductsDTO> listAllHighlighProducts = productsDAO.GetAllHighlighProducts();
 		return listAllHighlighProducts;
 	}

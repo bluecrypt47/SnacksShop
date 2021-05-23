@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import SnacksShop.DAO.ProductsDAO;
+import SnacksShop.DTO.PaginatesDTO;
 import SnacksShop.DTO.ProductsDTO;
 import SnacksShop.Service.User.AccountServiecImple;
 import SnacksShop.Service.User.BillServiceImple;
+import SnacksShop.Service.User.CategorysServiceImple;
 import SnacksShop.Service.User.IBillService;
+import SnacksShop.Service.User.PaginatesServiceImple;
 import SnacksShop.Service.User.ProductDetailsServiceImple;
 
 @Controller
@@ -42,6 +45,14 @@ public class HomeController extends BaseController {
 
 	@Autowired
 	ProductDetailsServiceImple productDetailsServiceImple = new ProductDetailsServiceImple();
+
+	@Autowired
+	private PaginatesServiceImple paginatesService;
+
+	@Autowired
+	private CategorysServiceImple categorysService;
+
+	private int TotalProductsOfPage = 12;
 	// -----------------------
 
 	// Hiển thị trang chủ
@@ -61,11 +72,44 @@ public class HomeController extends BaseController {
 	}
 
 	// Hiển thị trang tất cả sản phẩm
+	/*
+	 * @RequestMapping(value = "/tat-ca-san-pham") public ModelAndView Product() {
+	 * _mvShare.addObject("allProducts", _homeService.GetAllProducts());
+	 * 
+	 * _mvShare.setViewName("user/products/allProducts"); return _mvShare; }
+	 */
+
 	@RequestMapping(value = "/tat-ca-san-pham")
 	public ModelAndView Product() {
-		_mvShare.addObject("allProducts", _homeService.GetAllProducts());
+		// _mvShare.addObject("allProducts", _homeService.GetAllProducts());
 
 		_mvShare.setViewName("user/products/allProducts");
+
+		int totalData = _homeService.GetAllProducts().size();
+
+		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage, 1);
+		_mvShare.addObject("allProducts", _homeService.GetAllProducts());
+		_mvShare.addObject("paginateInfoAllProdcts", paginateInfo);
+		_mvShare.addObject("allProductsPaginate", categorysService
+				.GetDataAllProductsPaginate(paginateInfo.getNumberStartPageOfProduct(), TotalProductsOfPage));
+
+		return _mvShare;
+	}
+	
+	@RequestMapping(value = "/tat-ca-san-pham/{currentPage}")
+	public ModelAndView Product(@PathVariable String currentPage) {
+		// _mvShare.addObject("allProducts", _homeService.GetAllProducts());
+
+		_mvShare.setViewName("user/products/allProducts");
+
+		int totalData = _homeService.GetAllProducts().size();
+
+		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage, Integer.parseInt(currentPage));
+		_mvShare.addObject("allProducts", _homeService.GetAllProducts());
+		_mvShare.addObject("paginateInfoAllProdcts", paginateInfo);
+		_mvShare.addObject("allProductsPaginate", categorysService
+				.GetDataAllProductsPaginate(paginateInfo.getNumberStartPageOfProduct(), TotalProductsOfPage));
+
 		return _mvShare;
 	}
 
@@ -77,15 +121,15 @@ public class HomeController extends BaseController {
 		_mvShare.setViewName("user/products/newProducts");
 		return _mvShare;
 	}
-	
-	// Hiển thị trang tất cả sản nổi bật
-		@RequestMapping(value = "/san-pham-noi-bat")
-		public ModelAndView highlightProduct() {
-			_mvShare.addObject("allHighlighProducts", _homeService.GetAllHighlighProducts());
 
-			_mvShare.setViewName("user/products/highlighProducts");
-			return _mvShare;
-		}
+	// Hiển thị trang tất cả sản nổi bật
+	@RequestMapping(value = "/san-pham-noi-bat")
+	public ModelAndView highlightProduct() {
+		_mvShare.addObject("allHighlighProducts", _homeService.GetAllHighlighProducts());
+
+		_mvShare.setViewName("user/products/highlighProducts");
+		return _mvShare;
+	}
 
 	// Hiển thị trang giới thiệu website
 	@RequestMapping(value = "/gioi-thieu")

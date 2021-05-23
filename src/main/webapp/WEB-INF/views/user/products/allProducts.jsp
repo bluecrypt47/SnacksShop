@@ -7,16 +7,34 @@
 
 <head>
 <title>Tất cả sản phẩm</title>
+<style>
+.pagination {
+	display: flex;
+	justify-content: center;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+	border: 1px solid #ddd;
+}
+
+.pagination a.active {
+	background-color: #4CAF50;
+	color: white;
+	border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
+</style>
 </head>
 <body>
-	<%-- <%
-		if(request.getParameter('name') != null){
-			list = new ProductsDAO().GetSearchProduct;
-		}
-		else{
-			list = new ProductsDAO().GetAllProduct;
-		}
-	%> --%>
+
 	<!-- 
 New Products
 -->
@@ -24,13 +42,14 @@ New Products
 		<h3>Sản phẩm của chúng tôi</h3>
 		<div class="row-fluid">
 			<ul class="thumbnails">
-				<c:if test="${ allProducts.size() <=0 }">
+				<c:if test="${ allProductsPaginate.size() <=0 }">
 					<h3 style="text-align: center; color: red;">Hiện tại chưa có
 						sản phẩm này!!!</h3>
 				</c:if>
-				<c:if test="${ allProducts.size() >0 }">
+				<c:if test="${ allProductsPaginate.size() >0 }">
 					<ul class="thumbnails">
-						<c:forEach var="item" items="${ allProducts }" varStatus="loop">
+						<c:forEach var="item" items="${ allProductsPaginate }"
+							varStatus="loop">
 							<li class="span4">
 								<div class="thumbnail">
 									<a class="zoomTool"
@@ -56,9 +75,9 @@ New Products
 								</div>
 							</li>
 							<c:if
-								test="${ (loop.index+1)  %3 ==0 || (loop.index+1) == allProducts.size()}">
+								test="${ (loop.index+1)  %3 ==0 || (loop.index+1) == allProductsPaginate.size()}">
 					</ul>
-					<c:if test="${ (loop.index+1) < allProducts.size()}">
+					<c:if test="${ (loop.index+1) < allProductsPaginate.size()}">
 						<ul class="thumbnails">
 					</c:if>
 				</c:if>
@@ -66,25 +85,19 @@ New Products
 				</c:if>
 			</ul>
 		</div>
-
-
-		<%-- <div class="pagination">
-			<c:forEach var="item" begin="1" end="${ paginateInfo.totalPage }"
-				varStatus="loop">
-				<c:if test="${ (loop.index) == paginateInfo.currentPage }">
-					<a
-						href="<c:url value="/san-pham/${ idCategory }/${ loop.index }"/>"
-						class="active">${ loop.index }</a>
-				</c:if>
-				<c:if test="${ (loop.index) != paginateInfo.currentPage }">
-					<a
-						href="<c:url value="/san-pham/${ idCategory }/${ loop.index }"/>">${ loop.index }</a>
-				</c:if>
-			</c:forEach>
-		</div> --%>
-
+	</div>
+	<div class="pagination">
+		<c:forEach var="item" begin="1"
+			end="${ paginateInfoAllProdcts.totalPage }" varStatus="loop">
+			<c:if test="${ (loop.index) == paginateInfoAllProdcts.currentPage }">
+				<a href="<c:url value="/tat-ca-san-pham/${ loop.index }"/>"
+					class="active">${ loop.index }</a>
+			</c:if>
+			<c:if test="${ (loop.index) != paginateInfoAllProdcts.currentPage }">
+				<a href="<c:url value="/tat-ca-san-pham/${ loop.index }"/>">${ loop.index }</a>
+			</c:if>
+		</c:forEach>
 	</div>
 	<!-- </div>
 	</div> -->
-
 </body>

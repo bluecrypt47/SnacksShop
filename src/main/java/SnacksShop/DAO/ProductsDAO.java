@@ -74,6 +74,14 @@ public class ProductsDAO extends BaseDAO {
 
 		return sql.toString();
 	}
+	
+	private String SqlAllProductsPaginates( int start, int totalPage) {
+		StringBuffer sql = SqlString();
+
+		sql.append("LIMIT " + start + ", " + totalPage + " ");
+
+		return sql.toString();
+	}
 
 	// lay ra so san pham tu cau truy van LIMIT
 	public List<ProductsDTO> GetDataProductsPaginates(int id, int start, int totalPage) {
@@ -89,6 +97,21 @@ public class ProductsDAO extends BaseDAO {
 
 		return listProducts;
 	}
+	
+	// lay ra so san pham tu cau truy van LIMIT
+		public List<ProductsDTO> GetDataAllProductsPaginates( int start, int totalPage) {
+			StringBuffer sqlDataAllProducts = SqlString();
+
+			List<ProductsDTO> listDataAllProducts = _jdbcTemplate.query(sqlDataAllProducts.toString(), new ProductsDTOMapper());
+			List<ProductsDTO> listAllProducts = new ArrayList<ProductsDTO>();
+
+			if (listDataAllProducts.size() > 0) {
+				String sql = SqlAllProductsPaginates( start, totalPage);
+				listAllProducts = _jdbcTemplate.query(sql, new ProductsDTOMapper());
+			}
+
+			return listAllProducts;
+		}
 
 	// lay ra san pham co id
 	private String SqlProductDetailsByID(long id) {
