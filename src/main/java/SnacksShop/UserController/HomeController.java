@@ -289,44 +289,17 @@ public class HomeController extends BaseController {
 		_mvShare.addObject("products", _productDetailsServiceImple.GetProductByID(id));
 		return _mvShare;
 	}
-
-	// ------------------------------------3
+	
 	// Sửa sản phẩm
-	/*
-	 * @RequestMapping(value = "/sua-san-pham", method = RequestMethod.GET) public
-	 * ModelAndView editProduct(HttpServletRequest request, HttpSession session) {
-	 * _mvShare.setViewName("admin/productsManager/editProduct"); //
-	 * ---------------------------
-	 * 
-	 * ProductsDTO productsDTO = new ProductsDTO(); ProductsDTO infoProduct =
-	 * (ProductsDTO) session.getAttribute("infoProduct"); if (infoProduct != null) {
-	 * productsDTO.setMaLoai(infoProduct.getMaLoai());
-	 * productsDTO.setTenSP(infoProduct.getTenSP());
-	 * productsDTO.setImage(infoProduct.getImage());
-	 * productsDTO.setGiaBan(infoProduct.getGiaBan());
-	 * productsDTO.setGiamGia(infoProduct.getGiamGia()); }
-	 * 
-	 * _mvShare.addObject("products", productsDTO);
-	 * 
-	 * // --------------------------- return _mvShare; }
-	 */
-
-	// ****************************************************
-
-	//
-
 	@RequestMapping(value = "/sua-san-pham/{id}", method = RequestMethod.POST)
 	public String editProduct(HttpServletRequest request, HttpSession session,
-			@ModelAttribute("products") ProductsDTO products) {
+			@ModelAttribute("products") ProductsDTO products, @PathVariable("id") long idProduct) {
 		_mvShare.setViewName("admin/productsManager/editProduct");
-		_productDetailsServiceImple.editProduct(products);
+		_productDetailsServiceImple.editProduct(products, idProduct);
 		_mvShare.addObject("statusUpdateProdcut", "Cập nhật thành công!!!");
 
 		return "redirect:" + request.getHeader("Referer");
 	}
-
-	// ****************************************************
-	// ------------------------------------
 
 	// Xóa sản phẩm
 	@RequestMapping(value = "/deleteProduct/{id}")

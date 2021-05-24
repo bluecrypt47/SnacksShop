@@ -30,7 +30,6 @@
 			</div>
 
 		</div>
-		<h1>${ products.maSP }</h1>
 		<div class="span9">
 			<ul class="breadcrumb">
 				<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span
@@ -48,8 +47,8 @@
 				</h6>
 
 				<br>
-				<form:form action="sua-san-pham" class="form-horizontal"
-					method="POST" modelAttribute="products">
+				<form:form class="form-horizontal" method="POST"
+					modelAttribute="products">
 					<div class="control-group">
 						<label class="control-label">Loại sản phẩm <sup>*</sup></label>
 						<div class="controls">
@@ -105,7 +104,7 @@
 								placeholder="Có thể để trống!"></form:textarea>
 						</div>
 					</div>
-					<div class="control-group">
+					<%-- <div class="control-group">
 						<label class="control-label">Sản phẩm nổi bật </label>
 						<div class="controls">
 							<form:select path="noiBat">
@@ -122,7 +121,7 @@
 								<form:option value="1">Sản phẩm cũ</form:option>
 							</form:select>
 						</div>
-					</div>
+					</div> --%>
 
 
 					<div class="control-group">

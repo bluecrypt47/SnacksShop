@@ -260,12 +260,11 @@ public class ProductsDAO extends BaseDAO {
 	}
 
 	// cập nhật sản phẩm
-	public void editProduct(ProductsDTO product) {
+	public void editProduct(ProductsDTO product, long idProduct) {
 		String sql = "UPDATE `sanpham` SET `maLoai`='" + product.getMaLoai() + "',`tenSP`='" + product.getTenSP()
 				+ "',`image`='" + product.getImage() + "',`giaBan`='" + product.getGiaBan() + "',`dvt`='"
 				+ product.getDvt() + "',`giamGia`='" + product.getGiamGia() + "',`gioiThieu`='" + product.getGioiThieu()
-				+ "',`noiBat`='" + product.isNoiBat() + "',`sanPhamMoi`='" + product.isSanPhamMoi() + "' WHERE `maSP`='"
-				+ product.getMaSP() + "'";
+				+ "' WHERE `maSP`='" + idProduct + "'";
 		jdbcTemplate.update(sql);
 	}
 
