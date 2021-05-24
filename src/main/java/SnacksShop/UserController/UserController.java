@@ -89,7 +89,7 @@ public class UserController extends BaseController {
 	}
 
 	// Thông tin tài khoản
-	@RequestMapping(value = "/thong-tin-tai-khoan/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = { "/thong-tin-tai-khoan/{id}", "/thong-tin-tai-khoan" }, method = RequestMethod.GET)
 	public ModelAndView infoAccount(HttpServletRequest request, HttpSession session) {
 		_mvShare.setViewName("user/account/infoAccount");
 
@@ -110,11 +110,11 @@ public class UserController extends BaseController {
 
 	// ***************************************************** dang dở
 
-	@RequestMapping(value = "/thong-tin-tai-khoan/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = { "/thong-tin-tai-khoan/{id}", "/thong-tin-tai-khoan" }, method = RequestMethod.POST)
 	public ModelAndView editInfoAccount(HttpServletRequest request, HttpSession session,
 			@ModelAttribute("Users") Users Users, @PathVariable("id") long userID) {
 
-		//Users user = (Users) session.getAttribute("loginInfo");
+		// Users user = (Users) session.getAttribute("loginInfo");
 		if (Users.getName() == "" || Users.getAddress() == "" || Users.getPhoneNumber() == ""
 				|| Users.getUser() == "") {
 			_mvShare.addObject("statusUpdateInfo", "Cập nhật thất bại!!!");
@@ -122,13 +122,13 @@ public class UserController extends BaseController {
 			accountServiecImple.editInfo(Users, userID);
 
 			_mvShare.addObject("statusUpdateInfo", "Cập nhật thành công!!!");
-			
+
 		}
-		
+
 		_mvShare.setViewName("redirect:" + request.getHeader("Referer"));
 		session.setAttribute("loginInfo", Users);
-		//_mvShare.addObject("loginInfo", Users);
-		
+		// _mvShare.addObject("loginInfo", Users);
+
 		return _mvShare;
 	}
 

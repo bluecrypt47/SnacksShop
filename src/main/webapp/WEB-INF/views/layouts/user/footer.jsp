@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- 
 Clients 
@@ -39,8 +39,26 @@ Footer
 	<div class="row-fluid">
 		<div class="span2">
 			<h5>Tài Khoản Của Bạn</h5>
-			<a href="<c:url value="/thong-tin-tai-khoan"/>">TÀI KHOẢN CỦA BẠN</a><br>
-			<a href="<c:url value="/thong-tin-tai-khoan"/>">THÔNG TIN CÁ NHÂN</a><br>
+			<c:if test="${ not empty loginInfo }">
+				<a href="<c:url value="/thong-tin-tai-khoan/${loginInfo.id}"/>">TÀI
+					KHOẢN CỦA BẠN</a>
+				<br>
+			</c:if>
+			<c:if test="${ empty loginInfo }">
+				<a href="<c:url value="/thong-tin-tai-khoan"/>">TÀI KHOẢN CỦA
+					BẠN</a>
+				<br>
+			</c:if>
+			<c:if test="${ not empty loginInfo }">
+				<a href="<c:url value="/thong-tin-tai-khoan/${loginInfo.id}"/>">THÔNG
+					TIN CÁ NHÂN</a>
+				<br>
+			</c:if>
+			<c:if test="${ empty loginInfo }">
+				<a href="<c:url value="/thong-tin-tai-khoan"/>">THÔNG TIN CÁ
+					NHÂN</a>
+				<br>
+			</c:if>
 			<a href="<c:url value="/lien-he"/>">ĐỊA CHỈ</a><br> <a href="#">GIẢM
 				GIÁ</a><br> <a href="#">LỊCH SỬ ĐẶT HÀNG</a><br>
 		</div>
