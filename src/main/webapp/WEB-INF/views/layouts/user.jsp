@@ -41,8 +41,7 @@
 			<div class="container">
 				<div class="alignR">
 					<div class="pull-left socialNw">
-						<a href="<c:url value="https://twitter.com/"/>"><span
-							class="icon-twitter"></span></a> <a
+						<a href="#"><span class="icon-twitter"></span></a> <a
 							href="<c:url value="https://www.facebook.com/chuong.le.bluec/"/>"><span
 							class="icon-facebook"></span></a> <a
 							href="<c:url value="https://www.youtube.com/"/>"><span
@@ -53,8 +52,9 @@
 						class="icon-home"></span> Trang chủ
 					</a>
 					<c:if test="${ not empty loginInfo }">
-						<a href="<c:url value="/thong-tin-tai-khoan"/>"><span class="icon-user"></span>${ loginInfo.name }
-							<a href="<c:url value="/dang-xuat"/>"><span class="icon-edit"></span>Đăng
+						<a href="<c:url value="/thong-tin-tai-khoan/${loginInfo.id}"/>"><span
+							class="icon-user"></span>${ loginInfo.name } <a
+							href="<c:url value="/dang-xuat"/>"><span class="icon-edit"></span>Đăng
 								xuất </a> <c:if test="${ loginInfo.idRoles == true }">
 								<a href="<c:url value="/quan-tri"/>"><span class="icon-user"></span>
 									Quản trị</a>
@@ -90,20 +90,20 @@ Lower Header Section
 
 	<!-- /container -->
 
-	<div class="copyright">
+	<!-- <div class="copyright">
 		<div class="container">
-			<!-- <p class="pull-right">
-				<a href="#"><img src="assets/img/maestro.png" alt="payment"></a>
-				<a href="#"><img src="assets/img/mc.png" alt="payment"></a> <a
-					href="#"><img src="assets/img/pp.png" alt="payment"></a> <a
-					href="#"><img src="assets/img/visa.png" alt="payment"></a> <a
-					href="#"><img src="assets/img/disc.png" alt="payment"></a>
+			<p class="pull-right">
+				<a href="#"><img src="assets/user/img/maestro.png" alt="payment"></a>
+				<a href="#"><img src="assets/user/img/mc.png" alt="payment"></a>
+				<a href="#"><img src="assets/user/img/pp.png" alt="payment"></a>
+				<a href="#"><img src="assets/user/img/visa.png" alt="payment"></a>
+				<a href="#"><img src="assets/user/img/disc.png" alt="payment"></a>
 			</p>
 			<span>Copyright &copy; 2013<br> bootstrap ecommerce
 				shopping template
-			</span> -->
+			</span>
 		</div>
-	</div>
+	</div> -->
 	<a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="<c:url value="/assets/user/js/jquery.js"/>  "></script>

@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import SnacksShop.DTO.ProductsDTO;
-import SnacksShop.Entity.Bill;
-import SnacksShop.Entity.MapperBill;
 import SnacksShop.Entity.MapperUsers;
 import SnacksShop.Entity.Users;
 
@@ -67,12 +64,11 @@ public class UsersDAO extends BaseDAO {
 		jdbcTemplate.update(sql);
 	}
 
-	//************************************dang dở
-	public void editInfo(Users users) {
-		String sql = "UPDATE `users` SET  `password`='" + users.getPassword() + "',`name`='" + users.getName()
-				+ "',`address`='" + users.getAddress() + "',`phoneNumber`='" + users.getPhoneNumber()
-				+ "' WHERE  `user`='" + users.getUser() + "' ";
+	// ************************************dang dở
+	public void editInfo(Users users, long userID) {
+		String sql = "UPDATE `users` SET `password`='"+users.getPassword()+"', `name`='" + users.getName() + "',`address`='" + users.getAddress()
+				+ "',`phoneNumber`='" + users.getPhoneNumber() + "'  WHERE  `id`='" + userID + "' ";
 		jdbcTemplate.update(sql);
 	}
-	//************************************
+	// ************************************
 }

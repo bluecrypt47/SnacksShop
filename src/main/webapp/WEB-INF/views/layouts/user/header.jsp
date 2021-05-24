@@ -90,7 +90,7 @@ Navigation Bar Section
 
 				</ul>
 				<form action="<c:url value="/search"/>"  class="navbar-search pull-left">
-					<input type="text" name="name" placeholder="Tiềm kiếm"
+					<input type="text" name="name" placeholder="Tìm kiếm"
 						class="search-query span2">
 				</form>
 				<%-- <ul class="nav pull-right">

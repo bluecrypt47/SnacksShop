@@ -37,10 +37,9 @@
 				<form:form action="checkout" method="post" modelAttribute="bill"
 					class="form-horizontal">
 					<h3>Thanh toán đơn hàng</h3>
-					<h6 style="text-align: center; color: red;">
+					<h6 style="text-align: left; color: red;">
 						Những ô có dấu (<sup>*</sup>) không được để trống!!!
 					</h6>
-					<h6 class="status" style="color: red;">${ statusCheckout }</h6>
 					<div class="control-group">
 						<label class="control-label">Họ và tên <sup>*</sup></label>
 						<div class="controls">
@@ -75,6 +74,7 @@
 					</div>
 					<div class="control-group">
 						<div class="controls">
+					<h6 class="status" style="color: red;">${ statusCheckout }</h6>
 							<input type="submit" name="submitAccount" value="Thanh toán"
 								class="shopBtn exclusive">
 						</div>

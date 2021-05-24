@@ -169,7 +169,8 @@ public class HomeController extends BaseController {
 
 		int totalData = _homeService.GetAllHighlighProducts().size();
 
-		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage, Integer.parseInt(currentPage));
+		PaginatesDTO paginateInfo = paginatesService.GetInfoPaginates(totalData, TotalProductsOfPage,
+				Integer.parseInt(currentPage));
 		_mvShare.addObject("allHighlithsProducts", _homeService.GetAllHighlighProducts());
 		_mvShare.addObject("paginateInfoAllHighlithsProdcts", paginateInfo);
 		_mvShare.addObject("allHighlithsProductsPaginate", categorysService
@@ -291,42 +292,38 @@ public class HomeController extends BaseController {
 
 	// ------------------------------------3
 	// Sửa sản phẩm
-	@RequestMapping(value = "/sua-san-pham", method = RequestMethod.GET)
-	public ModelAndView editProduct(HttpServletRequest request, HttpSession session) {
-		_mvShare.setViewName("admin/productsManager/editProduct");
-		// ---------------------------
-
-		ProductsDTO productsDTO = new ProductsDTO();
-		ProductsDTO infoProduct = (ProductsDTO) session.getAttribute("infoProduct");
-		if (infoProduct != null) {
-			productsDTO.setMaLoai(infoProduct.getMaLoai());
-			productsDTO.setTenSP(infoProduct.getTenSP());
-			productsDTO.setImage(infoProduct.getImage());
-			productsDTO.setGiaBan(infoProduct.getGiaBan());
-			productsDTO.setGiamGia(infoProduct.getGiamGia());
-		}
-
-		_mvShare.addObject("products", productsDTO);
-
-		// ---------------------------
-		return _mvShare;
-	}
+	/*
+	 * @RequestMapping(value = "/sua-san-pham", method = RequestMethod.GET) public
+	 * ModelAndView editProduct(HttpServletRequest request, HttpSession session) {
+	 * _mvShare.setViewName("admin/productsManager/editProduct"); //
+	 * ---------------------------
+	 * 
+	 * ProductsDTO productsDTO = new ProductsDTO(); ProductsDTO infoProduct =
+	 * (ProductsDTO) session.getAttribute("infoProduct"); if (infoProduct != null) {
+	 * productsDTO.setMaLoai(infoProduct.getMaLoai());
+	 * productsDTO.setTenSP(infoProduct.getTenSP());
+	 * productsDTO.setImage(infoProduct.getImage());
+	 * productsDTO.setGiaBan(infoProduct.getGiaBan());
+	 * productsDTO.setGiamGia(infoProduct.getGiamGia()); }
+	 * 
+	 * _mvShare.addObject("products", productsDTO);
+	 * 
+	 * // --------------------------- return _mvShare; }
+	 */
 
 	// ****************************************************
 
 	//
 
-	/*
-	 * @RequestMapping(value = "/sua-san-pham/{id}", method = RequestMethod.POST)
-	 * public String editProduct(HttpServletRequest request, HttpSession session,
-	 * 
-	 * @ModelAttribute("product") ProductsDTO product) {
-	 * _mvShare.setViewName("admin/productsManager/editProduct"); //
-	 * --------------------------- _productDetailsServiceImple.editProduct(product);
-	 * _mvShare.addObject("statusUpdateProdcut", "Cập nhật thành công!!!");
-	 * 
-	 * // --------------------------- return "redirect:quan-ly-san-pham"; }
-	 */
+	@RequestMapping(value = "/sua-san-pham/{id}", method = RequestMethod.POST)
+	public String editProduct(HttpServletRequest request, HttpSession session,
+			@ModelAttribute("products") ProductsDTO products) {
+		_mvShare.setViewName("admin/productsManager/editProduct");
+		_productDetailsServiceImple.editProduct(products);
+		_mvShare.addObject("statusUpdateProdcut", "Cập nhật thành công!!!");
+
+		return "redirect:" + request.getHeader("Referer");
+	}
 
 	// ****************************************************
 	// ------------------------------------

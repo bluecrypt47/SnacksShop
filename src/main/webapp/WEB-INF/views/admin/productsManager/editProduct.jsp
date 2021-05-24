@@ -30,6 +30,7 @@
 			</div>
 
 		</div>
+		<h1>${ products.maSP }</h1>
 		<div class="span9">
 			<ul class="breadcrumb">
 				<li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span

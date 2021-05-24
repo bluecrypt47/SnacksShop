@@ -52,7 +52,7 @@
 			</ul>
 			<div class="well">
 				<%-- <form class="form-horizontal"> --%>
-				<form:form action="thong-tin-tai-khoan" method="post"
+				<form:form  method="post"
 					modelAttribute="Users" class="form-horizontal">
 					<h3>Thông tin tài khoản</h3>
 					<div class="control-group">

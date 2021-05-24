@@ -53,9 +53,9 @@ public class AccountServiecImple implements IAccountService{
 	}
 
 	//************************************dang dở
-	public void editInfo(Users users) {
+	public void editInfo(Users users, long userID) {
 		
-		userDAO.editInfo(users);
+		userDAO.editInfo(users, userID);
 	}
 	//************************************
 }
