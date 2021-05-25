@@ -266,6 +266,15 @@ public class ProductsDAO extends BaseDAO {
 				+ product.getDvt() + "',`giamGia`='" + product.getGiamGia() + "',`gioiThieu`='" + product.getGioiThieu()
 				+ "' WHERE `maSP`='" + idProduct + "'";
 		jdbcTemplate.update(sql);
+		/*
+		 * String sql = "UPDATE `sanpham` SET `maLoai`='" + product.getMaLoai() +
+		 * "',`tenSP`='" + product.getTenSP() + "',`image`='" + product.getImage() +
+		 * "',`giaBan`='" + product.getGiaBan() + "',`dvt`='" + product.getDvt() +
+		 * "',`giamGia`='" + product.getGiamGia() + "',`gioiThieu`='" +
+		 * product.getGioiThieu() +
+		 * "',`noiBat`='"+product.isNoiBat()+"',`sanPhamMoi`='"+product.isSanPhamMoi()
+		 * +"' WHERE `maSP`='" + idProduct + "'"; jdbcTemplate.update(sql);
+		 */
 	}
 
 	// lấy danh sách sản phẩm mới

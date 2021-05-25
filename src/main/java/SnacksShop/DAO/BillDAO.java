@@ -19,7 +19,7 @@ public class BillDAO extends BaseDAO {
 
 	@Autowired
 	ProductsDAO productsDAO = new ProductsDAO();
-	
+
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -110,18 +110,24 @@ public class BillDAO extends BaseDAO {
 		Bill bill = _jdbcTemplate.queryForObject(sql, new MapperBill());
 		return bill;
 	}
-	
-	//------------------------------------------------
+
+	// ------------------------------------------------
 	public List<Bill> deleteBillByIDl(int idBill) {
 		String sql = "DELETE FROM `bill` WHERE id= " + idBill + " ";
 		List<Bill> listProducts = _jdbcTemplate.query(sql, new MapperBill());
 		return listProducts;
 	}
-	//------------------------------------------------
+	// ------------------------------------------------
 
 	public void deleteBill(int id) {
-		String sql ="DELETE FROM `bill` WHERE id = "+id+"";
+		String sql = "DELETE FROM `bill` WHERE id = " + id + "";
 		jdbcTemplate.update(sql);
-		
+
+	}
+
+	public List<Bill> GetAllBillByIDUser(String email) {
+		String sql = "SELECT * FROM `bill` WHERE email = '"+email+".com'";
+		List<Bill> listBills = _jdbcTemplate.query(sql, new MapperBill());
+		return listBills;
 	}
 }

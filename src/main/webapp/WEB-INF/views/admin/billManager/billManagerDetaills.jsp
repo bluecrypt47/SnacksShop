@@ -23,7 +23,10 @@ Body Section
 				<li class="active">Chi tiết đơn hàng</li>
 			</ul>
 			<div class="well well-small">
-				<h1>Chi Tiết Đơn Hàng</h1>
+				<h1>
+					Chi Tiết Đơn Hàng<small class="pull-right"> Bạn có ${ billDetails.size() }
+						sản phẩm trong đơn hàng này </small>
+				</h1>
 				<hr class="soften" />
 
 				<table class="table table-bordered table-condensed">

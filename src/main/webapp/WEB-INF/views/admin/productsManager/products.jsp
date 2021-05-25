@@ -24,7 +24,8 @@
 					</ul>
 					<div class="col-lg-12">
 						<h1 class="page-header">
-							Quản Lý Sản Phẩm
+							<small class="pull-right"> Bạn có ${ productsManager.size() }
+								sản phẩm </small> Quản Lý Sản Phẩm
 							<div style="text-align: right;">
 								<a href="<c:url value="/them-san-pham"/>"
 									class="shopBtn btn-large"> <!-- <span
@@ -87,10 +88,11 @@
 													<c:if test="${ item.sanPhamMoi == false }">
 														<td></td>
 													</c:if>
-													<td><a href="<c:url value="/sua-san-pham/${item.maSP}"/>"
-													<%-- <td><a href="<c:url value="/sua-san-pham"/>" --%>
-														" class="btn btn-mini btn-danger" type="button"> <span
-															class="icon-edit"></span>
+													<td><a
+														href="<c:url value="/sua-san-pham/${item.maSP}"/>"
+														<%-- <td><a href="<c:url value="/sua-san-pham"/>" --%>
+														" class="btn btn-mini btn-danger"
+														type="button"> <span class="icon-edit"></span>
 													</a></td>
 													<td><a
 														href="<c:url value="/deleteProduct/${item.maSP}"/>"
