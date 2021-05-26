@@ -89,4 +89,8 @@ public class BillServiceImple implements IBillService {
 		return billDAO.GetAllBillByIDUser(email);
 	}
 
+	public List<BillDetailsManagerDTO> GetGistoryBillDetailsByIDBill(int idBill) {
+		return billDetailsManagerDAO.GetBillDetailsByIDBill(idBill);
+	}
+
 }

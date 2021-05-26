@@ -52,9 +52,13 @@
 			</ul>
 			<div class="well">
 				<%-- <form class="form-horizontal"> --%>
-				<form:form  method="post"
-					modelAttribute="Users" class="form-horizontal">
-					<h3>Thông tin tài khoản</h3>
+				<form:form method="post" modelAttribute="Users"
+					class="form-horizontal">
+					<h3>
+						Thông tin tài khoản<small class="pull-right" style="color: red;">
+							Những ô có dấu (<sup>*</sup>) không được để trống!!!
+						</small>
+					</h3>
 					<div class="control-group">
 						<label class="control-label" for="inputFname">Tên người
 							dùng <sup>*</sup>

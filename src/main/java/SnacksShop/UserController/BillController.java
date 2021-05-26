@@ -28,5 +28,13 @@ public class BillController extends BaseController {
 		_mvShare.addObject("historyBill", _billServiceImple.GetAllBillByIDUser(email));
 		return _mvShare;
 	}
+	
+	// Hiển thị chi tiết hóa đơn theo id của đơn hàng
+	@RequestMapping(value = { "/lich-su-mua-hang/{email}/{id}" })
+	public ModelAndView historyBillsDetails(@PathVariable int id, @PathVariable String email) {
 
+		_mvShare.setViewName("user/bill/historyBillDetails");
+		_mvShare.addObject("historyBillDetails", _billService.GetGistoryBillDetailsByIDBill(id));
+		return _mvShare;
+	}
 }

@@ -53,10 +53,12 @@ Body Section
 					class="divider">/</span></li>
 				<li class="active">Người dùng</li>
 			</ul>
-			<h3 style="text-align: center;">Đăng nhập- Đăng ký</h3>
-			<h6 style="text-align: center; color: red;">
-				Những ô có dấu (<sup>*</sup>) không được để trống!!!
-			</h6>
+			<h3>
+				Đăng nhập- Đăng ký<small class="pull-right" style="color: red;">
+					Những ô có dấu (<sup>*</sup>) không được để trống!!!
+				</small>
+			</h3>
+
 			<hr class="soft" />
 			<div class="row">
 				<div class="span4">

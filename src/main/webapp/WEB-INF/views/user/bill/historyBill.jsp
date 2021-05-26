@@ -63,7 +63,7 @@
 													<td><fmt:formatNumber type="number"
 															groupingUsed="true" value="${ item.total }" /> ₫</td>
 													<td><a
-														href="<c:url value="/quan-ly-chi-tiet-hoa-don/${ item.id }"/>"
+														href="<c:url value="/lich-su-mua-hang/${item.email}/${ item.id }"/>"
 														class="btn btn-mini btn-danger" type="button"> <span
 															class="icon-search"></span>
 													</a></td>
